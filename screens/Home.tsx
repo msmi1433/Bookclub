@@ -20,7 +20,7 @@ const Home: React.FC<{}> = () => {
     <Text>Dan's BookClubs</Text>
       {bookClubs.map((bookclub) => {
         return (
-          <BookclubCard bookclubName={bookclub} />
+          <BookclubCard key={bookclub} bookclubName={bookclub} />
         )
       })}
     </View>
