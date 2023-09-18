@@ -1,13 +1,12 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const Home: React.FC<{}> = () => {
+const Discover = () => {
   return (
     <View>
-      <Text>My Book Clubs</Text>
-      
+      <Text>Discover</Text>
     </View>
   )
 }
 
-export default Home
+export default Discover
