@@ -5,7 +5,7 @@ const Home: React.FC<{}> = () => {
   return (
     <View>
       <Text>My Book Clubs</Text>
-      
+  
     </View>
   )
 }
