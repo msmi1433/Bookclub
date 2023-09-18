@@ -1,11 +1,28 @@
 import { View, Text } from 'react-native'
 import React from 'react'
+import { useEffect, useState } from 'react'
+import { getUserBookclubs } from '../gettingData'
+import BookclubCard from '../components/BookclubCard'
 
 const Home: React.FC<{}> = () => {
+    const [bookClubs, setBookClubs] = useState([])
+
+    useEffect(() => {
+        getUserBookclubs('users', 'cCVDQxJNt02pqrDfDubm', setBookClubs)
+    }, [])
+
   return (
-    <View>
-      <Text>My Book Clubs</Text>
-      
+    <View style={{
+        flexDirection: 'column',
+        borderWidth: 5,
+        flex: 1
+    }}>
+    <Text>Dan's BookClubs</Text>
+      {bookClubs.map((bookclub) => {
+        return (
+          <BookclubCard bookclubName={bookclub} />
+        )
+      })}
     </View>
   )
 }
