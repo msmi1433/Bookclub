@@ -45,3 +45,22 @@ export const getUserBookclubs = (
       }
     });
 };
+
+export const getUser = ( 
+  collectionName: string, 
+  docId: string,
+  setStateFn: Function
+) => {
+  const docRef = doc(db, collectionName, docId);
+  getDoc(docRef)
+  .then((returnedDoc) => {
+    return returnedDoc.data();
+  })
+  .then((user) => {
+    console.log(user)
+    if(user){
+      setStateFn(user)
+    }
+  })
+
+}

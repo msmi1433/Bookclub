@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import Home from "./screens/Home";
 import Discover from "./screens/Discover";
+import Profile from "./screens/ProfilePage";
 
 const Tab = createBottomTabNavigator();
 
@@ -49,7 +50,10 @@ export default function App() {
             ),
           }}
         />
-
+<Tab.Screen
+          name="Profile"
+          component={Profile}
+        />
 
 
       </Tab.Navigator>
