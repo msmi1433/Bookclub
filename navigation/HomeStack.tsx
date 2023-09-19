@@ -9,8 +9,18 @@ const Stack = createNativeStackNavigator()
 
 const StackBookClubs = () => {
   return (
-  <Stack.Navigator>
-    <Stack.Screen name="Home" component={Home} />
+  <Stack.Navigator      screenOptions={{
+    headerTitle: "Book Club",
+    headerStyle: {
+      backgroundColor: "darkblue",
+    },
+    headerTintColor: "white",
+    headerTitleStyle: {
+      fontWeight: "bold",
+    },
+  }}
+>
+    <Stack.Screen name="HomeScreen" component={Home} />
     <Stack.Screen name="SingleBookClubPage" component={SingleBookClubPage} />
     <Stack.Screen name="Discussion" component={Discussion} />
     <Stack.Screen name="Next Book" component={NextBook} />

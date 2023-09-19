@@ -1,10 +1,10 @@
-import { View, Text } from 'react-native'
+import { View, Text, Button } from 'react-native'
 import React from 'react'
 import { useEffect, useState } from 'react'
 import { getUserBookclubs } from '../gettingData'
 import BookclubCard from '../components/BookclubCard'
 
-const Home: React.FC<{}> = () => {
+const Home: React.FC<{navigation: any}> = ( {navigation} ) => {
     const [bookClubs, setBookClubs] = useState([])
 
     useEffect(() => {
@@ -17,6 +17,11 @@ const Home: React.FC<{}> = () => {
         borderWidth: 5,
         flex: 1
     }}>
+       <Button
+        title="Go To Single Book Club Page"
+        onPress={() => navigation.navigate("SingleBookClubPage")}
+      />
+ 
     <Text>Dan's BookClubs</Text>
       {bookClubs.map((bookclub) => {
         return (

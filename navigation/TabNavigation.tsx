@@ -2,53 +2,18 @@ import { StyleSheet, Button, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import DiscoverStack from "./DiscoverStack";
-import HomeStack from "./HomeStack"
-
+import HomeStack from "./HomeStack";
+import ProfileStack from "./ProfileStack";
 
 const Tab = createBottomTabNavigator();
 
 const TabNavigation = () => {
   return (
     <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={{
-          headerTitle: "Book Club",
-          headerStyle: {
-            backgroundColor: "darkblue",
-          },
-          headerTintColor: "white",
-          headerTitleStyle: {
-            fontWeight: "bold",
-          },
-        }}
-      >
-        <Tab.Screen
-          name="Homes"
-          component={HomeStack}
-          options={{
-            headerRight: () => (
-              <Button
-                onPress={() => alert("This will take you to profile")}
-                title="Profile pic"
-                color="#fff"
-              />
-            ),
-          }}
-        />
-
-        <Tab.Screen
-          name="Disco"
-          component={DiscoverStack}
-          options={{
-            headerRight: () => (
-              <Button
-                onPress={() => alert("This will take you to profile")}
-                title="Profile pic"
-                color="#fff"
-              />
-            ),
-          }}
-        />
+      <Tab.Navigator screenOptions={{ headerShown: false }}>
+        <Tab.Screen name="Home" component={HomeStack} />
+        <Tab.Screen name="Discover" component={DiscoverStack} />
+        <Tab.Screen  name="Profile" component={ProfileStack} />
       </Tab.Navigator>
     </NavigationContainer>
   );

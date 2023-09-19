@@ -7,7 +7,16 @@ const Stack = createNativeStackNavigator();
 
 const DiscoverStack = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator   screenOptions={{
+        headerTitle: "Book Club",
+        headerStyle: {
+          backgroundColor: "darkblue",
+        },
+        headerTintColor: "white",
+        headerTitleStyle: {
+          fontWeight: "bold",
+        },
+      }}>
       <Stack.Screen name="Discover" component={Discover} />
       <Stack.Screen name="Create a book club" component={CreateABookClub} />
     </Stack.Navigator>
