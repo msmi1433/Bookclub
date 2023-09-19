@@ -1,8 +1,9 @@
 import { StyleSheet, Button, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Home from "../screens/Home";
-import Discover from "../screens/Discover";
+import DiscoverStack from "./DiscoverStack";
+import HomeStack from "./HomeStack"
+
 
 const Tab = createBottomTabNavigator();
 
@@ -22,8 +23,8 @@ const TabNavigation = () => {
         }}
       >
         <Tab.Screen
-          name="Home"
-          component={Home}
+          name="Homes"
+          component={HomeStack}
           options={{
             headerRight: () => (
               <Button
@@ -36,8 +37,8 @@ const TabNavigation = () => {
         />
 
         <Tab.Screen
-          name="Discover"
-          component={Discover}
+          name="Disco"
+          component={DiscoverStack}
           options={{
             headerRight: () => (
               <Button

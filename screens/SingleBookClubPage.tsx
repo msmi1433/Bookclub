@@ -1,12 +1,12 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const StackBookClubs = () => {
+const SingleBookClubPage = () => {
   return (
     <View>
-      <Text>StackBookClubs</Text>
+      <Text>SingleBookClubPage</Text>
     </View>
   )
 }
 
-export default StackBookClubs
+export default SingleBookClubPage
