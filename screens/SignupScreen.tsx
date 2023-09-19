@@ -43,7 +43,6 @@ const SignupScreen: React.FC<SignupScreenProps> = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <Image style={styles.logo} source={require("../img/logo.webp")} />
       <TextInput
         style={styles.input}
         placeholder="Email"
@@ -110,7 +109,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     overflow: "hidden",
     backgroundColor: "white",
-    marginTop: 10,
+    marginTop: 50,
     marginBottom: 10,
     marginLeft: 30,
     marginRight: 30,
