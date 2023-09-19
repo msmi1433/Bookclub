@@ -1,8 +1,9 @@
-import { View, Text, Button } from 'react-native'
+import { View, Text, Button, ScrollView } from 'react-native'
 import React from 'react'
 import { useEffect, useState } from 'react'
 import { getUserBookclubs } from '../gettingData'
 import BookclubCard from '../components/BookclubCard'
+import { styles } from '../stylesheet'
 
 const Home: React.FC<{navigation: any}> = ( {navigation} ) => {
     const [bookClubs, setBookClubs] = useState([])
@@ -12,11 +13,7 @@ const Home: React.FC<{navigation: any}> = ( {navigation} ) => {
     }, [])
 
   return (
-    <View style={{
-        flexDirection: 'column',
-        borderWidth: 5,
-        flex: 1
-    }}>
+    <View style={styles.bookContainer}>
        <Button
         title="Go To Single Book Club Page"
         onPress={() => navigation.navigate("SingleBookClubPage")}
