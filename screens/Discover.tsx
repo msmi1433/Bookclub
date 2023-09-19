@@ -11,6 +11,10 @@ const Discover: React.FC<{navigation: any}> = ( {navigation} ) => {
         title="Create a Book Club"
         onPress={() => navigation.navigate("Create a book club")}
       />
+      <Button
+        title="Find a Book Club 🔍"
+        onPress={() => navigation.navigate("Find a book club")}
+      />
     </View>
   )
 }
