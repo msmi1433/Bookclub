@@ -4,10 +4,12 @@ import React from "react";
 import { getUser } from "../gettingData";
 import Username from "../components/profilePage/username-card";
 import ProfileContainer from "../components/profilePage/profileBio";
+import FavouriteBookContainer from "../components/profilePage/FavoriteBookContainer";
 
 
 const Profile: React.FC<{}> = () => {
   const [user, setUser] = useState();
+  
 
   useEffect(() => {
     getUser("users", "cCVDQxJNt02pqrDfDubm", setUser);
@@ -23,8 +25,9 @@ const Profile: React.FC<{}> = () => {
         }}
       >
         <Text>Profile</Text>
-        <Username key={user} user={user} />
-        <ProfileContainer key={user} user={user}/>
+        <Username key="user" user={user} />
+        <ProfileContainer key="profile" user={user}/>
+        <FavouriteBookContainer/>
       </View>
     );
   }
