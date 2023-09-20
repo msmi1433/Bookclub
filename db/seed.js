@@ -24,7 +24,7 @@ function addDates(chats) {
 }
 function seedUsers(userData) {
     userData.forEach(function (user) {
-        (0, firestore_1.addDoc)((0, firestore_1.collection)(firebase_config_1.db, "users"), user);
+        (0, firestore_1.addDoc)((0, firestore_1.collection)(firebase_config_1.db, "users", userData.user_user_id), user);
     });
 }
 function seedBookclub(bookclub, bookChat, generalChat, prevReads) {

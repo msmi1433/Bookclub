@@ -34,6 +34,7 @@ function addDates(chats: [][]) {
 }
 
 function seedUsers(userData: {
+  user_user_id: string,
   user_username: string;
   user_avatar_img: string;
   user_bio: string;
@@ -46,7 +47,7 @@ function seedUsers(userData: {
   forEach: Function;
 }) {
   userData.forEach((user: Object) => {
-    addDoc(collection(db, "users"), user);
+    addDoc(collection(db, "users",userData.user_user_id), user);
   });
 }
 
