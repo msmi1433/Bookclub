@@ -72,10 +72,27 @@ export const getUser = (
     return returnedDoc.data();
   })
   .then((user) => {
-    console.log(user)
     if(user){
       setStateFn(user)
     }
   })
+}
 
+export const getUserFaveBooks = (
+  collectionName: string,
+  docId: string,
+  setStateFn: Function
+) => {
+  const docRef = doc(db, collectionName, docId);
+  getDoc(docRef)
+    .then((returnedDoc) => {
+      return returnedDoc.data();
+    })
+    .then((faveBooks) => {
+      if (faveBooks) {
+        setStateFn(faveBooks.user_fave_books);
+      } else {
+        setStateFn([]);
+      }
+    })
 }
