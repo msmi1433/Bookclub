@@ -79,6 +79,7 @@ const styles = StyleSheet.create({
     backgroundColor: "blanchedalmond",
     flex: 1,
     alignItems: "center",
+    padding: 100
   },
   title: {},
   logo: {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Image,
   Text,
@@ -10,27 +10,45 @@ import {
 } from "react-native";
 import { auth } from "../firebase-config";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { addUser } from "../addingData";
 
 interface SignupScreenProps {
   navigation: any;
 }
 
-const SignupScreen: React.FC<SignupScreenProps> = ({navigation}) => {
+const SignupScreen: React.FC<SignupScreenProps> = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [username, setUsername] = useState("");
+  const [mismatch, setMismatch] = useState<string | null>(null)
 
   const goToLogin = () => {
     navigation.navigate("Login");
   };
+
+  const passwordCheck = (text: any) => {
+    if (text != password && text != "") {
+      setMismatch("Passwords do not match");
+    } else {
+      setMismatch(null);
+    }
+  };
+
   const handleSignup = () => {
-    if (password !== confirmPassword) {
+    if (mismatch) {
       alert("Passwords do not match");
       return;
     }
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
+        console.log(userCredential.user.uid);
+        addUser(userCredential.user.uid, username)
+        setConfirmPassword('')
+        setEmail('')
+        setPassword('')
+        setUsername('')
         if (user) {
           navigation.navigate("Home");
         }
@@ -38,11 +56,21 @@ const SignupScreen: React.FC<SignupScreenProps> = ({navigation}) => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        setPassword('')
+        setConfirmPassword('')
       });
   };
 
   return (
     <View style={styles.container}>
+      <TextInput
+        style={styles.input}
+        placeholder="Username"
+        placeholderTextColor="#aaaaaa"
+        onChangeText={(text) => setUsername(text)}
+        value={username}
+        autoCapitalize="none"
+      />
       <TextInput
         style={styles.input}
         placeholder="Email"
@@ -66,10 +94,13 @@ const SignupScreen: React.FC<SignupScreenProps> = ({navigation}) => {
         onSubmitEditing={Keyboard.dismiss}
         secureTextEntry
         placeholder="Confirm Password"
-        onChangeText={(text) => setConfirmPassword(text)}
+        onChangeText={(text) => {
+          setConfirmPassword(text) 
+          passwordCheck(text)}}
         value={confirmPassword}
         autoCapitalize="none"
       />
+      {mismatch ? <Text>{mismatch}</Text> : null}
       <TouchableOpacity style={styles.button} onPress={handleSignup}>
         <Text style={styles.buttonTitle}>Sign Up</Text>
       </TouchableOpacity>
@@ -92,6 +123,7 @@ const styles = StyleSheet.create({
     backgroundColor: "blanchedalmond",
     flex: 1,
     alignItems: "center",
+    padding: 100
   },
   title: {},
   logo: {
