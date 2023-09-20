@@ -1,10 +1,20 @@
-import { View, Text } from 'react-native'
+import { View, Text, Button } from 'react-native'
 import React from 'react'
 
-const Discover: React.FC<{}> = () => {
+
+const Discover: React.FC<{navigation: any}> = ( {navigation} ) => {
+   console.log(navigation)
   return (
     <View>
       <Text>Discover</Text>
+      <Button
+        title="Create a Book Club"
+        onPress={() => navigation.navigate("Create a book club")}
+      />
+      <Button
+        title="Find a Book Club 🔍"
+        onPress={() => navigation.navigate("Find a book club")}
+      />
     </View>
   )
 }
