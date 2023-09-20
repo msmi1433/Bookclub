@@ -8,6 +8,7 @@ export const getCollection = (collectionName: string, setStateFn: Function) => {
       return coll.docs.map((doc) => doc.data());
     })
     .then((mappedColl) => {
+      console.log(mappedColl)
       setStateFn(mappedColl);
     });
 };
@@ -45,3 +46,36 @@ export const getUserBookclubs = (
       }
     });
 };
+
+export const getJoinableClubs = (collectionName: string, setStateFn: Function) => {
+  const collRef = collection(db, collectionName);
+  return getDocs(collRef)
+    .then((coll) => {
+      return coll.docs.map((doc) => doc.data());
+    })
+    .then((mappedColl) => {
+      const bookclubs = mappedColl.map((bookclub) => {
+        return bookclub.name
+      })
+      setStateFn(bookclubs);
+    });
+};
+
+export const getUser = ( 
+  collectionName: string, 
+  docId: string,
+  setStateFn: Function
+) => {
+  const docRef = doc(db, collectionName, docId);
+  getDoc(docRef)
+  .then((returnedDoc) => {
+    return returnedDoc.data();
+  })
+  .then((user) => {
+    console.log(user)
+    if(user){
+      setStateFn(user)
+    }
+  })
+
+}
