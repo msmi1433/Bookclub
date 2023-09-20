@@ -14,5 +14,17 @@ bookContainer: {
     borderWidth: 1,
     flex: 1,
     justifyContent: 'space-evenly'
+},
+input: {
+  height: 48,
+  borderRadius: 5,
+  width: 300,
+  overflow: "hidden",
+  backgroundColor: "#fff",
+  marginTop: 50,
+  marginBottom: 10,
+  marginLeft: 30,
+  marginRight: 30,
+  paddingLeft: 16,
 }
 });
