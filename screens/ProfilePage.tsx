@@ -21,6 +21,7 @@ const Profile: React.FC<{}> = () => {
         style={{
           flexDirection: "column",
           borderWidth: 5,
+          padding: 10,
           flex: 1,
         }}
       >
