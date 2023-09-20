@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import DiscoverStack from "./DiscoverStack";
 import HomeStack from "./HomeStack";
 import ProfileStack from "./ProfileStack";
+import SignupScreen from "../screens/SignupScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -14,6 +15,7 @@ const TabNavigation = () => {
         <Tab.Screen name="Home" component={HomeStack} />
         <Tab.Screen name="Discover" component={DiscoverStack} />
         <Tab.Screen  name="Profile" component={ProfileStack} />
+        <Tab.Screen  name="SignUp" component={SignupScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );
