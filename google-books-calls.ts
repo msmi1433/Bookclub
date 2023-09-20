@@ -7,6 +7,8 @@ const googleBooksApi = axios.create({
   },
 });
 
+/*The below function will serve up an array of book objects with keys defined in the task card. It needs two args; searchTerm which can be a string of book title or author, and setStaeFn which is a state setter for your desried state to store the result in*/
+
 export const searchByTitleOrAuthor = (
   searchTerm: string,
   setStateFn: Function
