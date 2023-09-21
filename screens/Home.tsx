@@ -5,7 +5,11 @@ import { getUserBookclubs } from '../gettingData'
 import BookclubCard from '../components/BookclubCard'
 import { styles } from '../stylesheet'
 
-const Home: React.FC<{navigation: any}> = ( {navigation} ) => {
+interface NavProps {
+  navigation: any
+}
+
+const Home: React.FC<NavProps> = ( {navigation} ) => {
     const [bookClubs, setBookClubs] = useState([])
 
     useEffect(() => {

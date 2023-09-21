@@ -1,7 +1,6 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-
   book: {
     borderWidth: 5,
     borderBlockColor: "blue",
@@ -9,8 +8,8 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-bookContainer: {
-    flexDirection: 'column',
+  bookContainer: {
+    flexDirection: "column",
     borderWidth: 1,
     flex: 1,
     justifyContent: 'space-evenly'
