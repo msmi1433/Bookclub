@@ -12,14 +12,12 @@ const Tab = createBottomTabNavigator();
 
 const TabNavigation = () => {
   return (
-    <NavigationContainer>
+    <NavigationContainer independent={true}>
       <Tab.Navigator screenOptions={{ headerShown: false }}>
         <Tab.Screen name="Home" component={HomeStack} />
         <Tab.Screen name="Discover" component={DiscoverStack} />
         <Tab.Screen name="Create Profile" component={CreateProfile} />
         <Tab.Screen  name="Profile" component={ProfileStack} />
-        <Tab.Screen  name="SignUp" component={SignupScreen} />
-        <Tab.Screen  name="LoginScreen" component={LoginScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );

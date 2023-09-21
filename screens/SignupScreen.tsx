@@ -50,7 +50,7 @@ const SignupScreen: React.FC<SignupScreenProps> = ({ navigation }) => {
         setPassword('')
         setUsername('')
         if (user) {
-          navigation.navigate("Home");
+          navigation.navigate("App");
         }
       })
       .catch((error) => {
