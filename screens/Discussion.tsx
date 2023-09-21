@@ -5,6 +5,7 @@ const Discussion = () => {
   return (
     <View>
       <Text>Discussion</Text>
+      {/* <CommentCard />  */}
     </View>
   )
 }

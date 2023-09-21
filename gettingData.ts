@@ -96,3 +96,12 @@ export const getUserFaveBooks = (
       }
     })
 }
+
+export const getComments = (
+  collectionName: string,
+  docId: string,
+  chat: string,
+  setStateFn: Function
+) => {
+
+}
