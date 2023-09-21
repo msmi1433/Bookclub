@@ -1,6 +1,7 @@
 import { View, Text, Button, TextInput } from 'react-native'
 import { styles } from '../stylesheet'
 import {useState} from 'react'
+import { createBookClub } from '../addingData';
 
 const CreateABookClub = () => {
 
@@ -8,16 +9,32 @@ const CreateABookClub = () => {
   const [description, setDescription] = useState('')
   const [img_url, setImg_url] = useState('')
   const [genre, setGenre] = useState('')
+  const [isCreated, setIsCreated] = useState(false)
 
 const handleSubmit = () => {
-  alert(`This will submit with: ${'name: ' + name + ' description: ' + description + ' img_url: ' + img_url + ' genre: ' + genre}`)
-  setName('')
-  setDescription('')
-  setImg_url('')
-  setGenre('')
+  const clubData = {
+    name: name,
+    description: description,
+    img_url: img_url,
+    genre: genre
+  }
+  createBookClub(clubData)
+  .then(() => {
+    setName('')
+    setDescription('')
+    setImg_url('')
+    setGenre('')
+    setIsCreated(true)
+  })
+  .catch((err) => {
+    alert(err)
+  })
 }
-
-  return (
+  if(isCreated) {
+    return (
+      <Text>Success, your club has been created! Go to find book clubs to find it</Text>
+    )
+    } else return (
     <View >
       <Text>Create your club!</Text>
       <TextInput
