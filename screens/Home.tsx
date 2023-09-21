@@ -27,6 +27,7 @@ const Home: React.FC<NavProps> = ({ navigation }) => {
   });
   const auth = getAuth();
 
+
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
