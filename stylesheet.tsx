@@ -12,28 +12,18 @@ export const styles = StyleSheet.create({
     flexDirection: "column",
     borderWidth: 1,
     flex: 1,
-    justifyContent: "space-evenly",
-  },
-  basicImage: {
-    width: 400,
-    height: 400,
-  },
-  basicSmallImage: {
-    width: 100,
-    height: 100,
-    resizeMode: "center"
-  },
-  basicContainer: {
-    flex: 1,
-    padding: 10,
-  },
-  centeredView: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 100,
-  },
-  giantText: {
-    fontSize: 60,
-  },
+    justifyContent: 'space-evenly'
+},
+input: {
+  height: 48,
+  borderRadius: 5,
+  width: 300,
+  overflow: "hidden",
+  backgroundColor: "#fff",
+  marginTop: 50,
+  marginBottom: 10,
+  marginLeft: 30,
+  marginRight: 30,
+  paddingLeft: 16,
+}
 });
