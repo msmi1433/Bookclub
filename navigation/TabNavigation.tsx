@@ -1,12 +1,9 @@
-import { StyleSheet, Button, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import DiscoverStack from "./DiscoverStack";
 import HomeStack from "./HomeStack";
 import ProfileStack from "./ProfileStack";
 import CreateProfile from "../screens/CreateProfile";
-import SignupScreen from "../screens/SignupScreen";
-import LoginScreen from "../screens/LoginScreen";
 
 const Tab = createBottomTabNavigator();
 
