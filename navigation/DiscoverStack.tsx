@@ -18,7 +18,7 @@ const DiscoverStack = () => {
           fontWeight: "bold",
         },
       }}>
-      <Stack.Screen name="Discover" component={Discover} />
+      <Stack.Screen name="Discover Home" component={Discover} />
       <Stack.Screen name="Create a book club" component={CreateABookClub} />
       <Stack.Screen name="Find a book club" component={FindABookClub} />
     </Stack.Navigator>

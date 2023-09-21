@@ -28,7 +28,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
       .then((userCredential) => {
         const user = userCredential.user;
         if (user) {
-          navigation.navigate("Home");
+          navigation.navigate("App");
         }
       })
       .catch((error) => {
