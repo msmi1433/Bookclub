@@ -4,9 +4,9 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import DiscoverStack from "./DiscoverStack";
 import HomeStack from "./HomeStack";
 import ProfileStack from "./ProfileStack";
-
 import CreateProfile from "../screens/CreateProfile";
 import SignupScreen from "../screens/SignupScreen";
+import LoginScreen from "../screens/LoginScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -19,6 +19,7 @@ const TabNavigation = () => {
         <Tab.Screen name="Create Profile" component={CreateProfile} />
         <Tab.Screen  name="Profile" component={ProfileStack} />
         <Tab.Screen  name="SignUp" component={SignupScreen} />
+        <Tab.Screen  name="LoginScreen" component={LoginScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );
