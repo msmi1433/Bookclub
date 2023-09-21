@@ -10,7 +10,7 @@ import { auth } from "../firebase-config";
 const Profile: React.FC<{}> = () => {
   const [user, setUser] = useState();
   useEffect(() => {
-    getUser("users", "vzylI94QHhVBrC3y9uQ1EHUMS8R2", setUser);
+    getUser("vzylI94QHhVBrC3y9uQ1EHUMS8R2", setUser);
   }, []);
 
   if (user) {
