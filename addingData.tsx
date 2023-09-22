@@ -5,6 +5,8 @@ export const addUser = (uid: string, username: string) => {
   return setDoc(doc(db, "users", uid), { user_username: username }).catch(
     (err) => alert(err)
   );
+  return setDoc(doc(db,'users',uid),{user_username: username, user_avatar_image:"",user_bio:'',user_bookclubs:[],user_fave_books:[]})
+  .catch((err)=>alert(err))
 };
 
 export const createBookClub = (clubData: {
@@ -21,22 +23,4 @@ export const createBookClub = (clubData: {
   });
 };
 
-// export interface Book {
-//   book_author: string;
-//   book_title: string;
-//   book_img: string;
-// }
 
-// export const updateUser = (user: {
-//   uid: string;
-//   user_username: string;
-//   user_avatar_img: string;
-//   user_bio: string;
-//   user_fave_books: Book [];
-
- 
-// }) => {
-//   return updateDoc(doc(db, "users", user.uid), user).catch((err) =>
-//     alert(err)
-//   );
-// };

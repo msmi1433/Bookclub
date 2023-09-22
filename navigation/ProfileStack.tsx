@@ -1,13 +1,15 @@
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import ProfilePage from '../screens/ProfilePage';
-import React from 'react'
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import ProfilePage from "../screens/ProfilePage";
+import React from "react";
+import { UserProvider } from "../usercontext";
 
 const Stack = createNativeStackNavigator();
 
-
 const ProfileStack = () => {
-    return (
-      <Stack.Navigator   screenOptions={{
+  return (
+    <UserProvider>
+      <Stack.Navigator
+        screenOptions={{
           headerTitle: "Book Club",
           headerStyle: {
             backgroundColor: "darkblue",
@@ -16,10 +18,12 @@ const ProfileStack = () => {
           headerTitleStyle: {
             fontWeight: "bold",
           },
-        }}>
+        }}
+      >
         <Stack.Screen name="ProfilePage" component={ProfilePage} />
       </Stack.Navigator>
-    );
-  };
+    </UserProvider>
+  );
+};
 
-export default ProfileStack
+export default ProfileStack;
