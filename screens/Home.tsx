@@ -1,36 +1,49 @@
-import { View, Text, Button, ScrollView } from 'react-native'
-import React from 'react'
-import { useEffect, useState } from 'react'
-import { getUserBookclubs } from '../gettingData'
-import BookclubCard from '../components/BookclubCard'
-import { styles } from '../stylesheet'
+import { View, Text, Button } from "react-native";
+import React, { useEffect } from "react";
+import { useState } from "react";
+import BookclubCard from "../components/BookclubCard";
+import { styles } from "../stylesheet";
+import { getUserBookclubs, getUser } from "../gettingData";
+import { useContext } from "react";
+import { UserContext } from "../usercontext";
 
 interface NavProps {
-  navigation: any
+  navigation: any;
 }
 
-const Home: React.FC<NavProps> = ( {navigation} ) => {
-    const [bookClubs, setBookClubs] = useState([])
+const Home: React.FC<NavProps> = ({ navigation }) => {
+  const [bookClubs, setBookClubs] = useState([]);
+  const { uid } = useContext(UserContext);
+  const [user, setUser] = useState({
+    user_username: "",
+    user_avatar_img: "",
+    user_bio: "",
+    user_fave_books: [
+      {
+        book_author: "",
+        book_title: "",
+        book_img: "",
+      },
+    ],
+  });
 
-    useEffect(() => {
-        getUserBookclubs('users', 'cCVDQxJNt02pqrDfDubm', setBookClubs)
-    }, [])
+  useEffect(() => {
+    getUserBookclubs(uid, setBookClubs);
+    getUser(uid, setUser);
+  }, [uid]);
 
   return (
     <View style={styles.bookContainer}>
-       <Button
+      <Button
         title="Go To Single Book Club Page"
         onPress={() => navigation.navigate("SingleBookClubPage")}
       />
- 
-    <Text>Dan's BookClubs</Text>
+      <Text>{user.user_username}'s BookClubs</Text>
       {bookClubs.map((bookclub) => {
-        return (
-          <BookclubCard key={bookclub} bookclubName={bookclub} />
-        )
+        return <BookclubCard key={bookclub} bookclubName={bookclub} />;
       })}
     </View>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
