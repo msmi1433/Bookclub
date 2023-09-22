@@ -36,9 +36,6 @@ const BookSearch: React.FC<SearchBarComponentProps> = ({ callbackFn }) => {
     }
   };
 
-  console.log(search);
-  console.log(searchResults);
-
   return (
     <View>
       <SearchBar
