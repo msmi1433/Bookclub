@@ -13,7 +13,7 @@ const Profile: React.FC<{}> = () => {
   const [user, setUser] = useState();
   useEffect(() => {
     getUser(uid, setUser);
-  }, []);
+  }, [uid]);
 
   if (user) {
     return (
@@ -28,7 +28,7 @@ const Profile: React.FC<{}> = () => {
         <Text>Profile</Text>
         <Username key="user" user={user} />
         <ProfileContainer key="profile" user={user}/>
-        <FavouriteBookContainer/>
+        <FavouriteBookContainer user={user}/>
       </View>
     );
   }

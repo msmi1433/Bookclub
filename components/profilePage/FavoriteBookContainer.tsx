@@ -6,15 +6,13 @@ import FavouriteBookCard from "./FavouriteBookCard";
 import { useContext } from "react";
 import { UserContext } from "../../usercontext";
 
-const FavouriteBookContainer: React.FC<{}> = ({}) => {
-  const { uid } = useContext(UserContext);
-  const [faveBooks, setFaveBooks] = useState([]);
-  const [user, setUser] = useState({});
+interface FaveBookObj {
+    book_title: string, 
+    book_author: string,
+    book_img: string
+}
 
-  useEffect(() => {
-    getUserFaveBooks("users", uid, setFaveBooks);
-    getUser(uid, setUser);
-  }, []);
+const FavouriteBookContainer: React.FC<{user: {user_username: string, user_fave_books: FaveBookObj[]}}> = ({user}) => {
 
   return (
     <View
@@ -25,8 +23,8 @@ const FavouriteBookContainer: React.FC<{}> = ({}) => {
       }}
     >
       <Text>{user.user_username}'s Top 3 Desert Island Books!</Text>
-      {faveBooks.map((favebook) => {
-        return <FavouriteBookCard key={favebook} userFaveBooks={favebook} />;
+      {user.user_fave_books.map((favebook) => {
+        return <FavouriteBookCard key={favebook.book_title} userFaveBooks={favebook} />;
       })}
     </View>
   );
