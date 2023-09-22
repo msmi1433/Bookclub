@@ -2,8 +2,8 @@ import { StyleSheet } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import TabNavigation from "./navigation/TabNavigation";
 import { NavigationContainer } from "@react-navigation/native";
-// import LoginScreen from "./screens/LoginScreen";
-// import SignupScreen from "./screens/SignupScreen";
+import LoginScreen from "./screens/LoginScreen";
+import SignupScreen from "./screens/SignupScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -11,7 +11,7 @@ export default function App() {
   return (
     <NavigationContainer independent={true}>
       <Stack.Navigator initialRouteName="LoginScreen">
-        {/* <Stack.Screen
+        <Stack.Screen
           name="Login"
           component={LoginScreen}
           options={{ headerShown: false }}
@@ -20,7 +20,7 @@ export default function App() {
           name="Sign up"
           component={SignupScreen}
           options={{ headerShown: false }}
-        /> */}
+        />
         <Stack.Screen
           name="App"
           component={TabNavigation}

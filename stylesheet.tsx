@@ -99,7 +99,7 @@ export const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginTop: 20,
-
+  },
   basicImage: {
     height: 400,
     width: 400,
