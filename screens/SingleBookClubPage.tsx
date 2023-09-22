@@ -11,7 +11,6 @@ import {
 import { useEffect, useState } from "react";
 import { getSingleDoc } from "../gettingData";
 import { styles } from "../stylesheet";
-import DropDownPicker from "react-native-dropdown-picker";
 import SingleBook from "../components/SingleBook";
 import GestureRecognizer from "react-native-swipe-gestures";
 
@@ -46,12 +45,6 @@ export const SingleBookClubPage: React.FC<{ navigation: any }> = ({
 
   const { name, current_read, members, description, img_url } = currentBookClub;
 
-  const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(null);
-  const [items, setItems] = useState([
-    { label: "Book Chat", value: "bookchat" },
-    { label: "General", value: "general" },
-  ]);
 
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -64,29 +57,29 @@ export const SingleBookClubPage: React.FC<{ navigation: any }> = ({
   return (
     <ScrollView nestedScrollEnabled={true}>
       <Text style={styles.basicContainer}> BOOK CLUB NAME {name} </Text>
-      <Image style={styles.basicImage} source={{ uri: img_url }} />
-
-      <SingleBook singleBook={current_read} />
-
-      <Text style={styles.basicContainer}>
-        BOOK CLUB DESCRIPTION: {description}
-      </Text>
 
       <Button
         title="GENERAL CLUB DISCUSSION"
         onPress={() =>
-          Alert.alert("Takes you to general chat - separate page?")
+         navigation.navigate("General Chat")
         }
       />
 
       <Button
         title="DISCUSS THIS WEEKS BOOK"
         onPress={() =>
-          Alert.alert("Takes you to this weeks book chat - separate page?")
+          navigation.navigate("Book Chat")
         }
       />
+      <Image style={styles.basicImage} source={{ uri: img_url }} />
 
-      <View style={styles.centeredView}>
+      <SingleBook singleBook={current_read} />
+      <Text style={styles.basicContainer}>
+        BOOK CLUB DESCRIPTION: {description}
+      </Text>
+
+
+      <View >
         <GestureRecognizer
           style={{ flex: 1 }}
           onSwipeDown={() => setModalVisible(false)}
@@ -104,7 +97,7 @@ export const SingleBookClubPage: React.FC<{ navigation: any }> = ({
                   <View style={styles.basicContainer} key={member[0]}>
                     <Text >{member[0]}</Text>
                     <Image
-                      style={styles.basicSmallImage}
+                      style={styles.basicImage}
                       source={{ uri: member[1] }}
                     />
                   </View>

@@ -25,5 +25,17 @@ input: {
   marginLeft: 30,
   marginRight: 30,
   paddingLeft: 16,
+},
+basicImage: {
+  height: 400,
+  width: 400
+},
+basicContainer: {
+  flex: 1,
+  padding: 10
+},
+giantText: {
+  fontSize: 100
 }
+
 });
