@@ -32,19 +32,21 @@ export const searchByTitleOrAuthor = (
           };
         }) => {
           return {
-            title: book.volumeInfo.title ? book.volumeInfo.title : undefined,
+            title: book.volumeInfo.title
+              ? book.volumeInfo.title
+              : "No title available",
             authors: book.volumeInfo.authors
               ? book.volumeInfo.authors.join(", ")
-              : "No author",
+              : "No author available",
             description: book.volumeInfo.description
               ? book.volumeInfo.description
-              : undefined,
+              : "No description available",
             coverImg: book.volumeInfo.imageLinks
               ? book.volumeInfo.imageLinks.smallThumbnail
               : "https://bookstoreromanceday.org/wp-content/uploads/2020/08/book-cover-placeholder.png",
             averageRating: book.volumeInfo.averageRating
               ? book.volumeInfo.averageRating
-              : undefined,
+              : "No rating available",
           };
         }
       );
