@@ -4,14 +4,19 @@ import { useState, useEffect } from 'react'
 import { getComments } from '../gettingData'
 import CommentCard from '../components/CommentCard'
 
+
+
+
 const Discussion: React.FC<{}> = ({})=> {
-  const [comments, setComments] = useState('')
-  console.log(comments)
+  const [comments, setComments] = useState([])
+
 
   useEffect(() => {
       getComments('KEtAeLGZ0ZjCeEoKAcvN', setComments)
   }, [])
-  if (comments) {
+
+
+
     return (
       <View
         style={{
@@ -23,15 +28,18 @@ const Discussion: React.FC<{}> = ({})=> {
       >
       <Text>General Chat</Text>
       {comments.map((comment) => {
+        return (
         <CommentCard key="comment" comment={comment}/>
-      })
+      )})
     }
-      
 
+    <Text>Post a comment</Text>
+
+  
 
       </View>
 
-)}
+)
 }
 
 export default Discussion

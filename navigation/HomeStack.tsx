@@ -1,7 +1,7 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { SingleBookClubPage } from "../screens/SingleBookClubPage";
 import Home from "../screens/Home";
-import Discussion from "../screens/Discussion";
+import Discussion from "../screens/GeneralChat";
 import NextBook from "../screens/NextBook";
 import React from "react";
 

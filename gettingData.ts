@@ -125,7 +125,7 @@ export const getComments = ( docId:string, setStateFn: Function) => {
       return comments.docs.map((doc) => doc.data());
     })
     .then((mappedColl) => {
-      console.log(mappedColl)
+
       setStateFn(mappedColl);
     });
 };
