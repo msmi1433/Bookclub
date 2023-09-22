@@ -118,8 +118,8 @@ export const getComment = (
 
 }
 
-export const getComments = ( docId:string, setStateFn: Function) => {
-  const collRef = collection(db, 'bookclubs', docId, 'general_chat');
+export const getComments = ( docId:string, chatBoard: string, setStateFn: Function) => {
+  const collRef = collection(db, 'bookclubs', docId, chatBoard);
   return getDocs(collRef)
     .then((comments) => {
       return comments.docs.map((doc) => doc.data());

@@ -1,45 +1,25 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import { useState, useEffect } from 'react'
-import { getComments } from '../gettingData'
-import CommentCard from '../components/CommentCard'
+import { View, Text } from "react-native";
+import { useState, useEffect } from "react";
+import { getComments } from "../gettingData";
+import CommentCard from "../components/CommentCard";
+import { styles } from "../stylesheet";
 
-
-
-
-const Discussion: React.FC<{}> = ({})=> {
-  const [comments, setComments] = useState([])
-
+const Discussion: React.FC<{}> = ({}) => {
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
-      getComments('KEtAeLGZ0ZjCeEoKAcvN', setComments)
-  }, [])
+    getComments("KEtAeLGZ0ZjCeEoKAcvN", "general_chat", setComments);
+  }, []);
 
-
-
-    return (
-      <View
-        style={{
-          flexDirection: "column",
-          borderWidth: 5,
-          padding: 10,
-          flex: 1,
-        }}
-      >
+  return (
+    <View style={styles.basicContainer}>
       <Text>General Chat</Text>
       {comments.map((comment) => {
-        return (
-        <CommentCard key="comment" comment={comment}/>
-      )})
-    }
+        return <CommentCard key="comment" comment={comment} />;
+      })}
+      <Text>Post a comment</Text>
+    </View>
+  );
+};
 
-    <Text>Post a comment</Text>
-
-  
-
-      </View>
-
-)
-}
-
-export default Discussion
+export default Discussion;

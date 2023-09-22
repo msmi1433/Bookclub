@@ -57,27 +57,27 @@ export const SingleBookClubPage: React.FC<{ navigation: any }> = ({
   return (
     <ScrollView nestedScrollEnabled={true}>
       <Text style={styles.basicContainer}> BOOK CLUB NAME {name} </Text>
-      <Image style={styles.basicImage} source={{ uri: img_url }} />
-
-      <SingleBook singleBook={current_read} />
-
-      <Text style={styles.basicContainer}>
-        BOOK CLUB DESCRIPTION: {description}
-      </Text>
 
       <Button
         title="GENERAL CLUB DISCUSSION"
         onPress={() =>
-         navigation.navigate("Discussion")
+         navigation.navigate("General Chat")
         }
       />
 
       <Button
         title="DISCUSS THIS WEEKS BOOK"
         onPress={() =>
-          Alert.alert("Takes you to this weeks book chat - separate page?")
+          navigation.navigate("Book Chat")
         }
       />
+      <Image style={styles.basicImage} source={{ uri: img_url }} />
+
+      <SingleBook singleBook={current_read} />
+      <Text style={styles.basicContainer}>
+        BOOK CLUB DESCRIPTION: {description}
+      </Text>
+
 
       <View >
         <GestureRecognizer
