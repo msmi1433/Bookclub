@@ -21,23 +21,33 @@ export const searchByTitleOrAuthor = (
     })
     .then((results) => {
       const books = results.data.items;
-      return books.map((book: any) => {
-        return {
-          title: book.volumeInfo.title ? book.volumeInfo.title : undefined,
-          authors: book.volumeInfo.authors
-            ? book.volumeInfo.authors.join(", ")
-            : undefined,
-          description: book.volumeInfo.description
-            ? book.volumeInfo.description
-            : undefined,
-          coverImg: book.volumeInfo.imageLinks
-            ? book.volumeInfo.imageLinks.smallThumbnail
-            : "https://bookstoreromanceday.org/wp-content/uploads/2020/08/book-cover-placeholder.png",
-          averageRating: book.volumeInfo.averageRating
-            ? book.volumeInfo.averageRating
-            : undefined,
-        };
-      });
+      return books.map(
+        (book: {
+          volumeInfo: {
+            title: string;
+            authors: string[];
+            description: string;
+            imageLinks: { smallThumbnail: string };
+            averageRating: Number;
+          };
+        }) => {
+          return {
+            title: book.volumeInfo.title ? book.volumeInfo.title : undefined,
+            authors: book.volumeInfo.authors
+              ? book.volumeInfo.authors.join(", ")
+              : "No author",
+            description: book.volumeInfo.description
+              ? book.volumeInfo.description
+              : undefined,
+            coverImg: book.volumeInfo.imageLinks
+              ? book.volumeInfo.imageLinks.smallThumbnail
+              : "https://bookstoreromanceday.org/wp-content/uploads/2020/08/book-cover-placeholder.png",
+            averageRating: book.volumeInfo.averageRating
+              ? book.volumeInfo.averageRating
+              : undefined,
+          };
+        }
+      );
     })
     .then((resultsArray) => {
       setStateFn(resultsArray);
