@@ -20,9 +20,9 @@ type BookProps = {
   averageRating: number;
 };
 
-type SearchBarComponentProps = {};
+type SearchBarComponentProps = { callbackFn: Function };
 
-const BookSearch: React.FC<SearchBarComponentProps> = () => {
+const BookSearch: React.FC<SearchBarComponentProps> = ({ callbackFn }) => {
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
@@ -63,7 +63,7 @@ const BookSearch: React.FC<SearchBarComponentProps> = () => {
                     <Text>{book.authors}</Text>
                   </View>
                   <View style={styles.searchAddBookButton}>
-                    <Button title="Add book" />
+                    <Button title="Add book" onPress={() => callbackFn(book)} />
                   </View>
                 </View>
               );
