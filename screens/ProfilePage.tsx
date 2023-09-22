@@ -5,12 +5,14 @@ import { getUser } from "../gettingData";
 import Username from "../components/profilePage/username-card";
 import ProfileContainer from "../components/profilePage/profileBio";
 import FavouriteBookContainer from "../components/profilePage/FavoriteBookContainer";
-import { auth } from "../firebase-config";
+import { useContext } from "react";
+import { UserContext } from "../usercontext";
 
 const Profile: React.FC<{}> = () => {
+  const { uid } = useContext(UserContext);
   const [user, setUser] = useState();
   useEffect(() => {
-    getUser("vzylI94QHhVBrC3y9uQ1EHUMS8R2", setUser);
+    getUser(uid, setUser);
   }, []);
 
   if (user) {
