@@ -26,31 +26,15 @@ export const styles = StyleSheet.create({
     marginRight: 30,
     paddingLeft: 16,
   },
-  searchResultsContainer: {
-    height: 300,
-    borderRadius: 5,
-    borderBottomColor: "black",
-    borderWidth: 1,
-    margin: 4,
+  basicImage: {
+    height: 400,
+    width: 400,
   },
-  searchResults: {
+  basicContainer: {
     flex: 1,
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 20,
-    marginLeft: 20,
-    marginRight: 20,
-    borderBottomColor: "black",
-    borderBottomWidth: 0.2,
-    paddingBottom: 4,
-    paddingTop: 4,
+    padding: 10,
   },
-  searchResultText: {
-    flex: 1,
-    gap: 5,
-    flexBasis: 70,
-  },
-  searchAddBookButton: {
-    flex: 1,
+  giantText: {
+    fontSize: 100,
   },
 });
