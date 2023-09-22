@@ -6,7 +6,6 @@ const NextBook = () => {
   return (
     <View>
       <Text>NextBook</Text>
-      //callbackFn below is placeholder!!!
       <BookSearch callbackFn={() => {}} />
     </View>
   );
