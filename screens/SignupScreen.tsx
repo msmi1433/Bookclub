@@ -43,14 +43,13 @@ const SignupScreen: React.FC<SignupScreenProps> = ({ navigation }) => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log(userCredential.user.uid);
         addUser(userCredential.user.uid, username)
         setConfirmPassword('')
         setEmail('')
         setPassword('')
         setUsername('')
         if (user) {
-          navigation.navigate("Home");
+          navigation.navigate("App");
         }
       })
       .catch((error) => {
