@@ -1,5 +1,14 @@
 import { db } from "./firebase-config";
-import { setDoc, doc, addDoc, collection } from "firebase/firestore";
+
+
+import {
+  setDoc,
+  doc,
+  addDoc,
+  collection,
+  getDoc,
+  updateDoc,
+} from "firebase/firestore";
 
 export const addUser = (uid: string, username: string) => {
   return setDoc(doc(db, "users", uid), {
@@ -30,5 +39,46 @@ export const addComment = (
     title: string;
   }
 ) => {
-  return addDoc(collection(db, "bookclubs", clubId, chat), newComment);
+  return addDoc(collection(db, "bookclubs", clubId, chat), newComment).
+};
+
+export const setNextRead = (
+  book: {
+    title: string;
+    authors: string;
+    description: string;
+    coverImg: string;
+    averageRating: string | number;
+  },
+  bookclubId: string,
+  stateSetter: Function
+) => {
+  const docRef = doc(db, "bookclubs", bookclubId);
+  return getDoc(docRef)
+    .then((bookclubDoc: { data: Function }) => {
+      const bookclub: { next_read: {} } = bookclubDoc.data();
+      return bookclub.next_read;
+    })
+    .then((newCurrentRead: Object) => {
+      updateDoc(docRef, { current_read: newCurrentRead });
+    })
+    .then(() => {
+      updateDoc(docRef, {
+        next_read: {
+          author: book.authors,
+          description: book.description,
+          book_name: book.title,
+          img_url: book.coverImg,
+        },
+      });
+    })
+    .then(() => {
+      stateSetter({
+        author: book.authors,
+        description: book.description,
+        book_name: book.title,
+        img_url: book.coverImg,
+      });
+    });
+
 };

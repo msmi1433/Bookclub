@@ -1,4 +1,6 @@
+
 import { View, ScrollView, Text, TextInput, Button } from "react-native";
+
 import { useState, useEffect } from "react";
 import { getComments } from "../gettingData";
 import CommentCard from "../components/CommentCard";
@@ -8,6 +10,7 @@ import { serverTimestamp } from "firebase/firestore";
 import { useContext } from "react";
 import { UserContext } from "../usercontext";
 import { getUser } from "../gettingData";
+
 
 const Discussion: React.FC<{}> = ({}) => {
   const [comments, setComments] = useState([]);
@@ -74,3 +77,4 @@ const Discussion: React.FC<{}> = ({}) => {
 };
 
 export default Discussion;
+

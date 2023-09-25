@@ -9,7 +9,8 @@ import { useContext } from "react";
 import { UserContext } from "../usercontext";
 import { getUser } from "../gettingData";
 
-const Discussion: React.FC<{}> = ({}) => {
+const Discussion: React.FC<{ route: any }> = ({ route }) => {
+  const { bookclub_id } = route.params;
   const [comments, setComments] = useState([]);
   const [newCommentText, setNewCommentText] = useState("");
   const [newCommentTitle, setNewCommentTitle] = useState("");
@@ -44,6 +45,7 @@ const Discussion: React.FC<{}> = ({}) => {
       setNewCommentTitle("");
     });
   };
+
 
   return (
     <View style={styles.basicContainer}>

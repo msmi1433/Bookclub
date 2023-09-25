@@ -34,13 +34,9 @@ const Home: React.FC<NavProps> = ({ navigation }) => {
 
   return (
     <View style={styles.bookContainer}>
-      <Button
-        title="Go To Single Book Club Page"
-        onPress={() => navigation.navigate("SingleBookClubPage")}
-      />
       <Text>{user.user_username}'s BookClubs</Text>
       {bookClubs.map((bookclub) => {
-        return <BookclubCard key={bookclub} bookclubName={bookclub} />;
+        return <BookclubCard key={bookclub} bookclub_id={bookclub} navigation = {navigation} />;
       })}
     </View>
   );
