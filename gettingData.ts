@@ -1,6 +1,8 @@
 import Username from "./components/profilePage/username-card";
 import { db } from "./firebase-config";
+
 import { collection, getDocs, doc, getDoc, getFirestore, query, where } from "firebase/firestore";
+
 
 export const getCollection = (collectionName: string, setStateFn: Function) => {
   const collRef = collection(db, collectionName);
@@ -9,7 +11,6 @@ export const getCollection = (collectionName: string, setStateFn: Function) => {
       return coll.docs.map((doc) => doc.data());
     })
     .then((mappedColl) => {
-      console.log(mappedColl);
       setStateFn(mappedColl);
     });
 };
