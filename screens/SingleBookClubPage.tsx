@@ -43,7 +43,9 @@ export const SingleBookClubPage: React.FC<{
     description: "",
     img_url: "",
   });
+
   const { bookclub_id } = route.params;
+
 
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -62,16 +64,20 @@ export const SingleBookClubPage: React.FC<{
 
       <Button
         title="GENERAL CLUB DISCUSSION"
+
         onPress={() => navigation.navigate("General Chat", {bookclub_id:bookclub_id})}
+
       />
 
       <Button
         title="DISCUSS THIS WEEKS BOOK"
+
         onPress={() => navigation.navigate("Book Chat",{bookclub_id:bookclub_id})}
       />
       <Image
         style={styles.basicImage}
         source={{ uri: currentBookClub.img_url }}
+
       />
 
       <SingleBook singleBook={currentBookClub.current_read} />
@@ -119,7 +125,9 @@ export const SingleBookClubPage: React.FC<{
 
       <Button
         title="GO TO NEXT BOOK"
-        onPress={() => navigation.navigate("Next Book")}
+        onPress={() =>
+          navigation.navigate("Next Book", { bookclub: currentBookClub })
+        }
       />
     </ScrollView>
   );

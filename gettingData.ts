@@ -1,5 +1,8 @@
+import Username from "./components/profilePage/username-card";
 import { db } from "./firebase-config";
-import { collection, getDocs, doc, getDoc } from "firebase/firestore";
+
+import { collection, getDocs, doc, getDoc, getFirestore, query, where } from "firebase/firestore";
+
 
 export const getCollection = (collectionName: string, setStateFn: Function) => {
   const collRef = collection(db, collectionName);
@@ -123,3 +126,12 @@ export const getComments = ( docId:string, chatBoard: string, setStateFn: Functi
       setStateFn(mappedColl);
     });
 };
+
+export const getUsers = (username: string) => {
+  const q = query(collection(db, 'users'), where('user_username', '==', username))
+  return getDocs(q)
+  .then((users) => {
+    const mappedUsers = users.docs.map((doc) => doc.data())
+    return mappedUsers
+  })
+}
