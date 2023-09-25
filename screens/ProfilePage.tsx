@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, ScrollView, Button } from "react-native";
 import { useEffect, useState } from "react";
 import React from "react";
 import { getUser } from "../gettingData";
@@ -8,7 +8,7 @@ import FavouriteBookContainer from "../components/profilePage/FavoriteBookContai
 import { useContext } from "react";
 import { UserContext } from "../usercontext";
 
-const Profile: React.FC<{}> = () => {
+const Profile: React.FC<{navigation: any}> = ({navigation}) => {
   const { uid } = useContext(UserContext);
   const [user, setUser] = useState();
   useEffect(() => {
@@ -17,6 +17,7 @@ const Profile: React.FC<{}> = () => {
 
   if (user) {
     return (
+      <ScrollView>
       <View
         style={{
           flexDirection: "column",
@@ -29,7 +30,9 @@ const Profile: React.FC<{}> = () => {
         <Username key="user" user={user} />
         <ProfileContainer key="profile" user={user}/>
         <FavouriteBookContainer user={user}/>
+        <Button title='Update your profile' onPress={() => navigation.navigate('UpdateProfile')}></Button>
       </View>
+      </ScrollView>
     );
   }
 };

@@ -26,8 +26,8 @@ export interface Book {
   book_img: string;
 }
 
-const UpdateProfile: React.FC = () => {
-  const navigation = useNavigation();
+const UpdateProfile: React.FC<{navigation: any}> = ({navigation}) => {
+
 
   const initialUserState: User = {
     user_user_id: "XVO4daYZDcRc38voORYKDc4wIp73",
@@ -71,7 +71,7 @@ const UpdateProfile: React.FC = () => {
     })
       .then(() => {
         Alert.alert("Success", "Profile updated successfully.");
-        navigation.navigate("Home");
+        navigation.navigate('ProfilePage');
       })
       .catch((error) => {
         alert("Error updating");
