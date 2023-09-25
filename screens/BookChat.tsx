@@ -21,7 +21,7 @@ const Discussion: React.FC<{}> = ({}) => {
   });
   useEffect(() => {
     getUser(uid, setUser);
-  }, [uid]);
+  }, []);
 
   useEffect(() => {
     getComments("KEtAeLGZ0ZjCeEoKAcvN", "book_chat", setComments).then(() => {

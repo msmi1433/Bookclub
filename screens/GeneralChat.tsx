@@ -21,7 +21,7 @@ const Discussion: React.FC<{ route: any }> = ({ route }) => {
   });
   useEffect(() => {
     getUser(uid, setUser);
-  }, [uid]);
+  }, []);
 
   useEffect(() => {
     getComments("KEtAeLGZ0ZjCeEoKAcvN", "general_chat", setComments).then(
