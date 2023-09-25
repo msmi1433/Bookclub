@@ -4,11 +4,12 @@ import { getComments } from "../gettingData";
 import CommentCard from "../components/CommentCard";
 import { styles } from "../stylesheet";
 
-const Discussion: React.FC<{}> = ({}) => {
+const Discussion: React.FC<{ route: any }> = ({ route }) => {
+  const { bookclub_id } = route.params;
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
-    getComments("KEtAeLGZ0ZjCeEoKAcvN", "general_chat", setComments);
+    getComments(bookclub_id, "general_chat", setComments);
   }, []);
 
   return (

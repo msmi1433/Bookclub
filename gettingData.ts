@@ -1,5 +1,5 @@
 import { db } from "./firebase-config";
-import { collection, getDocs, doc, getDoc, getFirestore } from "firebase/firestore";
+import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 
 export const getCollection = (collectionName: string, setStateFn: Function) => {
   const collRef = collection(db, collectionName);
@@ -8,7 +8,6 @@ export const getCollection = (collectionName: string, setStateFn: Function) => {
       return coll.docs.map((doc) => doc.data());
     })
     .then((mappedColl) => {
-      console.log(mappedColl);
       setStateFn(mappedColl);
     });
 };

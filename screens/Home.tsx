@@ -40,7 +40,7 @@ const Home: React.FC<NavProps> = ({ navigation }) => {
       />
       <Text>{user.user_username}'s BookClubs</Text>
       {bookClubs.map((bookclub) => {
-        return <BookclubCard key={bookclub} bookclubName={bookclub} />;
+        return <BookclubCard key={bookclub} bookclub_id={bookclub} navigation = {navigation} />;
       })}
     </View>
   );

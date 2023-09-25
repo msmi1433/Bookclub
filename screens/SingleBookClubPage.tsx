@@ -9,10 +9,10 @@ import {
   Alert,
 } from "react-native";
 import { useEffect, useState } from "react";
-import { getSingleDoc } from "../gettingData";
 import { styles } from "../stylesheet";
 import SingleBook from "../components/SingleBook";
 import GestureRecognizer from "react-native-swipe-gestures";
+import { getSingleDoc } from "../gettingData";
 
 type CurrentRead = {
   author: string;
@@ -21,9 +21,10 @@ type CurrentRead = {
   img_url: string;
 };
 
-export const SingleBookClubPage: React.FC<{ navigation: any }> = ({
-  navigation,
-}) => {
+export const SingleBookClubPage: React.FC<{
+  navigation: any;
+  route:any;
+}> = ({ navigation, route }) => {
   const [currentBookClub, setCurrentBookClub] = useState<{
     name: string;
     current_read: CurrentRead;
@@ -42,44 +43,43 @@ export const SingleBookClubPage: React.FC<{ navigation: any }> = ({
     description: "",
     img_url: "",
   });
-
-  const { name, current_read, members, description, img_url } = currentBookClub;
-
+  const { bookclub_id } = route.params;
 
   const [modalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
-    getSingleDoc("bookclubs", "KEtAeLGZ0ZjCeEoKAcvN", setCurrentBookClub);
-  }, []);
+    getSingleDoc("bookclubs", bookclub_id, setCurrentBookClub);
+  }, [currentBookClub]);
 
-  const membersNestedArray = Object.entries(members);
+  const membersNestedArray = Object.entries(currentBookClub.members);
 
   return (
     <ScrollView nestedScrollEnabled={true}>
-      <Text style={styles.basicContainer}> BOOK CLUB NAME {name} </Text>
+      <Text style={styles.basicContainer}>
+        {" "}
+        BOOK CLUB NAME {currentBookClub.name}{" "}
+      </Text>
 
       <Button
         title="GENERAL CLUB DISCUSSION"
-        onPress={() =>
-         navigation.navigate("General Chat")
-        }
+        onPress={() => navigation.navigate("General Chat", {bookclub_id:bookclub_id})}
       />
 
       <Button
         title="DISCUSS THIS WEEKS BOOK"
-        onPress={() =>
-          navigation.navigate("Book Chat")
-        }
+        onPress={() => navigation.navigate("Book Chat",{bookclub_id:bookclub_id})}
       />
-      <Image style={styles.basicImage} source={{ uri: img_url }} />
+      <Image
+        style={styles.basicImage}
+        source={{ uri: currentBookClub.img_url }}
+      />
 
-      <SingleBook singleBook={current_read} />
+      <SingleBook singleBook={currentBookClub.current_read} />
       <Text style={styles.basicContainer}>
-        BOOK CLUB DESCRIPTION: {description}
+        BOOK CLUB DESCRIPTION: {currentBookClub.description}
       </Text>
 
-
-      <View >
+      <View>
         <GestureRecognizer
           style={{ flex: 1 }}
           onSwipeDown={() => setModalVisible(false)}
@@ -95,7 +95,7 @@ export const SingleBookClubPage: React.FC<{ navigation: any }> = ({
               {membersNestedArray.map((member) => {
                 return (
                   <View style={styles.basicContainer} key={member[0]}>
-                    <Text >{member[0]}</Text>
+                    <Text>{member[0]}</Text>
                     <Image
                       style={styles.basicImage}
                       source={{ uri: member[1] }}
