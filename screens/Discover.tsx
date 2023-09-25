@@ -3,7 +3,6 @@ import React from 'react'
 
 
 const Discover: React.FC<{navigation: any}> = ( {navigation} ) => {
-   console.log(navigation)
   return (
     <View>
       <Text>Discover</Text>

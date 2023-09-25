@@ -2,6 +2,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import ProfilePage from "../screens/ProfilePage";
 import React from "react";
 import { UserProvider } from "../usercontext";
+import UpdateProfile from "../screens/UpdateProfile";
 
 const Stack = createNativeStackNavigator();
 
@@ -21,6 +22,7 @@ const ProfileStack = () => {
         }}
       >
         <Stack.Screen name="ProfilePage" component={ProfilePage} />
+        <Stack.Screen name='UpdateProfile' component={UpdateProfile} />
       </Stack.Navigator>
     </UserProvider>
   );
