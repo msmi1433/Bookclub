@@ -1,5 +1,5 @@
 import { View, Text, Image } from "react-native";
-import React from "react";
+import React, { useDebugValue, useEffect, useState } from "react";
 import BookSearch from "../components/BookSearch";
 import { setNextRead } from "../addingData";
 
@@ -22,19 +22,21 @@ const NextBook = ({
   const { bookclub } = route.params;
   const { next_read } = bookclub;
 
+  const [nextReadState, setNextReadState] = useState(next_read);
+
   return (
     <View>
       <Text>NextBook</Text>
-      <BookSearch callbackFn={setNextRead} />
+      <BookSearch callbackFn={setNextRead} stateSetter={setNextReadState} />
       <Text>To change the next read, please use the search bar above.</Text>
       <Text>Our next read is...</Text>
       <Image
-        source={{ uri: next_read.img_url }}
+        source={{ uri: nextReadState.img_url }}
         style={{ width: 100, height: 150 }}
       />
-      <Text>{next_read.book_name}</Text>
-      <Text>{next_read.author}</Text>
-      <Text>{next_read.description}</Text>
+      <Text>{nextReadState.book_name}</Text>
+      <Text>{nextReadState.author}</Text>
+      <Text>{nextReadState.description}</Text>
     </View>
   );
 };
