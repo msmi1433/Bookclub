@@ -18,7 +18,6 @@ import React from "react";
 
 import { getSingleDoc } from "../gettingData";
 
-
 type CurrentRead = {
   author: string;
   description: string;
@@ -28,7 +27,7 @@ type CurrentRead = {
 
 export const SingleBookClubPage: React.FC<{
   navigation: any;
-  route:any;
+  route: any;
 }> = ({ navigation, route }) => {
   const [currentBookClub, setCurrentBookClub] = useState<{
     name: string;
@@ -55,6 +54,7 @@ export const SingleBookClubPage: React.FC<{
 
   useFocusEffect(
     React.useCallback(() => {
+      console.log("hi");
       getSingleDoc("bookclubs", "KEtAeLGZ0ZjCeEoKAcvN", setCurrentBookClub);
     }, [])
   );
@@ -70,17 +70,20 @@ export const SingleBookClubPage: React.FC<{
 
       <Button
         title="GENERAL CLUB DISCUSSION"
-        onPress={() => navigation.navigate("General Chat", {bookclub_id:bookclub_id})}
+        onPress={() =>
+          navigation.navigate("General Chat", { bookclub_id: bookclub_id })
+        }
       />
 
       <Button
         title="DISCUSS THIS WEEKS BOOK"
-        onPress={() => navigation.navigate("Book Chat",{bookclub_id:bookclub_id})}
+        onPress={() =>
+          navigation.navigate("Book Chat", { bookclub_id: bookclub_id })
+        }
       />
       <Image
         style={styles.basicImage}
         source={{ uri: currentBookClub.img_url }}
-
       />
 
       <SingleBook singleBook={currentBookClub.current_read} />
