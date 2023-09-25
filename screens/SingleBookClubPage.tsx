@@ -45,8 +45,8 @@ export const SingleBookClubPage: React.FC<{ navigation: any }> = ({
 
   const { name, current_read, members, description, img_url } = currentBookClub;
 
-
   const [modalVisible, setModalVisible] = useState(false);
+
 
   useEffect(() => {
     getSingleDoc("bookclubs", "KEtAeLGZ0ZjCeEoKAcvN", setCurrentBookClub);
@@ -60,16 +60,12 @@ export const SingleBookClubPage: React.FC<{ navigation: any }> = ({
 
       <Button
         title="GENERAL CLUB DISCUSSION"
-        onPress={() =>
-         navigation.navigate("General Chat")
-        }
+        onPress={() => navigation.navigate("General Chat")}
       />
 
       <Button
         title="DISCUSS THIS WEEKS BOOK"
-        onPress={() =>
-          navigation.navigate("Book Chat")
-        }
+        onPress={() => navigation.navigate("Book Chat")}
       />
       <Image style={styles.basicImage} source={{ uri: img_url }} />
 
@@ -78,8 +74,7 @@ export const SingleBookClubPage: React.FC<{ navigation: any }> = ({
         BOOK CLUB DESCRIPTION: {description}
       </Text>
 
-
-      <View >
+      <View>
         <GestureRecognizer
           style={{ flex: 1 }}
           onSwipeDown={() => setModalVisible(false)}
@@ -95,7 +90,7 @@ export const SingleBookClubPage: React.FC<{ navigation: any }> = ({
               {membersNestedArray.map((member) => {
                 return (
                   <View style={styles.basicContainer} key={member[0]}>
-                    <Text >{member[0]}</Text>
+                    <Text>{member[0]}</Text>
                     <Image
                       style={styles.basicImage}
                       source={{ uri: member[1] }}

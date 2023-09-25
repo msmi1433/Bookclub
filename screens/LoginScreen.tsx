@@ -37,8 +37,12 @@ const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
       });
   };
 
+
+  
+
   return (
     <View style={styles.container}>
+      
       <TextInput
         style={styles.input}
         placeholder="Email"

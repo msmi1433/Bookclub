@@ -32,6 +32,7 @@ const SignupScreen: React.FC<SignupScreenProps> = ({ navigation }) => {
       setMismatch("Passwords do not match");
     } else {
       setMismatch(null);
+      
     }
   };
 

@@ -26,13 +26,25 @@ input: {
   marginRight: 30,
   paddingLeft: 16,
 },
+commentInput: {
+  height: 200,
+  borderRadius: 5,
+  width: 300,
+  overflow: "hidden",
+  backgroundColor: "#fff",
+  marginTop: 10,
+  marginBottom: 10,
+  marginLeft: 30,
+  marginRight: 30,
+  paddingLeft: 16,
+},
 basicImage: {
   height: 400,
   width: 400
 },
 basicContainer: {
   flex: 1,
-  padding: 10
+  padding: 10,
 },
 giantText: {
   fontSize: 100
