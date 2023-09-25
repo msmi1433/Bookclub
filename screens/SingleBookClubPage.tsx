@@ -51,7 +51,6 @@ export const SingleBookClubPage: React.FC<{
 
   const { bookclub_id } = route.params;
 
-
   const [modalVisible, setModalVisible] = useState(false);
 
   useFocusEffect(
@@ -71,14 +70,11 @@ export const SingleBookClubPage: React.FC<{
 
       <Button
         title="GENERAL CLUB DISCUSSION"
-
         onPress={() => navigation.navigate("General Chat", {bookclub_id:bookclub_id})}
-
       />
 
       <Button
         title="DISCUSS THIS WEEKS BOOK"
-
         onPress={() => navigation.navigate("Book Chat",{bookclub_id:bookclub_id})}
       />
       <Image

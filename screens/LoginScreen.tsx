@@ -37,11 +37,14 @@ const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
       });
   };
 
+
+  
+
   return (
     <ScrollView style={{flex: 1, height: 1000}} scrollEnabled={false} keyboardShouldPersistTaps="handled">
     <View style={styles.container}>
+
     <Image style={styles.loginPageImage} source={require('../assets/shelf-Indulgence.png')}/>
-      
       <TextInput
         style={styles.input}
         placeholder="Email"

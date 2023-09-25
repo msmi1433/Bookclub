@@ -1,4 +1,6 @@
 import { db } from "./firebase-config";
+
+
 import {
   setDoc,
   doc,
@@ -24,12 +26,20 @@ export const createBookClub = (clubData: {
   genre: string;
   img_url: string;
 }) => {
-  return addDoc(collection(db, "bookclubs"), clubData).then((docRef) => {
-    console.log(docRef.id);
-    return addDoc(collection(db, "bookclubs", docRef.id, "book_chat"), {
-      msg: "hi",
-    });
-  });
+  return addDoc(collection(db, "bookclubs"), clubData)
+};
+
+export const addComment = (
+  clubId: string,
+  chat: string,
+  newComment: {
+    author: string;
+    date: any;
+    text: string;
+    title: string;
+  }
+) => {
+  return addDoc(collection(db, "bookclubs", clubId, chat), newComment).
 };
 
 export const setNextRead = (
@@ -70,4 +80,5 @@ export const setNextRead = (
         img_url: book.coverImg,
       });
     });
+
 };
