@@ -5,6 +5,7 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  ScrollView,
   StyleSheet,
   Keyboard,
 } from "react-native";
@@ -21,7 +22,7 @@ const SignupScreen: React.FC<SignupScreenProps> = ({ navigation }) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [username, setUsername] = useState("");
-  const [mismatch, setMismatch] = useState<string | null>(null)
+  const [mismatch, setMismatch] = useState<string | null>(null);
 
   const goToLogin = () => {
     navigation.navigate("Login");
@@ -32,6 +33,7 @@ const SignupScreen: React.FC<SignupScreenProps> = ({ navigation }) => {
       setMismatch("Passwords do not match");
     } else {
       setMismatch(null);
+      Keyboard.dismiss();
     }
   };
 
@@ -43,11 +45,11 @@ const SignupScreen: React.FC<SignupScreenProps> = ({ navigation }) => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        addUser(userCredential.user.uid, username)
-        setConfirmPassword('')
-        setEmail('')
-        setPassword('')
-        setUsername('')
+        addUser(userCredential.user.uid, username);
+        setConfirmPassword("");
+        setEmail("");
+        setPassword("");
+        setUsername("");
         if (user) {
           navigation.navigate("App");
         }
@@ -55,63 +57,66 @@ const SignupScreen: React.FC<SignupScreenProps> = ({ navigation }) => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        setPassword('')
-        setConfirmPassword('')
+        setPassword("");
+        setConfirmPassword("");
       });
   };
 
   return (
-    <View style={styles.container}>
-      <TextInput
-        style={styles.input}
-        placeholder="Username"
-        placeholderTextColor="#aaaaaa"
-        onChangeText={(text) => setUsername(text)}
-        value={username}
-        autoCapitalize="none"
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Email"
-        placeholderTextColor="#aaaaaa"
-        onChangeText={(text) => setEmail(text)}
-        value={email}
-        autoCapitalize="none"
-      />
-      <TextInput
-        style={styles.input}
-        placeholderTextColor="#aaaaaa"
-        secureTextEntry
-        placeholder="Password"
-        onChangeText={(text) => setPassword(text)}
-        value={password}
-        autoCapitalize="none"
-      />
-      <TextInput
-        style={styles.input}
-        placeholderTextColor="#aaaaaa"
-        onSubmitEditing={Keyboard.dismiss}
-        secureTextEntry
-        placeholder="Confirm Password"
-        onChangeText={(text) => {
-          setConfirmPassword(text) 
-          passwordCheck(text)}}
-        value={confirmPassword}
-        autoCapitalize="none"
-      />
-      {mismatch ? <Text>{mismatch}</Text> : null}
-      <TouchableOpacity style={styles.button} onPress={handleSignup}>
-        <Text style={styles.buttonTitle}>Sign Up</Text>
-      </TouchableOpacity>
-      <View style={styles.footerView}>
-        <Text style={styles.footerText}>
-          Already have an account?
-          <Text onPress={goToLogin} style={styles.footerLink}>
-            Login
+    <ScrollView style={{flex: 1, height: 1000}} scrollEnabled={false} keyboardShouldPersistTaps="handled">
+      <View style={styles.container}>
+        <TextInput
+          style={styles.input}
+          placeholder="Username"
+          placeholderTextColor="#aaaaaa"
+          onChangeText={(text) => setUsername(text)}
+          value={username}
+          autoCapitalize="none"
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Email"
+          placeholderTextColor="#aaaaaa"
+          onChangeText={(text) => setEmail(text)}
+          value={email}
+          autoCapitalize="none"
+        />
+        <TextInput
+          style={styles.input}
+          placeholderTextColor="#aaaaaa"
+          secureTextEntry
+          placeholder="Password"
+          onChangeText={(text) => setPassword(text)}
+          value={password}
+          autoCapitalize="none"
+        />
+        <TextInput
+          style={styles.input}
+          placeholderTextColor="#aaaaaa"
+          onSubmitEditing={Keyboard.dismiss}
+          secureTextEntry
+          placeholder="Confirm Password"
+          onChangeText={(text) => {
+            setConfirmPassword(text);
+            passwordCheck(text);
+          }}
+          value={confirmPassword}
+          autoCapitalize="none"
+        />
+        {mismatch ? <Text>{mismatch}</Text> : null}
+        <TouchableOpacity style={styles.button} onPress={handleSignup}>
+          <Text style={styles.buttonTitle}>Sign Up</Text>
+        </TouchableOpacity>
+        <View style={styles.footerView}>
+          <Text style={styles.footerText}>
+            Already have an account?
+            <Text onPress={goToLogin} style={styles.footerLink}>
+              Login
+            </Text>
           </Text>
-        </Text>
+        </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -122,7 +127,8 @@ const styles = StyleSheet.create({
     backgroundColor: "blanchedalmond",
     flex: 1,
     alignItems: "center",
-    padding: 100
+    padding: 100,
+    height: 1000
   },
   title: {},
   logo: {
@@ -140,7 +146,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     overflow: "hidden",
     backgroundColor: "white",
-    marginTop: 50,
+    marginTop: 20,
     marginBottom: 10,
     marginLeft: 30,
     marginRight: 30,
