@@ -12,7 +12,12 @@ import { useEffect, useState } from "react";
 import { styles } from "../stylesheet";
 import SingleBook from "../components/SingleBook";
 import GestureRecognizer from "react-native-swipe-gestures";
+
+import { useFocusEffect } from "@react-navigation/native";
+import React from "react";
+
 import { getSingleDoc } from "../gettingData";
+
 
 type CurrentRead = {
   author: string;
@@ -49,9 +54,11 @@ export const SingleBookClubPage: React.FC<{
 
   const [modalVisible, setModalVisible] = useState(false);
 
-  useEffect(() => {
-    getSingleDoc("bookclubs", bookclub_id, setCurrentBookClub);
-  }, [currentBookClub]);
+  useFocusEffect(
+    React.useCallback(() => {
+      getSingleDoc("bookclubs", "KEtAeLGZ0ZjCeEoKAcvN", setCurrentBookClub);
+    }, [])
+  );
 
   const membersNestedArray = Object.entries(currentBookClub.members);
 

@@ -40,7 +40,8 @@ export const setNextRead = (
     coverImg: string;
     averageRating: string | number;
   },
-  bookclubId: string
+  bookclubId: string,
+  stateSetter: Function
 ) => {
   const docRef = doc(db, "bookclubs", bookclubId);
   return getDoc(docRef)
@@ -59,6 +60,14 @@ export const setNextRead = (
           book_name: book.title,
           img_url: book.coverImg,
         },
+      });
+    })
+    .then(() => {
+      stateSetter({
+        author: book.authors,
+        description: book.description,
+        book_name: book.title,
+        img_url: book.coverImg,
       });
     });
 };

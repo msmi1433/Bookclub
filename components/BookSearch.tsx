@@ -6,7 +6,7 @@ import {
   Image,
   ImageSourcePropType,
 } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import { SearchBar } from "@rneui/themed";
 import { useState } from "react";
 import { searchByTitleOrAuthor } from "../google-books-calls";
@@ -20,9 +20,12 @@ type BookProps = {
   averageRating: number;
 };
 
-type SearchBarComponentProps = { callbackFn: Function };
+type SearchBarComponentProps = { callbackFn: Function; stateSetter: Function };
 
-const BookSearch: React.FC<SearchBarComponentProps> = ({ callbackFn }) => {
+const BookSearch: React.FC<SearchBarComponentProps> = ({
+  callbackFn,
+  stateSetter,
+}) => {
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
@@ -63,7 +66,7 @@ const BookSearch: React.FC<SearchBarComponentProps> = ({ callbackFn }) => {
                     <Button
                       title="Add book"
                       onPress={() => {
-                        callbackFn(book, "KEtAeLGZ0ZjCeEoKAcvN");
+                        callbackFn(book, "KEtAeLGZ0ZjCeEoKAcvN", stateSetter);
                       }}
                     />
                   </View>
