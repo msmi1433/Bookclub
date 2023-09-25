@@ -60,7 +60,12 @@ const BookSearch: React.FC<SearchBarComponentProps> = ({ callbackFn }) => {
                     <Text>{book.authors}</Text>
                   </View>
                   <View style={styles.searchAddBookButton}>
-                    <Button title="Add book" onPress={() => callbackFn(book)} />
+                    <Button
+                      title="Add book"
+                      onPress={() => {
+                        callbackFn(book, "KEtAeLGZ0ZjCeEoKAcvN");
+                      }}
+                    />
                   </View>
                 </View>
               );
