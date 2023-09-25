@@ -10,7 +10,6 @@ import {
 } from "react-native";
 import { auth } from "../firebase-config";
 import { signInWithEmailAndPassword } from "firebase/auth";
-
 interface LoginScreenProps {
   navigation: any;
 }
@@ -41,6 +40,8 @@ const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
   return (
     <ScrollView style={{flex: 1, height: 1000}} scrollEnabled={false} keyboardShouldPersistTaps="handled">
     <View style={styles.container}>
+    <Image style={styles.loginPageImage} source={require('../assets/shelf-Indulgence.png')}/>
+      
       <TextInput
         style={styles.input}
         placeholder="Email"
@@ -144,4 +145,10 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 16,
   },
+  loginPageImage: {
+    alignItems:"center",
+    height: 250, 
+    width: 250,
+    backgroundColor:"blanchedalmond"
+  }
 });
