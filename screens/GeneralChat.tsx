@@ -29,7 +29,7 @@ const Discussion: React.FC<{ route: any }> = ({ route }) => {
         setReload(false);
       }
     );
-  }, [reload]);
+  }, []);
 
   const handleSubmit = () => {
     const newComment = {
@@ -45,7 +45,6 @@ const Discussion: React.FC<{ route: any }> = ({ route }) => {
       setNewCommentTitle("");
     });
   };
-
 
   return (
     <View style={styles.basicContainer}>

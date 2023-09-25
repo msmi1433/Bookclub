@@ -1,4 +1,3 @@
-
 import { View, ScrollView, Text, TextInput, Button } from "react-native";
 
 import { useState, useEffect } from "react";
@@ -10,7 +9,6 @@ import { serverTimestamp } from "firebase/firestore";
 import { useContext } from "react";
 import { UserContext } from "../usercontext";
 import { getUser } from "../gettingData";
-
 
 const Discussion: React.FC<{}> = ({}) => {
   const [comments, setComments] = useState([]);
@@ -29,7 +27,7 @@ const Discussion: React.FC<{}> = ({}) => {
     getComments("KEtAeLGZ0ZjCeEoKAcvN", "book_chat", setComments).then(() => {
       setReload(false);
     });
-  }, [reload]);
+  }, []);
 
   const handleSubmit = () => {
     const newComment = {
@@ -77,4 +75,3 @@ const Discussion: React.FC<{}> = ({}) => {
 };
 
 export default Discussion;
-
