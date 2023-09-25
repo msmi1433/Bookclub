@@ -12,6 +12,7 @@ const TabNavigation = () => {
     <NavigationContainer independent={true}>
       <Tab.Navigator screenOptions={{ headerShown: false }}>
         <Tab.Screen name="Home" component={HomeStack} />
+
         <Tab.Screen name="Discover" component={DiscoverStack} />
         <Tab.Screen name="Update profile" component={UpdateProfile} />
         <Tab.Screen name="Profile" component={ProfileStack} />

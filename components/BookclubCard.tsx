@@ -5,7 +5,7 @@ import { styles } from '../stylesheet'
 const BookclubCard: React.FC<{bookclubName: string}> = ({bookclubName}) => {
   return (
     <View style={styles.book}>
-      <Text>{bookclubName}</Text>
+      <Text style={styles.bookText}>{bookclubName}</Text>
     </View>
   )
 }

@@ -1,11 +1,11 @@
-import { View, Text, Button } from "react-native";
+import { View, Text, Button, Image } from "react-native";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import BookclubCard from "../components/BookclubCard";
-import { styles } from "../stylesheet";
 import { getUserBookclubs, getUser } from "../gettingData";
 import { useContext } from "react";
 import { UserContext } from "../usercontext";
+import { styles } from "../stylesheet";
 
 interface NavProps {
   navigation: any;
@@ -34,11 +34,22 @@ const Home: React.FC<NavProps> = ({ navigation }) => {
 
   return (
     <View style={styles.bookContainer}>
+     <View style={styles.homeUserContainer}>
+     <Image
+        style={styles.userImage}
+        source={{
+          uri: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60",
+        }}
+      />
+      <Text style={styles.homeUsername}>{user.user_username}'s BookClubs</Text>
+     </View>
+        
+      
+
       <Button
         title="Go To Single Book Club Page"
         onPress={() => navigation.navigate("SingleBookClubPage")}
       />
-      <Text>{user.user_username}'s BookClubs</Text>
       {bookClubs.map((bookclub) => {
         return <BookclubCard key={bookclub} bookclubName={bookclub} />;
       })}
@@ -47,3 +58,11 @@ const Home: React.FC<NavProps> = ({ navigation }) => {
 };
 
 export default Home;
+
+{/* <View style={styles.header}>
+<Text style={styles.headerText}>Welcome to BookClub!</Text>
+</View>
+<View style={styles.body}>
+<View style={styles.bodyText}>
+  <Text style={styles.bodyTextTitle}>Your BookClubs</Text>
+</View> */}
