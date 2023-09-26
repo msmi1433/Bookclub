@@ -165,4 +165,5 @@ export const styles = StyleSheet.create({
   searchAddBookButton: {
     flex: 1,
   },
+
 });
