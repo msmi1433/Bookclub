@@ -57,8 +57,8 @@ const Discussion = ({
     <View style={styles.basicContainer}>
       <ScrollView>
         <Text>Chat about this weeks book</Text>
-        {comments.map((comment) => {
-          return <CommentCard key="comment" comment={comment} />;
+        {comments.map((comment, index) => {
+          return <CommentCard key={`BookComment${index}`}comment={comment} />;
         })}
         <Text>Post a comment</Text>
         <TextInput

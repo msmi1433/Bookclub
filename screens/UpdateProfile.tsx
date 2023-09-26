@@ -153,7 +153,7 @@ const UpdateProfile: React.FC<{navigation: any}> = ({navigation}) => {
       <View style={styles.updateProfileBtnWrapper}>
         <TouchableOpacity
           onPress={() =>
-            navigation.navigate("Home", { userId: user.user_user_id })
+            navigation.navigate("ProfilePage", { userId: user.user_user_id })
           }
         >
           <Text style={styles.backProfileBtn}>Back to Profile</Text>

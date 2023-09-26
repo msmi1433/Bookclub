@@ -53,11 +53,11 @@ export const SingleBookClubPage: React.FC<{
       author: "",
       description: "",
       book_name: "",
-      img_url: "",
+      img_url: "http://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pulsecarshalton.co.uk%2Fhome-v1%2Fimage-placeholder%2F&psig=AOvVaw37Hc93eITWyLv4fP6vV9LA&ust=1695824059215000&source=images&cd=vfe&opi=89978449&ved=0CA8QjRxqFwoTCOjPrYe7yIEDFQAAAAAdAAAAABAE",
     },
     members: {},
     description: "",
-    img_url: "",
+    img_url: "http://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pulsecarshalton.co.uk%2Fhome-v1%2Fimage-placeholder%2F&psig=AOvVaw37Hc93eITWyLv4fP6vV9LA&ust=1695824059215000&source=images&cd=vfe&opi=89978449&ved=0CA8QjRxqFwoTCOjPrYe7yIEDFQAAAAAdAAAAABAE",
   });
 
   const { bookclub_id } = route.params;
@@ -68,17 +68,9 @@ export const SingleBookClubPage: React.FC<{
 
   useFocusEffect(
     React.useCallback(() => {
-
-
-      getSingleDoc("bookclubs", bookclub_id, setCurrentBookClub);
-    }, [])
-  );
-
-  useFocusEffect(
-    React.useCallback(() => {
-      checkIfMember(uid, bookclub_id)
-      .then((bool) => {
-        setIsUserMember(bool)
+      Promise.all([getSingleDoc("bookclubs", bookclub_id, setCurrentBookClub), checkIfMember(uid, bookclub_id)])
+      .then((values) => {
+        setIsUserMember(values[1])
       })
     }, [])
   );
