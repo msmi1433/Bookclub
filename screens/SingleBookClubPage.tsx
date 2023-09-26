@@ -91,13 +91,13 @@ export const SingleBookClubPage: React.FC<{
         BOOK CLUB NAME {currentBookClub.name}{" "}
       </Text>
 
-  
       <Image
         style={styles.basicImage}
         source={{ uri: currentBookClub.img_url }}
       />
 
       <SingleBook singleBook={currentBookClub.current_read} />
+
       <Text style={styles.basicContainer}>
         BOOK CLUB DESCRIPTION: {currentBookClub.description}
       </Text>
@@ -127,51 +127,61 @@ export const SingleBookClubPage: React.FC<{
                 );
               })}
             </View>
-            <Pressable style={styles.button}onPress={() => setModalVisible(false)}>
+            <Pressable
+              style={styles.button}
+              onPress={() => setModalVisible(false)}
+            >
               <Text style={styles.button}>HIDE MEMBERS</Text>
-            </Pressable> // NEEDS STYLING
+            </Pressable>
           </Modal>
         </GestureRecognizer>
         <Pressable style={styles.button} onPress={() => setModalVisible(true)}>
           <Text style={styles.buttonText}>
             Members of {currentBookClub.name}
           </Text>
-          </Pressable>
+        </Pressable>
 
-          <Pressable style={styles.button} onPress={() => navigation.navigate("General Chat", { bookclub_id: bookclub_id }) }>
-            <Text style={styles.buttonText}>
-              General Club Discussion
-            </Text>
-          </Pressable>
-         
-          {/* <Button
-        title="GENERAL CLUB DISCUSSION"
-        onPress={() =>
-          navigation.navigate("General Chat", { bookclub_id: bookclub_id })
-        } */}
-      {/* /> */}
+        <Pressable
+          style={styles.button}
+          onPress={() =>
+            navigation.navigate("General Chat", { bookclub_id: bookclub_id })
+          }
+        >
+          <Text style={styles.buttonText}>General Club Discussion</Text>
+        </Pressable>
 
-      <Button
-        title="DISCUSS THIS WEEKS BOOK"
-        onPress={() =>
-          navigation.navigate("Book Chat", { bookclub_id: bookclub_id })
-        }
-      />
+        <Pressable
+          style={styles.button}
+          onPress={() =>
+            navigation.navigate("Book Chat", { bookclub_id: bookclub_id })
+          }
+        >
+          <Text style={styles.buttonText}>
+            Talk about {currentBookClub.current_read.book_name}
+          </Text>
+        </Pressable>
       </View>
 
-      <Button
-        title="GO TO NEXT BOOK"
-        onPress={() =>
-          navigation.navigate("Next Book", {
-            bookclub: currentBookClub,
-            bookclub_id: bookclub_id,
-          })
-        }
-      />
+      
+      <Pressable
+      style={styles.button}
+      onPress={() =>
+        navigation.navigate("Next Book", {
+          bookclub: currentBookClub,
+          bookclub_id: bookclub_id,
+        })
+      }
+      >
+<Text style={styles.buttonText}>Take a peek at next week's read</Text>
+
+      </Pressable>
+      
+   
       {isUserMember === null ? null : (
         <Button
           onPress={handleJoinLeave}
           title={isUserMember ? "Leave club" : "Join club"}
+          color={'#c5BAAf'}
         ></Button>
       )}
     </ScrollView>

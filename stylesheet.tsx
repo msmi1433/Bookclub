@@ -156,6 +156,8 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     marginLeft: 20,
     marginRight: 20,
+    marginBottom: 10,
+    marginTop: 10,
     paddingVertical: 12,
     paddingHorizontal: 32,
     backgroundColor: "#F7C17A",
@@ -163,6 +165,7 @@ export const styles = StyleSheet.create({
   },
   buttonText: {
     color: "#424B54",
-    
+    fontWeight: "bold",
   },
+
 });
