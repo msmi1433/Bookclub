@@ -20,14 +20,9 @@ const Profile: React.FC<{navigation: any}> = ({navigation}) => {
     return (
       <ScrollView>
       <View
-        style={{
-          flexDirection: "column",
-          borderWidth: 5,
-          padding: 10,
-          flex: 1,
-        }}
+        style={styles.profilePage}
       >
-      
+
         <Username key="user" user={user} />
         <ProfileContainer key="profile" user={user}/>
         <FavouriteBookContainer user={user}/>

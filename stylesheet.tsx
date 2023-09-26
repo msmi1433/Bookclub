@@ -185,7 +185,52 @@ export const styles = StyleSheet.create({
   searchAddBookButton: {
     flex: 1,
   },
-
+  profilePage:{
+    flexDirection: "column",
+    borderWidth: 5,
+    padding: 10,
+    flex: 1,
+    backgroundColor:"#FFEBCD",
+  },
+  username: {
+  flex: 1,
+  alignItems: 'center', 
+  justifyContent: "space-evenly",
+  margin:20,
+},
+profileBio: {
+  marginLeft:20,
+  marginRight:20,
+  marginBottom:20,
+  alignItems:"center",
+  borderWidth:2,
+  borderStyle:"dotted",
+  
+},
+  scrollContainer: {
+    flexGrow: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  favouriteBookContainer: {
+    flex: 1,
+    justifyContent: "space-between",
+    alignItems: "center",
+    margin: 4,
+    padding:2,
+  },
+  favouriteBookImages: {
+    flexDirection: "column",
+    width: 100,
+    height: 150,
+    borderWidth: 2,
+  },
+  favebookcard: {
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "space-around",
+    margin:8
+  },
   button: {
     flex: 1,
     alignItems: "center",

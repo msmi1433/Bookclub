@@ -1,24 +1,16 @@
-import { View, Text, Image } from "react-native";
-import React from "react";
+import { View, Text, Image } from 'react-native'
+import React from 'react'
+import { styles } from '../../stylesheet'
 
 const Username: React.FC<{
   user: { user_username: string; user_avatar_img: string };
 }> = ({ user }) => {
   return (
-    <View
-      style={{
-        borderWidth: 5,
-        borderBlockColor: "blue",
-        flex: 0.25,
-        alignItems: "center",
-        justifyContent: "space-evenly",
-      }}
-    >
-      <Image
-        style={{ width: 90, height: 90 }}
-        source={{ uri: user.user_avatar_img }}
-      />
-      <Text>{user.user_username}</Text>
+    <View style={styles.username}>
+     
+      <Text style={{fontSize:30, textAlign:"center", fontWeight:700, margin: 20, padding:3, borderRadius:8}}> {user.user_username}'s Profile</Text>
+     
+      <Image style={{ width: 150, height: 150, borderRadius:10, borderWidth:2, justifyContent:"flex-start", }} source={{uri: user.user_avatar_img}}/> 
     </View>
   );
 };
