@@ -36,7 +36,7 @@ const BookclubCard: React.FC<{ bookclub_id: string; navigation: any }> = ({
   }, []);
 
   const handlePress = () => {
-    console.log(bookclub_id);
+
     navigation.navigate("SingleBookClubPage", {
       bookclub_id: bookclub_id,
     });
