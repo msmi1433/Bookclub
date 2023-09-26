@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, Button } from "react-native";
+import { View, Text, ScrollView, Button, Pressable } from "react-native";
 import { useEffect, useState } from "react";
 import React from "react";
 import { getUser } from "../gettingData";
@@ -22,10 +22,15 @@ const Profile: React.FC<{navigation: any}> = ({navigation}) => {
       <View
         style={styles.profilePage}
       >
+
         <Username key="user" user={user} />
         <ProfileContainer key="profile" user={user}/>
         <FavouriteBookContainer user={user}/>
-        <Button title='Update your profile' onPress={() => navigation.navigate('UpdateProfile')}></Button>
+
+        <Pressable style={styles.button} onPress={() => navigation.navigate('UpdateProfile')}>
+        <Text>Update your profile</Text>
+        </Pressable>
+     
       </View>
       </ScrollView>
     );

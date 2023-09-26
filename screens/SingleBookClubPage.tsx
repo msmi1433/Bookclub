@@ -6,23 +6,35 @@ import {
   View,
   Modal,
   Pressable,
-  Alert,
 } from "react-native";
 import { useEffect, useState } from "react";
 import { styles } from "../stylesheet";
 import SingleBook from "../components/SingleBook";
 import GestureRecognizer from "react-native-swipe-gestures";
+import { useContext } from "react";
+import { UserContext } from "../usercontext";
 
 import { useFocusEffect } from "@react-navigation/native";
 import React from "react";
 
-import { getSingleDoc } from "../gettingData";
+
+import { getSingleDoc, checkIfMember, getCollection } from "../gettingData";
+import { leaveJoinClub } from "../addingData";
+
 
 type CurrentRead = {
   author: string;
   description: string;
   book_name: string;
   img_url: string;
+};
+
+type Member = {
+  user_username: string;
+  user_avatar_image: "";
+  user_bio: "";
+  user_bookclubs: [];
+  user_fave_books: [];
 };
 
 export const SingleBookClubPage: React.FC<{
@@ -41,24 +53,52 @@ export const SingleBookClubPage: React.FC<{
       author: "",
       description: "",
       book_name: "",
-      img_url: "",
+      img_url: "http://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pulsecarshalton.co.uk%2Fhome-v1%2Fimage-placeholder%2F&psig=AOvVaw37Hc93eITWyLv4fP6vV9LA&ust=1695824059215000&source=images&cd=vfe&opi=89978449&ved=0CA8QjRxqFwoTCOjPrYe7yIEDFQAAAAAdAAAAABAE",
     },
     members: {},
     description: "",
-    img_url: "",
+    img_url: "http://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pulsecarshalton.co.uk%2Fhome-v1%2Fimage-placeholder%2F&psig=AOvVaw37Hc93eITWyLv4fP6vV9LA&ust=1695824059215000&source=images&cd=vfe&opi=89978449&ved=0CA8QjRxqFwoTCOjPrYe7yIEDFQAAAAAdAAAAABAE",
   });
 
   const { bookclub_id } = route.params;
-
+  const [members, setMembers] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
+  const [isUserMember, setIsUserMember] = useState<null | boolean>(null);
+  const { uid } = useContext(UserContext);
 
   useFocusEffect(
     React.useCallback(() => {
-      getSingleDoc("bookclubs", bookclub_id, setCurrentBookClub);
+      Promise.all([getSingleDoc("bookclubs", bookclub_id, setCurrentBookClub), checkIfMember(uid, bookclub_id)])
+      .then((values) => {
+        setIsUserMember(values[1])
+      })
     }, [])
   );
 
   const membersNestedArray = Object.entries(currentBookClub.members);
+
+
+  const handleClick = (memberName: string) => {
+    getCollection("users", setMembers);
+    const membersArray = members.filter((singlemember: Member) => {
+      return singlemember.user_username === memberName;
+    });
+    navigation.navigate("User Profile", { member: membersArray[0] });
+    setModalVisible(false);
+  };
+
+  const handleJoinLeave = () => {
+    if (isUserMember === null) {
+      alert("Problem getting user status");
+      return;
+    }
+    leaveJoinClub(uid, bookclub_id, isUserMember).then(() => {
+      setIsUserMember((isUserMember) => {
+        return !isUserMember;
+      });
+    });
+  };
+
 
   return (
     <ScrollView nestedScrollEnabled={true}>
@@ -67,25 +107,13 @@ export const SingleBookClubPage: React.FC<{
         BOOK CLUB NAME {currentBookClub.name}{" "}
       </Text>
 
-      <Button
-        title="GENERAL CLUB DISCUSSION"
-        onPress={() =>
-          navigation.navigate("General Chat", { bookclub_id: bookclub_id })
-        }
-      />
-
-      <Button
-        title="DISCUSS THIS WEEKS BOOK"
-        onPress={() =>
-          navigation.navigate("Book Chat", { bookclub_id: bookclub_id })
-        }
-      />
       <Image
         style={styles.basicImage}
         source={{ uri: currentBookClub.img_url }}
       />
 
       <SingleBook singleBook={currentBookClub.current_read} />
+
       <Text style={styles.basicContainer}>
         BOOK CLUB DESCRIPTION: {currentBookClub.description}
       </Text>
@@ -102,41 +130,82 @@ export const SingleBookClubPage: React.FC<{
               setModalVisible(!modalVisible);
             }}
           >
-            <View style={styles.basicContainer}>
+            <View style={styles.memberContainer}>
               {membersNestedArray.map((member) => {
                 return (
-                  <View style={styles.basicContainer} key={member[0]}>
-                    <Text>{member[0]}</Text>
+                  <View style={styles.memberContainer} key={member[0]}>
+                    <Pressable
+                      onPress={() => {
+                        handleClick(member[0]);
+                      }}
+                    >
+                      <Text>{member[0]}</Text>
+                    </Pressable>
                     <Image
-                      style={styles.basicImage}
+                      style={styles.memberImage}
                       source={{ uri: member[1] }}
                     />
                   </View>
                 );
               })}
             </View>
-            <Pressable onPress={() => setModalVisible(false)}>
-              <Text style={styles.giantText}>HIDE MEMBERS</Text>
+            <Pressable
+              style={styles.button}
+              onPress={() => setModalVisible(false)}
+            >
+              <Text style={styles.button}>HIDE MEMBERS</Text>
             </Pressable>
           </Modal>
         </GestureRecognizer>
-        <Pressable onPress={() => setModalVisible(true)}>
-          <Text>
-            BOOK CLUB MEMBERS - CLICK ME PLS - needs to show it's clickable with
-            styling
+        <Pressable style={styles.button} onPress={() => setModalVisible(true)}>
+          <Text style={styles.buttonText}>
+            Members of {currentBookClub.name}
+          </Text>
+        </Pressable>
+
+        <Pressable
+          style={styles.button}
+          onPress={() =>
+            navigation.navigate("General Chat", { bookclub_id: bookclub_id })
+          }
+        >
+          <Text style={styles.buttonText}>General Club Discussion</Text>
+        </Pressable>
+
+        <Pressable
+          style={styles.button}
+          onPress={() =>
+            navigation.navigate("Book Chat", { bookclub_id: bookclub_id })
+          }
+        >
+          <Text style={styles.buttonText}>
+            Talk about {currentBookClub.current_read.book_name}
           </Text>
         </Pressable>
       </View>
 
-      <Button
-        title="GO TO NEXT BOOK"
-        onPress={() =>
-          navigation.navigate("Next Book", {
-            bookclub: currentBookClub,
-            bookclub_id: bookclub_id,
-          })
-        }
-      />
+      
+      <Pressable
+      style={styles.button}
+      onPress={() =>
+        navigation.navigate("Next Book", {
+          bookclub: currentBookClub,
+          bookclub_id: bookclub_id,
+        })
+      }
+      >
+<Text style={styles.buttonText}>Take a peek at next week's read</Text>
+
+      </Pressable>
+      
+   
+      {isUserMember === null ? null : (
+        <Button
+          onPress={handleJoinLeave}
+          title={isUserMember ? "Leave club" : "Join club"}
+          color={'#c5BAAf'}
+        ></Button>
+      )}
     </ScrollView>
   );
 };
