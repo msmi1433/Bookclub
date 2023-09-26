@@ -5,7 +5,7 @@ import { styles } from '../../stylesheet'
 const ProfileContainer: React.FC<{user:{user_bio: string }}> = ({user})=> {
   return (
     <View style={styles.profileBio}>
-      <Text>{user.user_bio}</Text>
+      <Text style={{fontSize:16}}>{user.user_bio}</Text>
     </View>
   )
 } 

@@ -13,8 +13,8 @@ const FavouriteBookCard: React.FC<{ userFaveBooks: UserFaveBooks }> = ({ userFav
 
   return (
     <View style={styles.favebookcard}>
-      <Text          key="author">{book_author}</Text>
-      <Text          key="title">{book_title}</Text>
+      <Text key="title"style={{fontSize:16, fontWeight:"bold"}}>{book_title}</Text>
+      <Text key="author" style={{fontSize:14, fontStyle:"italic", marginBottom: 2}}>{book_author}</Text>
       <Image key="book_image"style={styles.favouriteBookImages} source={{uri: book_img}}/>
     </View>
     

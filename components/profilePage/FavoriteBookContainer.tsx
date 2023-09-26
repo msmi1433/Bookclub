@@ -15,7 +15,7 @@ const FavouriteBookContainer: React.FC<{user: {user_username: string, user_fave_
     <ScrollView contentContainerStyle={styles.scrollContainer}> 
     <View style={styles.favouriteBookContainer}
     >
-      <Text>      {user.user_username}'s Top 3 Desert Island Books!</Text>
+      <Text style={{fontSize:20}}>My Top 3 Desert Island Books!</Text>
       {user.user_fave_books.map((favebook) => {
         return <FavouriteBookCard key={favebook.book_title} userFaveBooks={favebook} />;
       })}

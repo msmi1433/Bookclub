@@ -7,6 +7,7 @@ import ProfileContainer from "../components/profilePage/profileBio";
 import FavouriteBookContainer from "../components/profilePage/FavoriteBookContainer";
 import { useContext } from "react";
 import { UserContext } from "../usercontext";
+import { styles } from "../stylesheet";
 
 const Profile: React.FC<{navigation: any}> = ({navigation}) => {
   const { uid } = useContext(UserContext);
@@ -19,14 +20,8 @@ const Profile: React.FC<{navigation: any}> = ({navigation}) => {
     return (
       <ScrollView>
       <View
-        style={{
-          flexDirection: "column",
-          borderWidth: 5,
-          padding: 10,
-          flex: 1,
-        }}
+        style={styles.profilePage}
       >
-        <Text>Profile</Text>
         <Username key="user" user={user} />
         <ProfileContainer key="profile" user={user}/>
         <FavouriteBookContainer user={user}/>
