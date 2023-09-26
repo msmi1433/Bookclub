@@ -80,3 +80,28 @@ export const setNextRead = (
       });
     });
 };
+
+export const leaveJoinClub = (
+  uid: string,
+  bookclubId: string,
+  isUserMember: boolean 
+) => {
+  const docRef = doc(db, "users", uid);
+  return getDoc(docRef).then((returnedDoc) => {
+    return returnedDoc.data();
+  })
+  .then((doc) => {
+    if(doc) {
+      const currentClubs = doc.user_bookclubs
+      return currentClubs
+    }
+  })
+  .then((currentClubs) => {
+    if (!isUserMember) {
+      return updateDoc(docRef, {user_bookclubs: [...currentClubs, bookclubId]})
+    } else {
+      const newClubs = currentClubs.filter((club: string) => club !== bookclubId)
+      return updateDoc(docRef, {user_bookclubs: newClubs})
+    }
+  });
+};

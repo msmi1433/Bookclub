@@ -6,6 +6,7 @@ import { styles } from "../stylesheet";
 import { getUserBookclubs, getUser } from "../gettingData";
 import { useContext } from "react";
 import { UserContext } from "../usercontext";
+import { useFocusEffect } from "@react-navigation/native";
 
 interface NavProps {
   navigation: any;
@@ -27,10 +28,11 @@ const Home: React.FC<NavProps> = ({ navigation }) => {
     ],
   });
 
-  useEffect(() => {
+  useFocusEffect(
+    React.useCallback(() => {
     getUserBookclubs(uid, setBookClubs);
     getUser(uid, setUser);
-  }, [uid]);
+  }, [uid]));
 
   return (
     <View style={styles.bookContainer}>
