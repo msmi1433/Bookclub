@@ -54,8 +54,7 @@ export const SingleBookClubPage: React.FC<{
 
   useFocusEffect(
     React.useCallback(() => {
-      console.log("hi");
-      getSingleDoc("bookclubs", "KEtAeLGZ0ZjCeEoKAcvN", setCurrentBookClub);
+      getSingleDoc("bookclubs", bookclub_id, setCurrentBookClub);
     }, [])
   );
 
@@ -132,7 +131,10 @@ export const SingleBookClubPage: React.FC<{
       <Button
         title="GO TO NEXT BOOK"
         onPress={() =>
-          navigation.navigate("Next Book", { bookclub: currentBookClub })
+          navigation.navigate("Next Book", {
+            bookclub: currentBookClub,
+            bookclub_id: bookclub_id,
+          })
         }
       />
     </ScrollView>

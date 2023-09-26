@@ -20,11 +20,16 @@ type BookProps = {
   averageRating: number;
 };
 
-type SearchBarComponentProps = { callbackFn: Function; stateSetter: Function };
+type SearchBarComponentProps = {
+  callbackFn: Function;
+  stateSetter: Function;
+  bookclub_id: string;
+};
 
 const BookSearch: React.FC<SearchBarComponentProps> = ({
   callbackFn,
   stateSetter,
+  bookclub_id,
 }) => {
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
@@ -66,7 +71,7 @@ const BookSearch: React.FC<SearchBarComponentProps> = ({
                     <Button
                       title="Add book"
                       onPress={() => {
-                        callbackFn(book, "KEtAeLGZ0ZjCeEoKAcvN", stateSetter);
+                        callbackFn(book, bookclub_id, stateSetter);
                       }}
                     />
                   </View>

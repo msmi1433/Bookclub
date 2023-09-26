@@ -16,10 +16,11 @@ const NextBook = ({
           img_url: string;
         };
       };
+      bookclub_id: string;
     };
   };
 }) => {
-  const { bookclub } = route.params;
+  const { bookclub, bookclub_id } = route.params;
   const { next_read } = bookclub;
 
   const [nextReadState, setNextReadState] = useState(next_read);
@@ -27,7 +28,11 @@ const NextBook = ({
   return (
     <View>
       <Text>NextBook</Text>
-      <BookSearch callbackFn={setNextRead} stateSetter={setNextReadState} />
+      <BookSearch
+        callbackFn={setNextRead}
+        stateSetter={setNextReadState}
+        bookclub_id={bookclub_id}
+      />
       <Text>To change the next read, please use the search bar above.</Text>
       <Text>Our next read is...</Text>
       <Image
