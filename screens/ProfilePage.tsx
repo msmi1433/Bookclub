@@ -7,31 +7,37 @@ import ProfileContainer from "../components/profilePage/profileBio";
 import FavouriteBookContainer from "../components/profilePage/FavoriteBookContainer";
 import { useContext } from "react";
 import { UserContext } from "../usercontext";
+import { useFocusEffect } from "@react-navigation/native";
 
-const Profile: React.FC<{navigation: any}> = ({navigation}) => {
+const Profile: React.FC<{ navigation: any }> = ({ navigation }) => {
   const { uid } = useContext(UserContext);
   const [user, setUser] = useState();
-  useEffect(() => {
-    getUser(uid, setUser);
-  }, [uid]);
+  useFocusEffect(
+    React.useCallback(() => {
+      getUser(uid, setUser);
+    }, [uid])
+  );
 
   if (user) {
     return (
       <ScrollView>
-      <View
-        style={{
-          flexDirection: "column",
-          borderWidth: 5,
-          padding: 10,
-          flex: 1,
-        }}
-      >
-        <Text>Profile</Text>
-        <Username key="user" user={user} />
-        <ProfileContainer key="profile" user={user}/>
-        <FavouriteBookContainer user={user}/>
-        <Button title='Update your profile' onPress={() => navigation.navigate('UpdateProfile')}></Button>
-      </View>
+        <View
+          style={{
+            flexDirection: "column",
+            borderWidth: 5,
+            padding: 10,
+            flex: 1,
+          }}
+        >
+          <Text>Profile</Text>
+          <Username key="user" user={user} />
+          <ProfileContainer key="profile" user={user} />
+          <FavouriteBookContainer user={user} />
+          <Button
+            title="Update your profile"
+            onPress={() => navigation.navigate("UpdateProfile")}
+          ></Button>
+        </View>
       </ScrollView>
     );
   }

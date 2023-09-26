@@ -4,6 +4,7 @@ import React from "react";
 import { UserProvider } from "../usercontext";
 import UpdateProfile from "../screens/UpdateProfile";
 import DesertIslandBookSelect from "../screens/DesertIslandBookSelect";
+import BookSearch from "../components/BookSearch";
 
 const Stack = createNativeStackNavigator();
 

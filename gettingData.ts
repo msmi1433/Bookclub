@@ -1,8 +1,15 @@
 import Username from "./components/profilePage/username-card";
 import { db } from "./firebase-config";
 
-import { collection, getDocs, doc, getDoc, getFirestore, query, where } from "firebase/firestore";
-
+import {
+  collection,
+  getDocs,
+  doc,
+  getDoc,
+  getFirestore,
+  query,
+  where,
+} from "firebase/firestore";
 
 export const getCollection = (collectionName: string, setStateFn: Function) => {
   const collRef = collection(db, collectionName);
@@ -47,11 +54,8 @@ export const getJoinableClubs = (
     });
 };
 
-export const getUser = (
-  docId: string,
-  setStateFn: Function
-) => {
-  const docRef = doc(db, 'users', docId);
+export const getUser = (docId: string, setStateFn: Function) => {
+  const docRef = doc(db, "users", docId);
   getDoc(docRef)
     .then((returnedDoc) => {
       return returnedDoc.data();
@@ -61,7 +65,7 @@ export const getUser = (
         setStateFn(user);
       }
     })
-    .catch(()=>{})
+    .catch(() => {});
 };
 
 export const getUserFaveBooks = (
@@ -91,8 +95,8 @@ export const getUserBookclubs = (docId: string, setStateFn: Function) => {
     })
     .then((returnedData) => {
       setStateFn(returnedData?.user_bookclubs);
-    })
-}
+    });
+};
 
 export const getComment = (
   docId: string,
@@ -100,38 +104,42 @@ export const getComment = (
   commentId: string,
   setStateFn: Function
 ) => {
-  const docRef= doc(db, 'bookclubs', docId, chat, commentId)
+  const docRef = doc(db, "bookclubs", docId, chat, commentId);
   getDoc(docRef)
-  .then((returnedDoc) => {
-    return returnedDoc.data(); 
-  })
-  .then((chatboard) => {
-    if(chatboard){
-      setStateFn(chatboard)
-    }else{
-      setStateFn([])
-    }
-  })
+    .then((returnedDoc) => {
+      return returnedDoc.data();
+    })
+    .then((chatboard) => {
+      if (chatboard) {
+        setStateFn(chatboard);
+      } else {
+        setStateFn([]);
+      }
+    });
+};
 
-}
-
-export const getComments = ( docId:string, chatBoard: string, setStateFn: Function) => {
-  const collRef = collection(db, 'bookclubs', docId, chatBoard);
+export const getComments = (
+  docId: string,
+  chatBoard: string,
+  setStateFn: Function
+) => {
+  const collRef = collection(db, "bookclubs", docId, chatBoard);
   return getDocs(collRef)
     .then((comments) => {
       return comments.docs.map((doc) => doc.data());
     })
     .then((mappedColl) => {
-
       setStateFn(mappedColl);
     });
 };
 
 export const getUsers = (username: string) => {
-  const q = query(collection(db, 'users'), where('user_username', '==', username))
-  return getDocs(q)
-  .then((users) => {
-    const mappedUsers = users.docs.map((doc) => doc.data())
-    return mappedUsers
-  })
-}
+  const q = query(
+    collection(db, "users"),
+    where("user_username", "==", username)
+  );
+  return getDocs(q).then((users) => {
+    const mappedUsers = users.docs.map((doc) => doc.data());
+    return mappedUsers;
+  });
+};
