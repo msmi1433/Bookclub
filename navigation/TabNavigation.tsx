@@ -5,7 +5,10 @@ import { View, Text, StyleSheet } from "react-native";
 import DiscoverStack from "./DiscoverStack";
 import HomeStack from "./HomeStack";
 import ProfileStack from "./ProfileStack";
+import UpdateProfile from "../screens/UpdateProfile";
+
 import { Ionicons } from "@expo/vector-icons";
+
 
 const Tab = createBottomTabNavigator();
 
