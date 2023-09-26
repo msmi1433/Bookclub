@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -6,72 +6,85 @@ import {
   TouchableOpacity,
   Alert,
   ScrollView,
+  Button,
+  Image,
 } from "react-native";
 import { auth, db } from "../firebase-config";
 import { doc, updateDoc } from "firebase/firestore";
 import { useNavigation } from "@react-navigation/native";
 import { styles } from "../stylesheet";
+import { UserContext } from "../usercontext";
+import { getUserFaveBooks } from "../gettingData";
 
 export interface User {
   user_user_id: string;
   user_username: string;
   user_avatar_img: string;
   user_bio: string;
-  user_fave_books: Book[];
+  // user_fave_books: Book[];
 }
 
-export interface Book {
-  book_author: string;
-  book_title: string;
-  book_img: string;
-}
+// export interface Book {
+//   book_author: string;
+//   book_title: string;
+//   book_img: string;
+// }
 
-const UpdateProfile: React.FC<{navigation: any}> = ({navigation}) => {
-
-
+const UpdateProfile: React.FC<{ navigation: any }> = ({ navigation }) => {
+  const { uid } = useContext(UserContext);
   const initialUserState: User = {
-    user_user_id: "XVO4daYZDcRc38voORYKDc4wIp73",
+    user_user_id: uid,
     user_username: "",
     user_avatar_img: "",
     user_bio: "",
-    user_fave_books: [],
+    // user_fave_books: [],
   };
-
   const [user, setUser] = useState<User>(initialUserState);
+  const [faveBooksState, setFaveBooksState] = useState<
+    {
+      book_author: string;
+      book_title: string;
+      book_img: string;
+    }[]
+  >([]);
+
+  useEffect(() => {
+    getUserFaveBooks("users", uid, setFaveBooksState);
+  }, []);
 
   const handleInputChange = (field: string, value: string) => {
     setUser({ ...user, [field]: value });
   };
 
-  const handleUpdateBook = () => {
-    const newBook: Book = {
-      book_author: "",
-      book_title: "",
-      book_img: "",
-    };
-    setUser({ ...user, user_fave_books: [...user.user_fave_books, newBook] });
-  };
+  // const handleUpdateBook = () => {
+  //   const newBook: Book = {
+  //     book_author: "",
+  //     book_title: "",
+  //     book_img: "",
+  //   };
+  //   setUser({ ...user, user_fave_books: [...user.user_fave_books, newBook] });
+  // };
 
   const handleSubmit = () => {
     if (!user.user_bio || !user.user_avatar_img) {
       Alert.alert("Error", "Username and Avatar Image URL are required.");
       return;
     }
-    if (user.user_fave_books.length === 0) {
-      Alert.alert("Required", "Please add at least one favorite book.");
-      return;
-    }
+    // if (user.user_fave_books.length === 0) {
+    //   Alert.alert("Required", "Please add at least one favorite book.");
+    //   return;
+    // }
 
     const userRef = doc(db, "users", "XVO4daYZDcRc38voORYKDc4wIp73");
     updateDoc(userRef, {
       user_username: user.user_username,
       user_bio: user.user_bio,
       user_avatar_img: user.user_avatar_img,
-      user_fave_books: user.user_fave_books,
+      // user_fave_books: user.user_fave_books,
     })
       .then(() => {
         Alert.alert("Success", "Profile updated successfully.");
-        navigation.navigate('ProfilePage');
+        navigation.navigate("ProfilePage");
       })
       .catch((error) => {
         alert("Error updating");
@@ -89,7 +102,7 @@ const UpdateProfile: React.FC<{navigation: any}> = ({navigation}) => {
         style={styles.inputProfileForm}
       />
 
-      <Text style={styles.label}>Avatar Image URL:</Text>
+      <Text style={styles.label}>Profile Picture (URL)</Text>
       <TextInput
         value={user.user_avatar_img}
         onChangeText={(text) => handleInputChange("user_avatar_img", text)}
@@ -104,7 +117,7 @@ const UpdateProfile: React.FC<{navigation: any}> = ({navigation}) => {
         multiline
       />
 
-      <Text style={styles.label}>Favourite Books:</Text>
+      {/* <Text style={styles.label}>Favourite Books:</Text>
       {user.user_fave_books.map((book, index) => (
         <View key={index}>
           <Text style={styles.favBook}>Book {index + 1}:</Text>
@@ -148,7 +161,7 @@ const UpdateProfile: React.FC<{navigation: any}> = ({navigation}) => {
       ))}
       <TouchableOpacity onPress={handleUpdateBook}>
         <Text style={styles.addBook}>Add Book</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
 
       <View style={styles.updateProfileBtnWrapper}>
         <TouchableOpacity
@@ -161,6 +174,66 @@ const UpdateProfile: React.FC<{navigation: any}> = ({navigation}) => {
         <TouchableOpacity onPress={handleSubmit}>
           <Text style={styles.updateProfileBtn}>Update Profile</Text>
         </TouchableOpacity>
+      </View>
+      <View>
+        <Text>Add your 3 desert island books...</Text>
+        <View>
+          <Text>Book 1</Text>
+          <View>
+            <Image
+              source={{ uri: faveBooksState[0].book_img }}
+              style={{ width: 100, height: 150 }}
+            />
+            <Text>{faveBooksState[0].book_title}</Text>
+            <Text>{faveBooksState[0].book_author}</Text>
+          </View>
+          <Button
+            title="Edit book 1"
+            onPress={() => {
+              navigation.navigate("Desert Island Book Selection", {
+                arrayId: 0,
+              });
+            }}
+          />
+        </View>
+        <View>
+          <Text>Book 2</Text>
+          <View>
+            <Image
+              source={{ uri: faveBooksState[1].book_img }}
+              style={{ width: 100, height: 150 }}
+            />
+            <Text>{faveBooksState[1].book_title}</Text>
+            <Text>{faveBooksState[1].book_author}</Text>
+          </View>
+          <Button
+            title="Edit book 2"
+            onPress={() => {
+              navigation.navigate("Desert Island Book Selection", {
+                arrayId: 1,
+              });
+            }}
+          />
+        </View>
+        <View>
+          <Text>Book 3</Text>
+          <View>
+            <Image
+              source={{ uri: faveBooksState[2].book_img }}
+              style={{ width: 100, height: 150 }}
+            />
+            <Text>{faveBooksState[2].book_title}</Text>
+            <Text>{faveBooksState[2].book_author}</Text>
+          </View>
+          <Button
+            title="Edit book 3"
+            onPress={() => {
+              navigation.navigate("Desert Island Book Selection", {
+                arrayId: 2,
+              });
+            }}
+          />
+        </View>
       </View>
     </ScrollView>
   );

@@ -12,10 +12,8 @@ import { useEffect, useState } from "react";
 import { styles } from "../stylesheet";
 import SingleBook from "../components/SingleBook";
 import GestureRecognizer from "react-native-swipe-gestures";
-
 import { useFocusEffect } from "@react-navigation/native";
 import React from "react";
-
 import { getSingleDoc } from "../gettingData";
 
 type CurrentRead = {
