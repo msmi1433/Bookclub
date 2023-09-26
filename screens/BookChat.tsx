@@ -24,9 +24,7 @@ const Discussion: React.FC<{}> = ({}) => {
   }, []);
 
   useEffect(() => {
-    getComments("KEtAeLGZ0ZjCeEoKAcvN", "book_chat", setComments).then(() => {
-      setReload(false);
-    });
+    getComments("KEtAeLGZ0ZjCeEoKAcvN", "book_chat", setComments)
   }, []);
 
   const handleSubmit = () => {
@@ -37,11 +35,15 @@ const Discussion: React.FC<{}> = ({}) => {
       title: newCommentTitle,
     };
 
-    addComment("KEtAeLGZ0ZjCeEoKAcvN", "book_chat", newComment).then(() => {
+    addComment("KEtAeLGZ0ZjCeEoKAcvN", "book_chat", newComment)
+    .then(() => {
       setReload(true);
       setNewCommentText("");
       setNewCommentTitle("");
-    });
+    })
+    .then(() => {
+      getComments("KEtAeLGZ0ZjCeEoKAcvN", "book_chat", setComments)
+    })
   };
 
   return (

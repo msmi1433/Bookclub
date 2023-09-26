@@ -24,11 +24,7 @@ const Discussion: React.FC<{ route: any }> = ({ route }) => {
   }, []);
 
   useEffect(() => {
-    getComments("KEtAeLGZ0ZjCeEoKAcvN", "general_chat", setComments).then(
-      () => {
-        setReload(false);
-      }
-    );
+    getComments("KEtAeLGZ0ZjCeEoKAcvN", "general_chat", setComments)
   }, []);
 
   const handleSubmit = () => {
@@ -43,7 +39,10 @@ const Discussion: React.FC<{ route: any }> = ({ route }) => {
       setReload(true);
       setNewCommentText("");
       setNewCommentTitle("");
-    });
+    })
+    .then(() => {
+      getComments("KEtAeLGZ0ZjCeEoKAcvN", "book_chat", setComments)
+    })
   };
 
   return (
