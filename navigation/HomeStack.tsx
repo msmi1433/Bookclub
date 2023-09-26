@@ -6,6 +6,7 @@ import BookChat from "../screens/BookChat";
 import NextBook from "../screens/NextBook";
 import React from "react";
 import { UserProvider } from "../usercontext";
+import Header from "../components/Header";
 
 import OtherProfile from "../screens/OtherProfile";
 
