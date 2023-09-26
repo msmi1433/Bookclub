@@ -63,15 +63,14 @@ export const SingleBookClubPage: React.FC<{
   const { bookclub_id } = route.params;
   const [members, setMembers] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
-  const [isUserMember, setIsUserMember] = useState<null | boolean>(null)
-  const { uid } = useContext(UserContext)
+  const [isUserMember, setIsUserMember] = useState<null | boolean>(null);
+  const { uid } = useContext(UserContext);
 
   useFocusEffect(
     React.useCallback(() => {
 
 
       getSingleDoc("bookclubs", bookclub_id, setCurrentBookClub);
-
     }, [])
   );
 
@@ -81,7 +80,6 @@ export const SingleBookClubPage: React.FC<{
       .then((bool) => {
         setIsUserMember(bool)
       })
-
     }, [])
   );
 
@@ -99,16 +97,15 @@ export const SingleBookClubPage: React.FC<{
 
   const handleJoinLeave = () => {
     if (isUserMember === null) {
-      alert('Problem getting user status')
-      return 
+      alert("Problem getting user status");
+      return;
     }
-    leaveJoinClub(uid, bookclub_id, isUserMember)
-    .then(() => {
+    leaveJoinClub(uid, bookclub_id, isUserMember).then(() => {
       setIsUserMember((isUserMember) => {
-        return !isUserMember
-      })
-    })
-  }
+        return !isUserMember;
+      });
+    });
+  };
 
 
   return (
@@ -118,25 +115,13 @@ export const SingleBookClubPage: React.FC<{
         BOOK CLUB NAME {currentBookClub.name}{" "}
       </Text>
 
-      <Button
-        title="GENERAL CLUB DISCUSSION"
-        onPress={() =>
-          navigation.navigate("General Chat", { bookclub_id: bookclub_id })
-        }
-      />
-
-      <Button
-        title="DISCUSS THIS WEEKS BOOK"
-        onPress={() =>
-          navigation.navigate("Book Chat", { bookclub_id: bookclub_id })
-        }
-      />
       <Image
         style={styles.basicImage}
         source={{ uri: currentBookClub.img_url }}
       />
 
       <SingleBook singleBook={currentBookClub.current_read} />
+
       <Text style={styles.basicContainer}>
         BOOK CLUB DESCRIPTION: {currentBookClub.description}
       </Text>
@@ -172,29 +157,63 @@ export const SingleBookClubPage: React.FC<{
                 );
               })}
             </View>
-            <Pressable onPress={() => setModalVisible(false)}>
-              <Text style={styles.memberContainer}>HIDE MEMBERS</Text>
+            <Pressable
+              style={styles.button}
+              onPress={() => setModalVisible(false)}
+            >
+              <Text style={styles.button}>HIDE MEMBERS</Text>
             </Pressable>
           </Modal>
         </GestureRecognizer>
-        <Pressable onPress={() => setModalVisible(true)}>
-          <Text>
-            BOOK CLUB MEMBERS - CLICK ME PLS - needs to show it's clickable with
-            styling
+        <Pressable style={styles.button} onPress={() => setModalVisible(true)}>
+          <Text style={styles.buttonText}>
+            Members of {currentBookClub.name}
+          </Text>
+        </Pressable>
+
+        <Pressable
+          style={styles.button}
+          onPress={() =>
+            navigation.navigate("General Chat", { bookclub_id: bookclub_id })
+          }
+        >
+          <Text style={styles.buttonText}>General Club Discussion</Text>
+        </Pressable>
+
+        <Pressable
+          style={styles.button}
+          onPress={() =>
+            navigation.navigate("Book Chat", { bookclub_id: bookclub_id })
+          }
+        >
+          <Text style={styles.buttonText}>
+            Talk about {currentBookClub.current_read.book_name}
           </Text>
         </Pressable>
       </View>
 
-      <Button
-        title="GO TO NEXT BOOK"
-        onPress={() =>
-          navigation.navigate("Next Book", {
-            bookclub: currentBookClub,
-            bookclub_id: bookclub_id,
-          })
-        }
-      />
-      {isUserMember === null ? null : <Button onPress={handleJoinLeave} title={isUserMember ? 'Leave club' : 'Join club'}></Button>  }
+      
+      <Pressable
+      style={styles.button}
+      onPress={() =>
+        navigation.navigate("Next Book", {
+          bookclub: currentBookClub,
+          bookclub_id: bookclub_id,
+        })
+      }
+      >
+<Text style={styles.buttonText}>Take a peek at next week's read</Text>
+
+      </Pressable>
+      
+   
+      {isUserMember === null ? null : (
+        <Button
+          onPress={handleJoinLeave}
+          title={isUserMember ? "Leave club" : "Join club"}
+          color={'#c5BAAf'}
+        ></Button>
+      )}
     </ScrollView>
   );
 };
