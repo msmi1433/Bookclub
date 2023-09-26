@@ -151,4 +151,18 @@ export const styles = StyleSheet.create({
   searchAddBookButton: {
     flex: 1,
   },
+  button: {
+    flex: 1,
+    alignItems: "center",
+    marginLeft: 20,
+    marginRight: 20,
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    backgroundColor: "#F7C17A",
+    borderRadius: 10,
+  },
+  buttonText: {
+    color: "#424B54",
+    
+  },
 });
