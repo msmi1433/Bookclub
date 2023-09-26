@@ -60,6 +60,7 @@ export const SingleBookClubPage: React.FC<{
   useFocusEffect(
     React.useCallback(() => {
       getSingleDoc("bookclubs", bookclub_id, setCurrentBookClub);
+
     }, [])
   );
 
@@ -158,7 +159,10 @@ export const SingleBookClubPage: React.FC<{
       <Button
         title="GO TO NEXT BOOK"
         onPress={() =>
-          navigation.navigate("Next Book", { bookclub: currentBookClub })
+          navigation.navigate("Next Book", {
+            bookclub: currentBookClub,
+            bookclub_id: bookclub_id,
+          })
         }
       />
       {isUserMember === null ? null : <Button onPress={handleJoinLeave} title={isUserMember ? 'Leave club' : 'Join club'}></Button>  }
