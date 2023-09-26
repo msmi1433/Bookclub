@@ -152,7 +152,7 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   headerImage:{
-    height:150, 
+    height:40, 
     width:200,
   }
 });
