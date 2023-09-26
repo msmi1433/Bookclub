@@ -12,6 +12,7 @@ import {
 import { auth } from "../firebase-config";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { addUser } from "../addingData";
+import { getUsers } from "../gettingData";
 
 interface SignupScreenProps {
   navigation: any;
@@ -42,7 +43,19 @@ const SignupScreen: React.FC<SignupScreenProps> = ({ navigation }) => {
       alert("Passwords do not match");
       return;
     }
-    createUserWithEmailAndPassword(auth, email, password)
+    getUsers(username)
+    .then((users) => {
+      if (users.length) {
+        setUsername('')
+        return Promise.reject({
+          code: 400,
+          message: 'This username is already in use' 
+        })
+      }
+    })
+    .then(() => {
+      return createUserWithEmailAndPassword(auth, email, password)
+    })
       .then((userCredential) => {
         const user = userCredential.user;
         addUser(userCredential.user.uid, username);
@@ -57,6 +70,7 @@ const SignupScreen: React.FC<SignupScreenProps> = ({ navigation }) => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        alert(errorMessage)
         setPassword("");
         setConfirmPassword("");
       });

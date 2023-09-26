@@ -35,18 +35,6 @@ const Home: React.FC<NavProps> = ({ navigation }) => {
   return (
     <View style={styles.bookContainer}>
       <View style={styles.homeUserContainer}>
-        {/* <Image
-        style={styles.userImage}
-        source={{
-          uri: user.user_avatar_img,
-        }}
-      /> */}
-        {/* <Image
-        style={styles.userImage}
-        source={{
-          uri: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60",
-        }}
-      /> */}
         <Image
           style={styles.userImage}
           source={{
@@ -59,8 +47,16 @@ const Home: React.FC<NavProps> = ({ navigation }) => {
         </Text>
       </View>
 
+      <Text>{user.user_username}'s BookClubs</Text>
+
       {bookClubs.map((bookclub) => {
-        return <BookclubCard key={bookclub} bookclubName={bookclub} />;
+        return (
+          <BookclubCard
+            key={bookclub}
+            bookclub_id={bookclub}
+            navigation={navigation}
+          />
+        );
       })}
     </View>
   );

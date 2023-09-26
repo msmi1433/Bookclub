@@ -17,6 +17,7 @@ const CommentCard: React.FC<{ comment: Comment }> = ({ comment }) => {
   const commentDate = stringDate.slice(0, 10);
   const commentTimeAndDate = `${commentTime} ${commentDate}`;
 
+
   return (
     <View style={styles.basicContainer}>
       <Text>COMMENT AUTHOR: {author}</Text>
