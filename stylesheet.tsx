@@ -151,4 +151,10 @@ export const styles = StyleSheet.create({
   searchAddBookButton: {
     flex: 1,
   },
+  favouriteBookContainer:{
+    flexDirection: "column",
+    borderWidth: 5,
+    flex: 1,
+  }
+  
 });

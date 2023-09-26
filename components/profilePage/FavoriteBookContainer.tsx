@@ -1,10 +1,7 @@
 import { View, Text } from "react-native";
-import { useState, useEffect } from "react";
 import React from "react";
-import { getUserFaveBooks, getUser } from "../../gettingData";
 import FavouriteBookCard from "./FavouriteBookCard";
-import { useContext } from "react";
-import { UserContext } from "../../usercontext";
+import { styles } from "../../stylesheet";
 
 interface FaveBookObj {
     book_title: string, 
@@ -15,12 +12,7 @@ interface FaveBookObj {
 const FavouriteBookContainer: React.FC<{user: {user_username: string, user_fave_books: FaveBookObj[]}}> = ({user}) => {
 
   return (
-    <View
-      style={{
-        flexDirection: "column",
-        borderWidth: 5,
-        flex: 1,
-      }}
+    <View style={styles.favouriteBookContainer}
     >
       <Text>{user.user_username}'s Top 3 Desert Island Books!</Text>
       {user.user_fave_books.map((favebook) => {
