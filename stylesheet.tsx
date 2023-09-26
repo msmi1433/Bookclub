@@ -151,4 +151,8 @@ export const styles = StyleSheet.create({
   searchAddBookButton: {
     flex: 1,
   },
+  headerImage:{
+    height:150, 
+    width:200,
+  }
 });

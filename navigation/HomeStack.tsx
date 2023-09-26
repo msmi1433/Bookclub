@@ -6,6 +6,7 @@ import BookChat from "../screens/BookChat";
 import NextBook from "../screens/NextBook";
 import React from "react";
 import { UserProvider } from "../usercontext";
+import Header from "../components/Header";
 
 const Stack = createNativeStackNavigator();
 
@@ -16,8 +17,9 @@ const StackBookClubs = () => {
       screenOptions={{
         headerTitle:  () => <Header></Header> ,
         headerStyle: {
-          backgroundColor: "black"
+          backgroundColor: "#424B54"
         },
+        headerTitleAlign:"center",
         headerTintColor: "white",
         headerTitleStyle: {
           fontWeight: "bold",
