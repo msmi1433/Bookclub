@@ -42,6 +42,15 @@ export const styles = StyleSheet.create({
     height: 400,
     width: 400,
   },
+  memberImage:{
+    height: 200,
+    width: 200,
+    borderRadius:50,
+  },
+  memberContainer:{
+    flex: 1,
+    padding: 50,
+  },
   basicContainer: {
     flex: 1,
     padding: 10,
