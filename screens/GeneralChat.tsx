@@ -14,7 +14,6 @@ const Discussion: React.FC<{ route: any }> = ({ route }) => {
   const [comments, setComments] = useState([]);
   const [newCommentText, setNewCommentText] = useState("");
   const [newCommentTitle, setNewCommentTitle] = useState("");
-  const [reload, setReload] = useState(false);
   const { uid } = useContext(UserContext);
   const [user, setUser] = useState<{ user_username: string }>({
     user_username: "",
@@ -24,7 +23,7 @@ const Discussion: React.FC<{ route: any }> = ({ route }) => {
   }, []);
 
   useEffect(() => {
-    getComments("KEtAeLGZ0ZjCeEoKAcvN", "general_chat", setComments)
+    getComments(bookclub_id, "general_chat", setComments)
   }, []);
 
   const handleSubmit = () => {
@@ -35,13 +34,13 @@ const Discussion: React.FC<{ route: any }> = ({ route }) => {
       title: newCommentTitle,
     };
 
-    addComment("KEtAeLGZ0ZjCeEoKAcvN", "general_chat", newComment).then(() => {
-      setReload(true);
+    addComment(bookclub_id, "general_chat", newComment)
+    .then(() => {
       setNewCommentText("");
       setNewCommentTitle("");
     })
     .then(() => {
-      getComments("KEtAeLGZ0ZjCeEoKAcvN", "book_chat", setComments)
+      getComments(bookclub_id, "general_chat", setComments)
     })
   };
 
