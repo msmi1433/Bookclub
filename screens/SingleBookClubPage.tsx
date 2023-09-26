@@ -12,11 +12,14 @@ import { useEffect, useState } from "react";
 import { styles } from "../stylesheet";
 import SingleBook from "../components/SingleBook";
 import GestureRecognizer from "react-native-swipe-gestures";
+import { useContext } from "react";
+import { UserContext } from "../usercontext";
 
 import { useFocusEffect } from "@react-navigation/native";
 import React from "react";
 
-import { getSingleDoc } from "../gettingData";
+import { getSingleDoc, checkIfMember } from "../gettingData";
+import { leaveJoinClub } from "../addingData";
 
 type CurrentRead = {
   author: string;
@@ -51,15 +54,39 @@ export const SingleBookClubPage: React.FC<{
   const { bookclub_id } = route.params;
 
   const [modalVisible, setModalVisible] = useState(false);
+  const [isUserMember, setIsUserMember] = useState<null | boolean>(null)
+  const { uid } = useContext(UserContext)
 
   useFocusEffect(
     React.useCallback(() => {
-      console.log("hi");
-      getSingleDoc("bookclubs", "KEtAeLGZ0ZjCeEoKAcvN", setCurrentBookClub);
+      getSingleDoc("bookclubs", bookclub_id, setCurrentBookClub);
+
+    }, [])
+  );
+
+  useFocusEffect(
+    React.useCallback(() => {
+      checkIfMember(uid, bookclub_id)
+      .then((bool) => {
+        setIsUserMember(bool)
+      })
     }, [])
   );
 
   const membersNestedArray = Object.entries(currentBookClub.members);
+
+  const handleJoinLeave = () => {
+    if (isUserMember === null) {
+      alert('Problem getting user status')
+      return 
+    }
+    leaveJoinClub(uid, bookclub_id, isUserMember)
+    .then(() => {
+      setIsUserMember((isUserMember) => {
+        return !isUserMember
+      })
+    })
+  }
 
   return (
     <ScrollView nestedScrollEnabled={true}>
@@ -132,9 +159,13 @@ export const SingleBookClubPage: React.FC<{
       <Button
         title="GO TO NEXT BOOK"
         onPress={() =>
-          navigation.navigate("Next Book", { bookclub: currentBookClub })
+          navigation.navigate("Next Book", {
+            bookclub: currentBookClub,
+            bookclub_id: bookclub_id,
+          })
         }
       />
+      {isUserMember === null ? null : <Button onPress={handleJoinLeave} title={isUserMember ? 'Leave club' : 'Join club'}></Button>  }
     </ScrollView>
   );
 };

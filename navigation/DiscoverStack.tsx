@@ -5,6 +5,7 @@ import Discover from "../screens/Discover";
 import FindABookClub from "../screens/FindABookClub";
 import { UserProvider } from "../usercontext";
 import Header from "../components/Header";
+import { SingleBookClubPage } from "../screens/SingleBookClubPage";
 
 const Stack = createNativeStackNavigator();
 
@@ -23,6 +24,7 @@ const DiscoverStack = () => {
         <Stack.Screen name="Discover Home" component={Discover} />
         <Stack.Screen name="Create a book club" component={CreateABookClub} />
         <Stack.Screen name="Find a book club" component={FindABookClub} />
+        <Stack.Screen name="SingleBookClubPage" component={SingleBookClubPage} />
       </Stack.Navigator>
     </UserProvider>
   );
