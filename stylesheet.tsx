@@ -151,10 +151,42 @@ export const styles = StyleSheet.create({
   searchAddBookButton: {
     flex: 1,
   },
-  favouriteBookContainer:{
-    flexDirection: "column",
-    borderWidth: 5,
+  username: {
+  flex: 1,
+  alignItems: 'center', 
+  justifyContent: "space-evenly",
+  margin:50
+},
+profileBio: {
+  flex: 1,
+  margin:4,
+  alignItems:"center",
+  borderWidth:2,
+  borderStyle:"dotted",
+  fontFamily:""
+},
+  scrollContainer: {
+    flexGrow: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  favouriteBookContainer: {
     flex: 1,
-  }
-  
+    justifyContent: "space-between",
+    alignItems: "center",
+    margin: 4,
+    paddingTop:20,
+  },
+  favouriteBookImages: {
+    flexDirection: "column",
+    width: 100,
+    height: 150,
+    borderWidth: 2,
+  },
+  favebookcard: {
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "space-around",
+  },
+
 });
