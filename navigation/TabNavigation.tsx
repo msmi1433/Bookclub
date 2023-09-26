@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import DiscoverStack from "./DiscoverStack";
 import HomeStack from "./HomeStack";
 import ProfileStack from "./ProfileStack";
+import React from 'react'
 import UpdateProfile from "../screens/UpdateProfile";
 
 const Tab = createBottomTabNavigator();

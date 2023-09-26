@@ -8,6 +8,7 @@ import { serverTimestamp } from "firebase/firestore";
 import { useContext } from "react";
 import { UserContext } from "../usercontext";
 import { getUser } from "../gettingData";
+import React from 'react'
 
 const Discussion: React.FC<{ route: any }> = ({ route }) => {
   const { bookclub_id } = route.params;

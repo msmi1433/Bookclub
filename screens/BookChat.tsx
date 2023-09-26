@@ -1,5 +1,5 @@
 import { View, ScrollView, Text, TextInput, Button } from "react-native";
-
+import React from "react";
 import { useState, useEffect } from "react";
 import { getComments } from "../gettingData";
 import CommentCard from "../components/CommentCard";
