@@ -1,19 +1,46 @@
 import { StyleSheet } from "react-native";
-
 export const styles = StyleSheet.create({
-  book: {
-    borderWidth: 5,
-    borderBlockColor: "blue",
-    flex: 0.2,
-    alignItems: "center",
-    justifyContent: "center",
-  },
+  
+  // Home page
   bookContainer: {
-    flexDirection: "column",
-    borderWidth: 1,
-    flex: 1,
-    justifyContent: "space-evenly",
+    marginTop: 20,
+    height: "100%",
+    backgroundColor: "#f4f4f4",
+    padding: 20,
   },
+  homeUserContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  userImage: {
+    marginRight: 10,
+    width: 50,
+    height: 50,
+    borderRadius: 50,
+  },
+  homeUsername: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#000000",
+    textAlign: "center",
+  },
+  book: {
+    backgroundColor: "#0168d9",
+    borderWidth: 1,
+    borderColor: "#6fb1f7",
+    borderRadius: 8,
+    paddingVertical: 30,
+    paddingHorizontal: 20,
+    marginBottom: 16,
+  },
+
+  bookText: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#fff",
+    textAlign: "center",
+  },
+
   input: {
     height: 48,
     borderRadius: 5,
@@ -41,6 +68,15 @@ export const styles = StyleSheet.create({
   basicImage: {
     height: 400,
     width: 400,
+  },
+  memberImage:{
+    height: 200,
+    width: 200,
+    borderRadius:50,
+  },
+  memberContainer:{
+    flex: 1,
+    padding: 50,
   },
   basicContainer: {
     flex: 1,
@@ -151,6 +187,7 @@ export const styles = StyleSheet.create({
   searchAddBookButton: {
     flex: 1,
   },
+
   button: {
     flex: 1,
     alignItems: "center",
@@ -168,4 +205,8 @@ export const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 
+  headerImage:{
+    height:40, 
+    width:200,
+  }
 });

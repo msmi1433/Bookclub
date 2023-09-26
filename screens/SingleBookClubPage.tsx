@@ -17,14 +17,24 @@ import { UserContext } from "../usercontext";
 import { useFocusEffect } from "@react-navigation/native";
 import React from "react";
 
-import { getSingleDoc, checkIfMember } from "../gettingData";
+
+import { getSingleDoc, checkIfMember, getCollection } from "../gettingData";
 import { leaveJoinClub } from "../addingData";
+
 
 type CurrentRead = {
   author: string;
   description: string;
   book_name: string;
   img_url: string;
+};
+
+type Member = {
+  user_username: string;
+  user_avatar_image: "";
+  user_bio: "";
+  user_bookclubs: [];
+  user_fave_books: [];
 };
 
 export const SingleBookClubPage: React.FC<{
@@ -51,26 +61,39 @@ export const SingleBookClubPage: React.FC<{
   });
 
   const { bookclub_id } = route.params;
-
+  const [members, setMembers] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
   const [isUserMember, setIsUserMember] = useState<null | boolean>(null);
   const { uid } = useContext(UserContext);
 
   useFocusEffect(
     React.useCallback(() => {
+
+
       getSingleDoc("bookclubs", bookclub_id, setCurrentBookClub);
     }, [])
   );
 
   useFocusEffect(
     React.useCallback(() => {
-      checkIfMember(uid, bookclub_id).then((bool) => {
-        setIsUserMember(bool);
-      });
+      checkIfMember(uid, bookclub_id)
+      .then((bool) => {
+        setIsUserMember(bool)
+      })
     }, [])
   );
 
   const membersNestedArray = Object.entries(currentBookClub.members);
+
+
+  const handleClick = (memberName: string) => {
+    getCollection("users", setMembers);
+    const membersArray = members.filter((singlemember: Member) => {
+      return singlemember.user_username === memberName;
+    });
+    navigation.navigate("User Profile", { member: membersArray[0] });
+    setModalVisible(false);
+  };
 
   const handleJoinLeave = () => {
     if (isUserMember === null) {
@@ -83,6 +106,7 @@ export const SingleBookClubPage: React.FC<{
       });
     });
   };
+
 
   return (
     <ScrollView nestedScrollEnabled={true}>
@@ -114,13 +138,19 @@ export const SingleBookClubPage: React.FC<{
               setModalVisible(!modalVisible);
             }}
           >
-            <View style={styles.basicContainer}>
+            <View style={styles.memberContainer}>
               {membersNestedArray.map((member) => {
                 return (
-                  <View style={styles.basicContainer} key={member[0]}>
-                    <Text>{member[0]}</Text>
+                  <View style={styles.memberContainer} key={member[0]}>
+                    <Pressable
+                      onPress={() => {
+                        handleClick(member[0]);
+                      }}
+                    >
+                      <Text>{member[0]}</Text>
+                    </Pressable>
                     <Image
-                      style={styles.basicImage}
+                      style={styles.memberImage}
                       source={{ uri: member[1] }}
                     />
                   </View>
