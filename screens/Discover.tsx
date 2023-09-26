@@ -6,7 +6,7 @@ const Discover: React.FC<{ navigation: any }> = ({ navigation }) => {
   return (
     <View>
       <ScrollView>
-        <Text>Discover</Text>
+        <Text style={styles.header}>Discover</Text>
 
         <Pressable
           style={styles.button}

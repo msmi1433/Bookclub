@@ -208,5 +208,12 @@ export const styles = StyleSheet.create({
   headerImage:{
     height:40, 
     width:200,
+  },
+
+  header: {
+   textAlign: "center",
+    fontSize: 36,
+    paddingVertical: 36,
+    paddingHorizontal: 32,
   }
 });
