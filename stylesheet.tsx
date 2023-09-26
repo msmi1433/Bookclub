@@ -91,7 +91,6 @@ export const styles = StyleSheet.create({
   addBook: {
     marginTop: 10,
     backgroundColor: "#138496",
-    border: "1px solid #138496",
     padding: 6,
     borderRadius: 6,
     width: 100,
@@ -102,7 +101,6 @@ export const styles = StyleSheet.create({
   updateProfileBtn: {
     marginTop: 10,
     backgroundColor: "#5EC271",
-    border: "1px solid #5EC271",
     borderRadius: 10,
     width: 140,
     padding: 10,

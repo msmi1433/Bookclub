@@ -48,8 +48,8 @@ const Discussion: React.FC<{ route: any }> = ({ route }) => {
     <View style={styles.basicContainer}>
       <ScrollView>
         <Text>General Chat</Text>
-        {comments.map((comment) => {
-          return <CommentCard key="comment" comment={comment} />;
+        {comments.map((comment, index) => {
+          return <CommentCard key={`GeneralComment${index}`} comment={comment} />;
         })}
         <Text>Post a comment</Text>
         <TextInput
