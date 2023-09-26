@@ -6,6 +6,9 @@ import BookChat from "../screens/BookChat";
 import NextBook from "../screens/NextBook";
 import React from "react";
 import { UserProvider } from "../usercontext";
+import Header from "../components/Header";
+
+import OtherProfile from "../screens/OtherProfile";
 
 const Stack = createNativeStackNavigator();
 
@@ -14,10 +17,11 @@ const StackBookClubs = () => {
    <UserProvider>
     <Stack.Navigator
       screenOptions={{
-        headerTitle: "Book Club",
+        headerTitle:  () => <Header></Header> ,
         headerStyle: {
-          backgroundColor: "darkblue",
+          backgroundColor: "#424B54"
         },
+        headerTitleAlign:"center",
         headerTintColor: "white",
         headerTitleStyle: {
           fontWeight: "bold",
@@ -29,6 +33,7 @@ const StackBookClubs = () => {
       <Stack.Screen name="General Chat" component={GeneralChat} />
       <Stack.Screen name="Book Chat" component={BookChat} />
       <Stack.Screen name="Next Book" component={NextBook} />
+      <Stack.Screen name="User Profile" component={OtherProfile}/>
     </Stack.Navigator>
   </UserProvider>
   );
