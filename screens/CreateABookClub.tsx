@@ -2,6 +2,7 @@ import { View, Text, Button, TextInput } from "react-native";
 import { styles } from "../stylesheet";
 import { useState } from "react";
 import { createBookClub } from "../addingData";
+import React from "react";
 
 const CreateABookClub = () => {
   const [name, setName] = useState("");
@@ -16,6 +17,19 @@ const CreateABookClub = () => {
       description: description,
       img_url: img_url,
       genre: genre,
+      current_read: {
+        author: '',
+        book_name: '',
+        description: '',
+        img_url: 'http://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pulsecarshalton.co.uk%2Fhome-v1%2Fimage-placeholder%2F&psig=AOvVaw37Hc93eITWyLv4fP6vV9LA&ust=1695824059215000&source=images&cd=vfe&opi=89978449&ved=0CA8QjRxqFwoTCOjPrYe7yIEDFQAAAAAdAAAAABAE'
+      },
+      members: [],
+      next_read: {
+        author: '',
+        book_name: '',
+        description:'',
+        img_url: "http://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pulsecarshalton.co.uk%2Fhome-v1%2Fimage-placeholder%2F&psig=AOvVaw37Hc93eITWyLv4fP6vV9LA&ust=1695824059215000&source=images&cd=vfe&opi=89978449&ved=0CA8QjRxqFwoTCOjPrYe7yIEDFQAAAAAdAAAAABAE"
+      }
     };
     createBookClub(clubData)
       .then(() => {

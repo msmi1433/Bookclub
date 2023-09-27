@@ -15,6 +15,7 @@ import { useContext } from "react";
 import { UserContext } from "../usercontext";
 import { useFocusEffect } from "@react-navigation/native";
 import React from "react";
+import BookclubEmptyState from "../components/BookclubEmptyState";
 
 import { getSingleDoc, checkIfMember, getCollection } from "../gettingData";
 import { leaveJoinClub } from "../addingData";
@@ -111,9 +112,9 @@ export const SingleBookClubPage: React.FC<{
         source={{ uri: currentBookClub.img_url }}
       />
       <Text style={styles.basicContainer}>
-        BOOK CLUB DESCRIPTION: {currentBookClub.description}
+        BOOK CLUB DESCRIPTION: {currentBookClub.description} 
       </Text>
-      <SingleBook singleBook={currentBookClub.current_read} />
+      {currentBookClub.current_read.book_name ? <SingleBook singleBook={currentBookClub.current_read} /> : <BookclubEmptyState />}
       <View>
         <GestureRecognizer
           style={{ flex: 1 }}
@@ -182,14 +183,22 @@ export const SingleBookClubPage: React.FC<{
 
       <Pressable
         style={styles.button}
-        onPress={() =>
-          navigation.navigate("Next Book", {
-            bookclub: currentBookClub,
-            bookclub_id: bookclub_id,
-          })
+        onPress={() => {
+          if(currentBookClub.current_read.book_name) {
+            navigation.navigate("Next Book", {
+              bookclub: currentBookClub,
+              bookclub_id: bookclub_id,
+            })
+          } else {
+            navigation.navigate('First Book', {
+              bookclub: currentBookClub,
+              bookclub_id: bookclub_id,
+            })
+          }
         }
+      }
       >
-        <Text style={styles.buttonText}>Take a peek at next week's read</Text>
+        <Text style={styles.buttonText}>{currentBookClub.current_read.book_name ? `Take a peek at next week's read` : `Pick the club's first book!`}</Text>
       </Pressable>
 
       {isUserMember === null ? null : (

@@ -305,5 +305,8 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-around",
     margin: 8,
+  },
+  openBook: {
+    alignSelf: 'center',
   }
 });

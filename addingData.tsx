@@ -81,6 +81,35 @@ export const setNextRead = (
     });
 };
 
+export const setFirstRead = (
+  book: {
+    title: string;
+    authors: string;
+    description: string;
+    coverImg: string;
+    averageRating: string | number;
+  },
+  bookclubId: string,
+  stateSetter: Function
+) => {
+  const docRef = doc(db, "bookclubs", bookclubId);
+  return updateDoc(docRef, {
+    current_read: {
+      author: book.authors,
+      description: book.description,
+      book_name: book.title,
+      img_url: book.coverImg,
+    },
+  })
+    .then(() => {
+      stateSetter({
+        author: book.authors,
+        description: book.description,
+        book_name: book.title,
+        img_url: book.coverImg,
+      });
+    });
+};
 
 export const setFaveBook = (
   book: {

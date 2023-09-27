@@ -4,6 +4,7 @@ import Home from "../screens/Home";
 import GeneralChat from "../screens/GeneralChat"
 import BookChat from "../screens/BookChat";
 import NextBook from "../screens/NextBook";
+import { FirstBook } from "../screens/FirstBook";
 import React from "react";
 import { UserProvider } from "../usercontext";
 import Header from "../components/Header";
@@ -33,6 +34,7 @@ const StackBookClubs = () => {
       <Stack.Screen name="General Chat" component={GeneralChat} />
       <Stack.Screen name="Book Chat" component={BookChat} />
       <Stack.Screen name="Next Book" component={NextBook} />
+      <Stack.Screen name="First Book" component={FirstBook} />
       <Stack.Screen name="User Profile" component={OtherProfile}/>
     </Stack.Navigator>
   </UserProvider>
