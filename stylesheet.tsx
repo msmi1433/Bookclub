@@ -187,7 +187,6 @@ export const styles = StyleSheet.create({
   },
   profilePage:{
     flexDirection: "column",
-    borderWidth: 5,
     padding: 10,
     flex: 1,
     backgroundColor:"#FFEBCD",
@@ -221,9 +220,8 @@ profileBio: {
   },
   favouriteBookImages: {
     flexDirection: "column",
-    width: 100,
-    height: 150,
-    borderWidth: 2,
+    width: 109,
+    height: 156,
   },
   favebookcard: {
     flexDirection: "column",

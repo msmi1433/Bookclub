@@ -8,7 +8,8 @@ const ProfileContainer: React.FC<{ user: { user_bio: string } }> = ({
 }) => {
   return (
     <View style={styles.profileBio}>
-      <Text style={{fontSize:16}}>{user.user_bio}</Text>
+      <Text style={{fontSize:14, fontWeight:"600"}}>About me: </Text>
+      <Text style={{fontSize:16, }}>{user.user_bio}</Text>
     </View>
   );
 };
