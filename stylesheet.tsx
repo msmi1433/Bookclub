@@ -113,6 +113,22 @@ export const styles = StyleSheet.create({
   giantText: {
     fontSize: 100,
   },
+  // Discover page
+  findaBookClub: {
+    marginTop: 6,
+    marginBottom: 12,
+    color: "#000",
+    textAlign: "center",
+    paddingTop: 16,
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+  findaBookClubContainer: {
+    marginLeft: 40,
+    marginRight: 10,
+    marginTop: 10,
+    marginBottom: 10,
+  },
 
   // Update profile
 
@@ -149,7 +165,6 @@ export const styles = StyleSheet.create({
     padding: 10,
     marginBottom: 20,
     backgroundColor: "#fff",
-
   },
   updateFavButton: {
     marginTop: 10,
@@ -186,7 +201,7 @@ export const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginTop: 20,
-    marginBottom:20
+    marginBottom: 20,
   },
 
   searchResultsContainer: {
@@ -221,7 +236,6 @@ export const styles = StyleSheet.create({
     padding: 10,
     flex: 1,
     backgroundColor: "#FFEBCD",
-
   },
 
   usernameContainer: {
@@ -285,7 +299,6 @@ export const styles = StyleSheet.create({
     width: 200,
   },
 
-
   header: {
     textAlign: "center",
     fontSize: 36,
@@ -347,7 +360,6 @@ export const styles = StyleSheet.create({
     fontSize: 15,
   },
 
-
   //Current Read
   bookImage: {
     height: 135,
@@ -398,6 +410,4 @@ export const styles = StyleSheet.create({
     justifyContent: "space-around",
     margin: 8,
   },
-
-
 });
