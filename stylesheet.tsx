@@ -53,7 +53,7 @@ export const styles = StyleSheet.create({
     paddingLeft: 16,
   },
   commentInput: {
-    height: 200,
+    height: 100,
     borderRadius: 5,
     width: 300,
     overflow: "hidden",
@@ -197,7 +197,9 @@ export const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "space-evenly",
+    marginBottom: 25,
     margin: 20,
+
   },
   profileBio: {
     marginLeft: 20,
@@ -258,6 +260,61 @@ export const styles = StyleSheet.create({
     paddingVertical: 36,
     paddingHorizontal: 32,
   },
+
+  //comment pages
+  commentPageTitle: {
+    fontSize: 25,
+    fontWeight: "bold",
+    textAlign: "center",
+    margin: 10,
+  },
+  postCommentBox: {
+    flex: 1,
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  commentTitleInput: {
+    height: 35,
+    borderRadius: 5,
+    width: 300,
+    overflow: "hidden",
+    backgroundColor: "#fff",
+    marginTop: 10,
+    marginBottom: 5,
+    marginLeft: 30,
+    marginRight: 30,
+    paddingLeft: 16,
+  },
+  commentTitle: {
+    fontWeight: "bold",
+    fontSize: 18,
+  },
+  commentContainer: {
+    flex: 1,
+    flexDirection: "column",
+    gap: 10,
+    borderColor: "#544d4d",
+    borderWidth: 1.5,
+    borderRadius: 5,
+    margin: 8,
+    padding: 5,
+  },
+  commentMetadata: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    fontWeight: "bold",
+    marginTop: 15,
+  },
+  commentMetadataText: {
+    fontWeight: "bold",
+    color: "#544d4d",
+    fontSize: 13,
+  },
+  commentText: {
+    fontSize: 15,
+  },
+
 
   //Current Read
   bookImage: {
