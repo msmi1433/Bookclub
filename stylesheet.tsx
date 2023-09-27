@@ -223,23 +223,13 @@ export const styles = StyleSheet.create({
     backgroundColor: "#FFEBCD",
 
   },
-  profileBio: {
-    marginLeft: 20,
-    marginRight: 20,
-    marginBottom: 20,
-    alignItems: "center",
-    borderWidth: 2,
-    borderStyle: "dotted",
-  },
 
-  },
-  username: {
+  usernameContainer: {
     flex: 1,
     alignItems: "center",
     justifyContent: "space-evenly",
     marginBottom: 25,
     margin: 20,
-
   },
   profileBio: {
     marginLeft: 20,
