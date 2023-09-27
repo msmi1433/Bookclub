@@ -119,6 +119,8 @@ export const styles = StyleSheet.create({
     borderRadius: 5,
     padding: 10,
     marginBottom: 20,
+    backgroundColor: "#fff",
+
   },
   updateFavButton: {
     marginTop: 10,
@@ -155,6 +157,7 @@ export const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginTop: 20,
+    marginBottom:20
   },
 
   searchResultsContainer: {
@@ -305,5 +308,6 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-around",
     margin: 8,
-  }
+  },
+
 });
