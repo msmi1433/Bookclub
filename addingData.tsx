@@ -55,11 +55,15 @@ export const setNextRead = (
   const docRef = doc(db, "bookclubs", bookclubId);
   return getDoc(docRef)
     .then((bookclubDoc: { data: Function }) => {
-      const bookclub: { next_read: {} } = bookclubDoc.data();
+      const bookclub: { next_read: { author: string } } = bookclubDoc.data();
       return bookclub.next_read;
     })
-    .then((newCurrentRead: Object) => {
-      updateDoc(docRef, { current_read: newCurrentRead });
+    .then((newCurrentRead) => {
+      if (newCurrentRead.author !== "") {
+        updateDoc(docRef, { current_read: newCurrentRead });
+      } else {
+        return;
+      }
     })
     .then(() => {
       updateDoc(docRef, {
@@ -81,6 +85,34 @@ export const setNextRead = (
     });
 };
 
+export const setFirstRead = (
+  book: {
+    title: string;
+    authors: string;
+    description: string;
+    coverImg: string;
+    averageRating: string | number;
+  },
+  bookclubId: string,
+  stateSetter: Function
+) => {
+  const docRef = doc(db, "bookclubs", bookclubId);
+  return updateDoc(docRef, {
+    current_read: {
+      author: book.authors,
+      description: book.description,
+      book_name: book.title,
+      img_url: book.coverImg,
+    },
+  }).then(() => {
+    stateSetter({
+      author: book.authors,
+      description: book.description,
+      book_name: book.title,
+      img_url: book.coverImg,
+    });
+  });
+};
 
 export const setFaveBook = (
   book: {
@@ -108,24 +140,29 @@ export const setFaveBook = (
 export const leaveJoinClub = (
   uid: string,
   bookclubId: string,
-  isUserMember: boolean 
+  isUserMember: boolean
 ) => {
   const docRef = doc(db, "users", uid);
-  return getDoc(docRef).then((returnedDoc) => {
-    return returnedDoc.data();
-  })
-  .then((doc) => {
-    if(doc) {
-      const currentClubs = doc.user_bookclubs
-      return currentClubs
-    }
-  })
-  .then((currentClubs) => {
-    if (!isUserMember) {
-      return updateDoc(docRef, {user_bookclubs: [...currentClubs, bookclubId]})
-    } else {
-      const newClubs = currentClubs.filter((club: string) => club !== bookclubId)
-      return updateDoc(docRef, {user_bookclubs: newClubs})
-    }
-  });
+  return getDoc(docRef)
+    .then((returnedDoc) => {
+      return returnedDoc.data();
+    })
+    .then((doc) => {
+      if (doc) {
+        const currentClubs = doc.user_bookclubs;
+        return currentClubs;
+      }
+    })
+    .then((currentClubs) => {
+      if (!isUserMember) {
+        return updateDoc(docRef, {
+          user_bookclubs: [...currentClubs, bookclubId],
+        });
+      } else {
+        const newClubs = currentClubs.filter(
+          (club: string) => club !== bookclubId
+        );
+        return updateDoc(docRef, { user_bookclubs: newClubs });
+      }
+    });
 };

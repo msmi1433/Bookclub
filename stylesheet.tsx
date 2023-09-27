@@ -18,7 +18,6 @@ export const styles = StyleSheet.create({
     width: 60,
     height: 60,
     borderRadius: 100,
-    
   },
   username: {
     fontSize: 18,
@@ -484,5 +483,9 @@ export const styles = StyleSheet.create({
   singleBookclubDescriptionText: {
     textAlign: "center",
     fontSize: 17,
+  },
+
+  openBook: {
+    alignSelf: "center",
   },
 });
