@@ -1,10 +1,12 @@
-import { View, Text, Button, TextInput } from "react-native";
+import { View, Text, Pressable, TextInput, ScrollView, Image } from "react-native";
 import { styles } from "../stylesheet";
 import { useState } from "react";
 import { createBookClub } from "../addingData";
 import React from "react";
+import Icon from 'react-native-vector-icons/Feather'
 
-const CreateABookClub = () => {
+
+const CreateABookClub: React.FC<{navigation: any}> = ({navigation}) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [img_url, setImg_url] = useState("");
@@ -45,14 +47,23 @@ const CreateABookClub = () => {
   };
   if (isCreated) {
     return (
-      <Text>
-        Success, your club has been created! Go to find book clubs to find it
+      <ScrollView>
+      <View style={styles.formContainer}>
+      <Text style={styles.singleBookclubTitle}>
+        Success!
       </Text>
+      <Icon name='check-circle' size={100} color='green' style={{padding: 40}}/>
+      <Pressable style={styles.button} onPress={() => navigation.navigate('Discover Home')}>
+        <Text style={styles.buttonText}>Go back</Text>
+      </Pressable>
+      </View>
+      </ScrollView>
     );
   } else
     return (
-      <View>
-        <Text>Create your club!</Text>
+      <ScrollView>
+      <View style={styles.formContainer}>
+        <Text style={styles.singleBookclubTitle}>Create your club!</Text>
         <TextInput
           style={styles.input}
           placeholder="Name"
@@ -85,8 +96,11 @@ const CreateABookClub = () => {
             setGenre(text);
           }}
         />
-        <Button title="Submit" onPress={handleSubmit} />
+        <Pressable style={styles.button} onPress={handleSubmit}>
+          <Text style={styles.buttonText}>Create club</Text>
+        </Pressable>
       </View>
+      </ScrollView>
     );
 };
 
