@@ -9,6 +9,7 @@ import {
   getFirestore,
   query,
   where,
+  orderBy,
   updateDoc,
 } from "firebase/firestore";
 
@@ -121,8 +122,11 @@ export const getComments = (
   chatBoard: string,
   setStateFn: Function
 ) => {
-  const collRef = collection(db, "bookclubs", docId, chatBoard);
-  return getDocs(collRef)
+  const q = query(
+    collection(db, "bookclubs", docId, chatBoard),
+    orderBy("date", "desc")
+  );
+  return getDocs(q)
     .then((comments) => {
       return comments.docs.map((doc) => doc.data());
     })
