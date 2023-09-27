@@ -190,7 +190,6 @@ export const styles = StyleSheet.create({
     padding: 10,
     flex: 1,
     backgroundColor:"#FFEBCD",
-    marginBottom:70
   },
   username: {
   flex: 1,
