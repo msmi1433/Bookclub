@@ -81,6 +81,30 @@ export const setNextRead = (
     });
 };
 
+
+export const setFaveBook = (
+  book: {
+    title: string;
+    authors: string;
+    description: string;
+    coverImg: string;
+    averageRating: string | number;
+  },
+  userId: string,
+  arrayId: number,
+  faveBooks: {}[]
+) => {
+  const formattedBook = {
+    book_author: book.authors,
+    book_img: book.coverImg,
+    book_title: book.title,
+  };
+  const updatedFaveBooks = [...faveBooks];
+  updatedFaveBooks.splice(arrayId, 1, formattedBook);
+  const docRef = doc(db, "users", userId);
+  updateDoc(docRef, { user_fave_books: updatedFaveBooks });
+};
+
 export const leaveJoinClub = (
   uid: string,
   bookclubId: string,
