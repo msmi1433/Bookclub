@@ -2,35 +2,65 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   // Home page
   bookContainer: {
-    marginTop: 20,
-    height: "100%",
-    backgroundColor: "#f4f4f4",
-    padding: 20,
+    flex: 1,
+    marginTop: 10,
+    alignItems: "center",
+    justifyContent: "center",
   },
-  homeUserContainer: {
+  userInfoContainer: {
+    marginTop: 20,
+    marginBottom: 16,
     flexDirection: "row",
     alignItems: "center",
   },
   userImage: {
-    marginRight: 10,
-    width: 50,
-    height: 50,
-    borderRadius: 50,
+    marginRight: 15,
+    width: 60,
+    height: 60,
+    borderRadius: 100,
+    
   },
-  homeUsername: {
+  username: {
     fontSize: 18,
     fontWeight: "bold",
-    color: "#000000",
-    textAlign: "center",
   },
-  book: {
-    backgroundColor: "#0168d9",
+  userBio: {
+    fontSize: 18,
+    maxWidth: 300,
+  },
+  bookclubContainer: {
+    marginTop: 10,
+    marginBottom: 10,
+    width: "100%",
+    height: 200,
+    backgroundColor: "#FFEBCD",
+    borderRadius: 10,
+    shadowColor: "#FFEBCD",
     borderWidth: 1,
-    borderColor: "#6fb1f7",
-    borderRadius: 8,
-    paddingVertical: 30,
-    paddingHorizontal: 20,
-    marginBottom: 16,
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    borderColor: "#C5BAAF",
+  },
+  bookclubImageContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 15,
+  },
+  bookclubImage: {
+    width: 140,
+    height: 120,
+    borderRadius: 10,
+    resizeMode: "con",
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    marginBottom: 10,
+  },
+  bookclubName: {
+    textAlign: "center",
+    paddingTop: 16,
+    fontSize: 18,
+    fontWeight: "bold",
   },
 
   bookText: {
@@ -83,6 +113,19 @@ export const styles = StyleSheet.create({
   },
   giantText: {
     fontSize: 100,
+  },
+  // Discover page
+  findaBookClub: {
+    marginBottom: 12,
+    color: "#000",
+    textAlign: "center",
+    paddingTop: 16,
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+  findaBookClubContainer: {
+    flex: 1,
+    padding: 20,
   },
 
   // Update profile
@@ -192,7 +235,8 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#FFEBCD",
   },
-  username: {
+
+  usernameContainer: {
     flex: 1,
     alignItems: "center",
     justifyContent: "space-evenly",
@@ -210,6 +254,7 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     textAlign: "center",
   },
+
   scrollContainer: {
     flexGrow: 1,
     justifyContent: "center",
@@ -368,7 +413,6 @@ export const styles = StyleSheet.create({
     justifyContent: "space-around",
     margin: 8,
   },
-
   //modal
   modal: {
     backgroundColor: "#FFEBCD",
