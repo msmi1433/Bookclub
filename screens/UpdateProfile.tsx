@@ -102,26 +102,28 @@ const UpdateProfile: React.FC<{ navigation: any }> = ({ navigation }) => {
             navigation.navigate("ProfilePage", { userId: user.user_user_id })
           }
         >
-          <Text style={styles.backProfileBtn}>Back to Profile</Text>
+          <Text style={styles.button}>Back to Profile</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={handleSubmit}>
-          <Text style={styles.updateProfileBtn}>Update Profile</Text>
+          <Text style={styles.button}>Update Profile</Text>
         </TouchableOpacity>
       </View>
-      <View>
-        <Text>Add your 3 desert island books...</Text>
-        <View>
-          <Text>Book 1</Text>
-          <View>
-            <Image
-              source={{ uri: faveBooksState[0].book_img }}
-              style={{ width: 100, height: 150 }}
-            />
-            <Text>{faveBooksState[0].book_title}</Text>
-            <Text>{faveBooksState[0].book_author}</Text>
-          </View>
+
+      <View style={styles.nextBookHeader}>
+        {/* Book1 */}
+        <View style={styles.nextBookByHeader}>
+          <Image
+            source={{ uri: faveBooksState[0].book_img }}
+            style={styles.bookImage}
+          />
+          {/* <Text style={styles.bookNameTextUpdate}>
+            {faveBooksState[0].book_title}
+          </Text>
+          <Text style={styles.bookAuthorTextUpdate}>
+            by {faveBooksState[0].book_author}
+          </Text> */}
           <Button
-            title="Edit book 1"
+            title="Edit"
             onPress={() => {
               navigation.navigate("Desert Island Book Selection", {
                 arrayId: 0,
@@ -131,18 +133,21 @@ const UpdateProfile: React.FC<{ navigation: any }> = ({ navigation }) => {
             }}
           />
         </View>
-        <View>
-          <Text>Book 2</Text>
-          <View>
-            <Image
-              source={{ uri: faveBooksState[1].book_img }}
-              style={{ width: 100, height: 150 }}
-            />
-            <Text>{faveBooksState[1].book_title}</Text>
-            <Text>{faveBooksState[1].book_author}</Text>
-          </View>
+
+        {/* Book2 */}
+        <View style={styles.nextBookByHeader}>
+          <Image
+            source={{ uri: faveBooksState[1].book_img }}
+            style={styles.bookImage}
+          />
+          {/* <Text style={styles.bookNameTextUpdate}>
+            {faveBooksState[1].book_title}
+          </Text>
+          <Text style={styles.bookAuthorTextUpdate}>
+            by {faveBooksState[1].book_author}
+          </Text> */}
           <Button
-            title="Edit book 2"
+            title="Edit"
             onPress={() => {
               navigation.navigate("Desert Island Book Selection", {
                 arrayId: 1,
@@ -152,18 +157,21 @@ const UpdateProfile: React.FC<{ navigation: any }> = ({ navigation }) => {
             }}
           />
         </View>
-        <View>
-          <Text>Book 3</Text>
-          <View>
-            <Image
-              source={{ uri: faveBooksState[2].book_img }}
-              style={{ width: 100, height: 150 }}
-            />
-            <Text>{faveBooksState[2].book_title}</Text>
-            <Text>{faveBooksState[2].book_author}</Text>
-          </View>
+
+        {/* Book3 */}
+        <View style={styles.nextBookByHeader}>
+          <Image
+            source={{ uri: faveBooksState[2].book_img }}
+            style={styles.bookImage}
+          />
+          {/* <Text style={styles.bookNameTextUpdate}>
+            {faveBooksState[2].book_title}
+          </Text>
+          <Text style={styles.bookAuthorTextUpdate}>
+            by {faveBooksState[2].book_author}
+          </Text> */}
           <Button
-            title="Edit book 3"
+            title="Edit"
             onPress={() => {
               navigation.navigate("Desert Island Book Selection", {
                 arrayId: 2,
