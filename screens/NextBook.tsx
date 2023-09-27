@@ -1,7 +1,8 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, ScrollView } from "react-native";
 import React, { useDebugValue, useEffect, useState } from "react";
 import BookSearch from "../components/BookSearch";
 import { setNextRead } from "../addingData";
+import { styles } from "../stylesheet";
 
 type RouteParams = {
   route: {
@@ -26,23 +27,37 @@ const NextBook: React.FC<RouteParams> = ({ route }: RouteParams) => {
   const [nextReadState, setNextReadState] = useState(next_read);
 
   return (
-    <View>
-      <Text>NextBook</Text>
+   <ScrollView>
+
+   
+   <View>
+      
       <BookSearch
         callbackFn={setNextRead}
         stateSetter={setNextReadState}
         bookclub_id={bookclub_id}
       />
       <Text>To change the next read, please use the search bar above.</Text>
-      <Text>Our next read is...</Text>
-      <Image
-        source={{ uri: nextReadState.img_url }}
-        style={{ width: 100, height: 150 }}
-      />
-      <Text>{nextReadState.book_name}</Text>
-      <Text>{nextReadState.author}</Text>
-      <Text>{nextReadState.description}</Text>
+      <Text style={styles.header}> Upcoming Book</Text>
+
+      <View style={styles.currentBookContainer}>
+        <Text style={styles.currentBookText}>Our next read is...</Text>
+        <View style={styles.nextBookHeader}>
+          <Image
+            source={{ uri: nextReadState.img_url }}
+            style={styles.bookImage}
+          />
+          <View style={styles.nextBookByHeader}>
+            <Text style={styles.bookNameText}>{nextReadState.book_name}</Text>
+            <Text style={styles.bookAuthorText}>by {nextReadState.author}</Text>
+          </View>
+        </View>
+      <Text style={styles.bookDescriptionText}>
+        {nextReadState.description}
+      </Text>
+      </View>
     </View>
+    </ScrollView>
   );
 };
 

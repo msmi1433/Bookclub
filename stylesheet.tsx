@@ -246,10 +246,13 @@ export const styles = StyleSheet.create({
   profileBio: {
     marginLeft: 20,
     marginRight: 20,
-    marginBottom: 20,
+    marginBottom: 10,
     alignItems: "center",
     borderWidth: 2,
     borderStyle: "dotted",
+    padding: 10,
+    borderRadius: 10,
+    textAlign: "center",
   },
 
   scrollContainer: {
@@ -268,6 +271,7 @@ export const styles = StyleSheet.create({
     flexDirection: "column",
     width: 109,
     height: 156,
+    borderRadius: 10,
   },
   favebookcard: {
     flexDirection: "column",
@@ -302,6 +306,7 @@ export const styles = StyleSheet.create({
     fontSize: 36,
     paddingVertical: 36,
     paddingHorizontal: 32,
+    fontWeight: "bold",
   },
 
   //comment pages
@@ -366,7 +371,7 @@ export const styles = StyleSheet.create({
   },
   currentBookContainer: {
     flex: 1,
-    paddingBottom: 60,
+    paddingBottom: 20,
     margin: 20,
     flexDirection: "column",
   },
@@ -407,5 +412,77 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-around",
     margin: 8,
+  },
+  //modal
+  modal: {
+    backgroundColor: "#FFEBCD",
+    flex: 1,
+    paddingTop: 50,
+    alignItems: "center",
+  },
+  modalText: {
+    color: "#424B54",
+    fontWeight: "bold",
+    fontSize: 30,
+  },
+  modalHeaderText: {
+    color: "black",
+    fontWeight: "bold",
+    textAlign: "center",
+    fontSize: 21,
+    paddingTop: 20,
+    paddingBottom: 25,
+  },
+  modalImage: {
+    height: 100,
+    width: 100,
+    borderRadius: 100,
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: "flex-start",
+  },
+  modalProfileInfo: {
+    flex: 1,
+    alignItems: "center",
+    gap: 15,
+  },
+  modalCloseButton: {
+    marginRight: 370,
+  },
+  modalCloseButtonText: {
+    fontWeight: "bold",
+    fontSize: 18,
+  },
+  //Single bookclub page
+  singleBookclubHeader: {
+    flex: 1,
+    alignItems: "center",
+    gap: 30,
+  },
+  singleBookclubTitle: {
+    marginTop: 30,
+    fontSize: 30,
+    fontWeight: "bold",
+  },
+  singleBookclubImage: {
+    width: 200,
+    height: 200,
+    borderRadius: 10,
+    alignItems: "center",
+  },
+  singleBookclubDescriptionBox: {
+    marginLeft: 20,
+    marginRight: 20,
+    marginBottom: 10,
+    alignItems: "center",
+    borderWidth: 2,
+    borderStyle: "dotted",
+    padding: 10,
+    borderRadius: 10,
+  },
+  singleBookclubDescriptionText: {
+    textAlign: "center",
+    fontSize: 17,
   },
 });
