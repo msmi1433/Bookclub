@@ -101,17 +101,17 @@ export const SingleBookClubPage: React.FC<{
 
   return (
     <ScrollView nestedScrollEnabled={true}>
-      <Text style={styles.basicContainer}>
+      <Text style={{padding:10}}>
         {" "}
-        BOOK CLUB NAME {currentBookClub.name}{" "}
+        {currentBookClub.name}{" "}
       </Text>
 
       <Image
-        style={styles.basicImage}
+        style={{width:300, height:300, borderRadius:10, alignItems:"center" }}
         source={{ uri: currentBookClub.img_url }}
       />
-      <Text style={styles.basicContainer}>
-        BOOK CLUB DESCRIPTION: {currentBookClub.description}
+      <Text style={styles.profileBio}>
+        {currentBookClub.description}
       </Text>
       <SingleBook singleBook={currentBookClub.current_read} />
       <View>
