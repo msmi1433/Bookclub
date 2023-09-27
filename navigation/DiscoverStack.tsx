@@ -4,6 +4,8 @@ import CreateABookClub from "../screens/CreateABookClub";
 import Discover from "../screens/Discover";
 import FindABookClub from "../screens/FindABookClub";
 import { UserProvider } from "../usercontext";
+import Header from "../components/Header";
+import { SingleBookClubPage } from "../screens/SingleBookClubPage";
 
 const Stack = createNativeStackNavigator();
 
@@ -12,19 +14,17 @@ const DiscoverStack = () => {
     <UserProvider>
       <Stack.Navigator
         screenOptions={{
-          headerTitle: "Book Club",
+          headerTitle:  () => <Header></Header> ,
           headerStyle: {
-            backgroundColor: "darkblue",
+            backgroundColor: "#424B54"
           },
-          headerTintColor: "white",
-          headerTitleStyle: {
-            fontWeight: "bold",
-          },
+          headerTitleAlign:"center",
         }}
       >
         <Stack.Screen name="Discover Home" component={Discover} />
         <Stack.Screen name="Create a book club" component={CreateABookClub} />
         <Stack.Screen name="Find a book club" component={FindABookClub} />
+        <Stack.Screen name="SingleBookClubPage" component={SingleBookClubPage} />
       </Stack.Navigator>
     </UserProvider>
   );

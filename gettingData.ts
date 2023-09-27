@@ -9,6 +9,7 @@ import {
   getFirestore,
   query,
   where,
+  updateDoc,
 } from "firebase/firestore";
 
 export const getCollection = (collectionName: string, setStateFn: Function) => {
@@ -44,13 +45,10 @@ export const getJoinableClubs = (
   const collRef = collection(db, collectionName);
   return getDocs(collRef)
     .then((coll) => {
-      return coll.docs.map((doc) => doc.data());
+      return coll.docs.map((doc) => doc.id);
     })
-    .then((mappedColl) => {
-      const bookclubs = mappedColl.map((bookclub) => {
-        return bookclub.name;
-      });
-      setStateFn(bookclubs);
+    .then((docIds) => {
+      setStateFn(docIds);
     });
 };
 
@@ -142,4 +140,18 @@ export const getUsers = (username: string) => {
     const mappedUsers = users.docs.map((doc) => doc.data());
     return mappedUsers;
   });
+};
+
+export const checkIfMember = (uid: string, bookclubId: string) => {
+  const docRef = doc(db, "users", uid);
+  return getDoc(docRef)
+    .then((returnedDoc) => {
+      return returnedDoc.data();
+    })
+    .then((returnedData) => {
+      if (returnedData) {
+        const userClubs = returnedData.user_bookclubs;
+        return userClubs.includes(bookclubId);
+      }
+    });
 };

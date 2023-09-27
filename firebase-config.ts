@@ -1,6 +1,9 @@
 import { initializeApp } from "firebase/app";
 import {getFirestore} from 'firebase/firestore'
 import {getAuth} from 'firebase/auth'
+// import { initializeAuth, getReactNativePersistence} from "firebase/auth";
+// import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage'
+//All comments on this page are for persistent auth, which is breaking the app for taryn.
 
 const firebaseConfig = {
   apiKey: "AIzaSyCNk8WaDgbrpLaHewgmn7mDNzR10zUuvPk",
@@ -15,5 +18,9 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app)
+
+// export const auth = initializeAuth(app, {
+//   persistence: getReactNativePersistence(ReactNativeAsyncStorage)
+// });
 
 export const db = getFirestore(app)

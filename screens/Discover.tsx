@@ -1,21 +1,29 @@
-import { View, Text, Button } from 'react-native'
-import React from 'react'
+import { View, Text, Button, Pressable, ScrollView } from "react-native";
+import React from "react";
+import { styles } from "../stylesheet";
 
-
-const Discover: React.FC<{navigation: any}> = ( {navigation} ) => {
+const Discover: React.FC<{ navigation: any }> = ({ navigation }) => {
   return (
     <View>
-      <Text>Discover</Text>
-      <Button
-        title="Create a Book Club"
-        onPress={() => navigation.navigate("Create a book club")}
-      />
-      <Button
-        title="Find a Book Club 🔍"
-        onPress={() => navigation.navigate("Find a book club")}
-      />
-    </View>
-  )
-}
+      <ScrollView>
+        <Text style={styles.header}>Discover</Text>
 
-export default Discover
+        <Pressable
+          style={styles.button}
+          onPress={() => navigation.navigate("Create a book club")}
+        >
+          <Text style={styles.buttonText}>Create a Book Club</Text>
+        </Pressable>
+
+        <Pressable
+          style={styles.button}
+          onPress={() => navigation.navigate("Find a book club")}
+        >
+          <Text style={styles.buttonText}>Find a Book Club 🔍</Text>
+        </Pressable>
+      </ScrollView>
+    </View>
+  );
+};
+
+export default Discover;

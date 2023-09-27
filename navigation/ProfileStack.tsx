@@ -5,6 +5,7 @@ import { UserProvider } from "../usercontext";
 import UpdateProfile from "../screens/UpdateProfile";
 import DesertIslandBookSelect from "../screens/DesertIslandBookSelect";
 import BookSearch from "../components/BookSearch";
+import Header from "../components/Header";
 
 const Stack = createNativeStackNavigator();
 
@@ -13,14 +14,11 @@ const ProfileStack = () => {
     <UserProvider>
       <Stack.Navigator
         screenOptions={{
-          headerTitle: "Book Club",
-          headerStyle: {
-            backgroundColor: "darkblue",
-          },
-          headerTintColor: "white",
-          headerTitleStyle: {
-            fontWeight: "bold",
-          },
+          headerTitle:  () => <Header></Header> ,
+        headerStyle: {
+          backgroundColor: "#424B54"
+        },
+        headerTitleAlign:"center",
         }}
       >
         <Stack.Screen name="ProfilePage" component={ProfilePage} />

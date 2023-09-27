@@ -1,19 +1,46 @@
 import { StyleSheet } from "react-native";
-
 export const styles = StyleSheet.create({
-  book: {
-    borderWidth: 5,
-    borderBlockColor: "blue",
-    flex: 0.2,
-    alignItems: "center",
-    justifyContent: "center",
-  },
+  
+  // Home page
   bookContainer: {
-    flexDirection: "column",
-    borderWidth: 1,
-    flex: 1,
-    justifyContent: "space-evenly",
+    marginTop: 20,
+    height: "100%",
+    backgroundColor: "#f4f4f4",
+    padding: 20,
   },
+  homeUserContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  userImage: {
+    marginRight: 10,
+    width: 50,
+    height: 50,
+    borderRadius: 50,
+  },
+  homeUsername: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#000000",
+    textAlign: "center",
+  },
+  book: {
+    backgroundColor: "#0168d9",
+    borderWidth: 1,
+    borderColor: "#6fb1f7",
+    borderRadius: 8,
+    paddingVertical: 30,
+    paddingHorizontal: 20,
+    marginBottom: 16,
+  },
+
+  bookText: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#fff",
+    textAlign: "center",
+  },
+
   input: {
     height: 48,
     borderRadius: 5,
@@ -41,6 +68,15 @@ export const styles = StyleSheet.create({
   basicImage: {
     height: 400,
     width: 400,
+  },
+  memberImage:{
+    height: 200,
+    width: 200,
+    borderRadius:50,
+  },
+  memberContainer:{
+    flex: 1,
+    padding: 50,
   },
   basicContainer: {
     flex: 1,
@@ -91,7 +127,6 @@ export const styles = StyleSheet.create({
   addBook: {
     marginTop: 10,
     backgroundColor: "#138496",
-    border: "1px solid #138496",
     padding: 6,
     borderRadius: 6,
     width: 100,
@@ -102,7 +137,6 @@ export const styles = StyleSheet.create({
   updateProfileBtn: {
     marginTop: 10,
     backgroundColor: "#5EC271",
-    border: "1px solid #5EC271",
     borderRadius: 10,
     width: 140,
     padding: 10,
@@ -151,4 +185,76 @@ export const styles = StyleSheet.create({
   searchAddBookButton: {
     flex: 1,
   },
+  profilePage:{
+    flexDirection: "column",
+    padding: 10,
+    flex: 1,
+    backgroundColor:"#FFEBCD",
+  },
+  username: {
+  flex: 1,
+  alignItems: 'center', 
+  justifyContent: "space-evenly",
+  margin:20,
+},
+profileBio: {
+  marginLeft:20,
+  marginRight:20,
+  marginBottom:20,
+  alignItems:"center",
+  borderWidth:2,
+  borderStyle:"dotted",
+  
+},
+  scrollContainer: {
+    flexGrow: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  favouriteBookContainer: {
+    flex: 1,
+    justifyContent: "space-between",
+    alignItems: "center",
+    margin: 4,
+    padding:2,
+  },
+  favouriteBookImages: {
+    flexDirection: "column",
+    width: 109,
+    height: 156,
+  },
+  favebookcard: {
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "space-around",
+    margin:8
+  },
+  button: {
+    flex: 1,
+    alignItems: "center",
+    marginLeft: 20,
+    marginRight: 20,
+    marginBottom: 10,
+    marginTop: 10,
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    backgroundColor: "#F7C17A",
+    borderRadius: 10,
+  },
+  buttonText: {
+    color: "#424B54",
+    fontWeight: "bold",
+  },
+
+  headerImage:{
+    height:40, 
+    width:200,
+  },
+
+  header: {
+   textAlign: "center",
+    fontSize: 36,
+    paddingVertical: 36,
+    paddingHorizontal: 32,
+  }
 });
