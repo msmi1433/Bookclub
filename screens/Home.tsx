@@ -37,7 +37,7 @@ const Home: React.FC<NavProps> = ({ navigation }) => {
 
   return (
     <View style={styles.bookContainer}>
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.userInfoContainer}>
           <Image
             source={{ uri: user.user_avatar_img }}

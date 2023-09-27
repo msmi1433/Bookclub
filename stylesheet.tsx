@@ -14,10 +14,11 @@ export const styles = StyleSheet.create({
     alignItems: "center",
   },
   userImage: {
-    marginRight: 10,
+    marginRight: 15,
     width: 60,
     height: 60,
     borderRadius: 100,
+    
   },
   username: {
     fontSize: 18,
