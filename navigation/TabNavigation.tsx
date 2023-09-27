@@ -9,7 +9,6 @@ import UpdateProfile from "../screens/UpdateProfile";
 
 import { Ionicons } from "@expo/vector-icons";
 
-
 const Tab = createBottomTabNavigator();
 const navTheme = DefaultTheme;
 navTheme.colors.background = "#ffebcd";
@@ -24,7 +23,12 @@ const TabNavigation: React.FC = () => {
           tabBarInactiveTintColor: "#424B54",
           tabBarActiveTintColor: "#F7C17A",
           headerShown: false,
-          tabBarStyle: { backgroundColor: "#ffebcd", position: "relative" },
+          tabBarStyle: {
+            backgroundColor: "#ffebcd",
+            borderTopColor: "#424B54",
+            borderTopWidth: 1,
+            borderLeftWidth: 0.2,
+          },
 
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;

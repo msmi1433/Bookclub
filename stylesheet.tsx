@@ -2,35 +2,64 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   // Home page
   bookContainer: {
-    marginTop: 20,
-    height: "100%",
-    backgroundColor: "#f4f4f4",
-    padding: 20,
+    flex: 1,
+    marginTop: 10,
+    alignItems: "center",
+    justifyContent: "center",
   },
-  homeUserContainer: {
+  userInfoContainer: {
+    marginTop: 20,
+    marginBottom: 16,
     flexDirection: "row",
     alignItems: "center",
   },
   userImage: {
-    marginRight: 10,
-    width: 50,
-    height: 50,
-    borderRadius: 50,
+    marginRight: 15,
+    width: 60,
+    height: 60,
+    borderRadius: 100,
   },
-  homeUsername: {
+  username: {
     fontSize: 18,
     fontWeight: "bold",
-    color: "#000000",
-    textAlign: "center",
   },
-  book: {
-    backgroundColor: "#0168d9",
+  userBio: {
+    fontSize: 18,
+    maxWidth: 300,
+  },
+  bookclubContainer: {
+    marginTop: 10,
+    marginBottom: 10,
+    width: "100%",
+    height: 200,
+    backgroundColor: "#FFEBCD",
+    borderRadius: 10,
+    shadowColor: "#FFEBCD",
     borderWidth: 1,
-    borderColor: "#6fb1f7",
-    borderRadius: 8,
-    paddingVertical: 30,
-    paddingHorizontal: 20,
-    marginBottom: 16,
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    borderColor: "#C5BAAF",
+  },
+  bookclubImageContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 15,
+  },
+  bookclubImage: {
+    width: 140,
+    height: 120,
+    borderRadius: 10,
+    resizeMode: "con",
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    marginBottom: 10,
+  },
+  bookclubName: {
+    textAlign: "center",
+    paddingTop: 16,
+    fontSize: 18,
+    fontWeight: "bold",
   },
 
   bookText: {
@@ -53,7 +82,7 @@ export const styles = StyleSheet.create({
     paddingLeft: 16,
   },
   commentInput: {
-    height: 200,
+    height: 100,
     borderRadius: 5,
     width: 300,
     overflow: "hidden",
@@ -83,6 +112,19 @@ export const styles = StyleSheet.create({
   },
   giantText: {
     fontSize: 100,
+  },
+  // Discover page
+  findaBookClub: {
+    marginBottom: 12,
+    color: "#000",
+    textAlign: "center",
+    paddingTop: 16,
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+  findaBookClubContainer: {
+    flex: 1,
+    padding: 20,
   },
 
   // Update profile
@@ -119,6 +161,7 @@ export const styles = StyleSheet.create({
     borderRadius: 5,
     padding: 10,
     marginBottom: 20,
+    backgroundColor: "#fff",
   },
   updateFavButton: {
     marginTop: 10,
@@ -155,6 +198,7 @@ export const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginTop: 20,
+    marginBottom: 20,
   },
 
   searchResultsContainer: {
@@ -190,20 +234,26 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#FFEBCD",
   },
-  username: {
+
+  usernameContainer: {
     flex: 1,
     alignItems: "center",
     justifyContent: "space-evenly",
+    marginBottom: 25,
     margin: 20,
   },
   profileBio: {
     marginLeft: 20,
     marginRight: 20,
-    marginBottom: 20,
+    marginBottom: 10,
     alignItems: "center",
     borderWidth: 2,
     borderStyle: "dotted",
+    padding: 10,
+    borderRadius: 10,
+    textAlign: "center",
   },
+
   scrollContainer: {
     flexGrow: 1,
     justifyContent: "center",
@@ -220,6 +270,7 @@ export const styles = StyleSheet.create({
     flexDirection: "column",
     width: 109,
     height: 156,
+    borderRadius: 10,
   },
   favebookcard: {
     flexDirection: "column",
@@ -254,6 +305,61 @@ export const styles = StyleSheet.create({
     fontSize: 36,
     paddingVertical: 36,
     paddingHorizontal: 32,
+    fontWeight: "bold",
+  },
+
+  //comment pages
+  commentPageTitle: {
+    fontSize: 25,
+    fontWeight: "bold",
+    textAlign: "center",
+    margin: 10,
+  },
+  postCommentBox: {
+    flex: 1,
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  commentTitleInput: {
+    height: 35,
+    borderRadius: 5,
+    width: 300,
+    overflow: "hidden",
+    backgroundColor: "#fff",
+    marginTop: 10,
+    marginBottom: 5,
+    marginLeft: 30,
+    marginRight: 30,
+    paddingLeft: 16,
+  },
+  commentTitle: {
+    fontWeight: "bold",
+    fontSize: 18,
+  },
+  commentContainer: {
+    flex: 1,
+    flexDirection: "column",
+    gap: 10,
+    borderColor: "#544d4d",
+    borderWidth: 1.5,
+    borderRadius: 5,
+    margin: 8,
+    padding: 5,
+  },
+  commentMetadata: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    fontWeight: "bold",
+    marginTop: 15,
+  },
+  commentMetadataText: {
+    fontWeight: "bold",
+    color: "#544d4d",
+    fontSize: 13,
+  },
+  commentText: {
+    fontSize: 15,
   },
 
   //Current Read
@@ -264,7 +370,7 @@ export const styles = StyleSheet.create({
   },
   currentBookContainer: {
     flex: 1,
-    paddingBottom: 60,
+    paddingBottom: 20,
     margin: 20,
     flexDirection: "column",
   },
@@ -306,7 +412,80 @@ export const styles = StyleSheet.create({
     justifyContent: "space-around",
     margin: 8,
   },
+  //modal
+  modal: {
+    backgroundColor: "#FFEBCD",
+    flex: 1,
+    paddingTop: 50,
+    alignItems: "center",
+  },
+  modalText: {
+    color: "#424B54",
+    fontWeight: "bold",
+    fontSize: 30,
+  },
+  modalHeaderText: {
+    color: "black",
+    fontWeight: "bold",
+    textAlign: "center",
+    fontSize: 21,
+    paddingTop: 20,
+    paddingBottom: 25,
+  },
+  modalImage: {
+    height: 100,
+    width: 100,
+    borderRadius: 100,
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: "flex-start",
+  },
+  modalProfileInfo: {
+    flex: 1,
+    alignItems: "center",
+    gap: 15,
+  },
+  modalCloseButton: {
+    marginRight: 370,
+  },
+  modalCloseButtonText: {
+    fontWeight: "bold",
+    fontSize: 18,
+  },
+  //Single bookclub page
+  singleBookclubHeader: {
+    flex: 1,
+    alignItems: "center",
+    gap: 30,
+  },
+  singleBookclubTitle: {
+    marginTop: 30,
+    fontSize: 30,
+    fontWeight: "bold",
+  },
+  singleBookclubImage: {
+    width: 200,
+    height: 200,
+    borderRadius: 10,
+    alignItems: "center",
+  },
+  singleBookclubDescriptionBox: {
+    marginLeft: 20,
+    marginRight: 20,
+    marginBottom: 10,
+    alignItems: "center",
+    borderWidth: 2,
+    borderStyle: "dotted",
+    padding: 10,
+    borderRadius: 10,
+  },
+  singleBookclubDescriptionText: {
+    textAlign: "center",
+    fontSize: 17,
+  },
+
   openBook: {
-    alignSelf: 'center',
-  }
+    alignSelf: "center",
+  },
 });

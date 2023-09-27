@@ -1,4 +1,4 @@
-import { View, ScrollView, Text, TextInput, Button } from "react-native";
+import { View, ScrollView, Text, TextInput, Pressable } from "react-native";
 import React from "react";
 import { useState, useEffect } from "react";
 import { getComments } from "../gettingData";
@@ -11,14 +11,14 @@ import { UserContext } from "../usercontext";
 import { getUser } from "../gettingData";
 
 const Discussion = ({
-  route
+  route,
 }: {
   route: { params: { bookclub_id: string } };
 }) => {
   const [comments, setComments] = useState([]);
   const [newCommentText, setNewCommentText] = useState("");
   const [newCommentTitle, setNewCommentTitle] = useState("");
- 
+
   const { uid } = useContext(UserContext);
   const [user, setUser] = useState<{ user_username: string }>({
     user_username: "",
@@ -44,7 +44,6 @@ const Discussion = ({
 
     addComment(bookclub_id, "book_chat", newComment)
       .then(() => {
-
         setNewCommentText("");
         setNewCommentTitle("");
       })
@@ -56,28 +55,33 @@ const Discussion = ({
   return (
     <View style={styles.basicContainer}>
       <ScrollView>
-        <Text>Chat about this weeks book</Text>
+        <Text style={styles.commentPageTitle}>
+          Chat about the current read!
+        </Text>
+        <View style={styles.postCommentBox}>
+          <TextInput
+            style={styles.commentTitleInput}
+            placeholder="Add a comment title..."
+            onChangeText={(text) => setNewCommentTitle(text)}
+            value={newCommentTitle}
+            multiline={true}
+            enablesReturnKeyAutomatically={true}
+          ></TextInput>
+          <TextInput
+            style={styles.commentInput}
+            placeholder="Add a comment..."
+            value={newCommentText}
+            onChangeText={(text) => setNewCommentText(text)}
+            multiline={true}
+            enablesReturnKeyAutomatically={true}
+          ></TextInput>
+          <Pressable style={styles.button} onPress={handleSubmit}>
+            <Text>Post comment</Text>
+          </Pressable>
+        </View>
         {comments.map((comment, index) => {
-          return <CommentCard key={`BookComment${index}`}comment={comment} />;
+          return <CommentCard key={`BookComment${index}`} comment={comment} />;
         })}
-        <Text>Post a comment</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="comment title"
-          onChangeText={(text) => setNewCommentTitle(text)}
-          value={newCommentTitle}
-          multiline={true}
-          enablesReturnKeyAutomatically={true}
-        ></TextInput>
-        <TextInput
-          style={styles.commentInput}
-          placeholder="add comment"
-          value={newCommentText}
-          onChangeText={(text) => setNewCommentText(text)}
-          multiline={true}
-          enablesReturnKeyAutomatically={true}
-        ></TextInput>
-        <Button title="SUBMIT" onPress={handleSubmit} />
       </ScrollView>
     </View>
   );

@@ -102,19 +102,23 @@ export const SingleBookClubPage: React.FC<{
 
   return (
     <ScrollView nestedScrollEnabled={true}>
-      <Text style={styles.basicContainer}>
-        {" "}
-        BOOK CLUB NAME {currentBookClub.name}{" "}
-      </Text>
-
-      <Image
-        style={styles.basicImage}
-        source={{ uri: currentBookClub.img_url }}
-      />
-      <Text style={styles.basicContainer}>
-        BOOK CLUB DESCRIPTION: {currentBookClub.description} 
-      </Text>
-      {currentBookClub.current_read.book_name ? <SingleBook singleBook={currentBookClub.current_read} /> : <BookclubEmptyState />}
+      <View style={styles.singleBookclubHeader}>
+        <Text style={styles.singleBookclubTitle}> {currentBookClub.name} </Text>
+        <Image
+          style={styles.singleBookclubImage}
+          source={{ uri: currentBookClub.img_url }}
+        />
+        <View style={styles.singleBookclubDescriptionBox}>
+          <Text style={styles.singleBookclubDescriptionText}>
+            {currentBookClub.description}
+          </Text>
+        </View>
+      </View>
+      {currentBookClub.current_read.book_name ? (
+        <SingleBook singleBook={currentBookClub.current_read} />
+      ) : (
+        <BookclubEmptyState />
+      )}
       <View>
         <GestureRecognizer
           style={{ flex: 1 }}
@@ -127,31 +131,36 @@ export const SingleBookClubPage: React.FC<{
               setModalVisible(!modalVisible);
             }}
           >
-            <View style={styles.memberContainer}>
+            <View style={styles.modal}>
+              <Pressable
+                style={styles.modalCloseButton}
+                onPress={() => setModalVisible(false)}
+              >
+                <Text style={styles.modalCloseButtonText}>X</Text>
+              </Pressable>
+              <Text style={styles.modalHeaderText}>
+                Click on a member to view their profile
+              </Text>
               {membersNestedArray.map((member) => {
                 return (
-                  <View style={styles.memberContainer} key={member[0]}>
+                  <View key={member[0]} style={styles.modalContainer}>
                     <Pressable
                       onPress={() => {
                         handleClick(member[0]);
                       }}
                     >
-                      <Text>{member[0]}</Text>
+                      <View style={styles.modalProfileInfo}>
+                        <Text style={styles.modalText}>{member[0]}</Text>
+                        <Image
+                          style={styles.modalImage}
+                          source={{ uri: member[1] }}
+                        />
+                      </View>
                     </Pressable>
-                    <Image
-                      style={styles.memberImage}
-                      source={{ uri: member[1] }}
-                    />
                   </View>
                 );
               })}
             </View>
-            <Pressable
-              style={styles.button}
-              onPress={() => setModalVisible(false)}
-            >
-              <Text style={styles.button}>HIDE MEMBERS</Text>
-            </Pressable>
           </Modal>
         </GestureRecognizer>
         <Pressable style={styles.button} onPress={() => setModalVisible(true)}>
@@ -184,28 +193,31 @@ export const SingleBookClubPage: React.FC<{
       <Pressable
         style={styles.button}
         onPress={() => {
-          if(currentBookClub.current_read.book_name) {
+          if (currentBookClub.current_read.book_name) {
             navigation.navigate("Next Book", {
               bookclub: currentBookClub,
               bookclub_id: bookclub_id,
-            })
+            });
           } else {
-            navigation.navigate('First Book', {
+            navigation.navigate("First Book", {
               bookclub: currentBookClub,
               bookclub_id: bookclub_id,
-            })
+            });
           }
-        }
-      }
+        }}
       >
-        <Text style={styles.buttonText}>{currentBookClub.current_read.book_name ? `Take a peek at next week's read` : `Pick the club's first book!`}</Text>
+        <Text style={styles.buttonText}>
+          {currentBookClub.current_read.book_name
+            ? `Take a peek at next week's read`
+            : `Pick the club's first book!`}
+        </Text>
       </Pressable>
 
       {isUserMember === null ? null : (
         <Button
           onPress={handleJoinLeave}
           title={isUserMember ? "Leave club" : "Join club"}
-          color={"#c5BAAf"}
+          color={"#544d4d"}
         ></Button>
       )}
     </ScrollView>
