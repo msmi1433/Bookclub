@@ -119,6 +119,8 @@ export const styles = StyleSheet.create({
     borderRadius: 5,
     padding: 10,
     marginBottom: 20,
+    backgroundColor: "#fff",
+
   },
   updateFavButton: {
     marginTop: 10,
@@ -155,6 +157,7 @@ export const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginTop: 20,
+    marginBottom:20
   },
 
   searchResultsContainer: {
@@ -195,6 +198,8 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-evenly",
     marginBottom: 25,
+    margin: 20,
+
   },
   profileBio: {
     marginLeft: 20,
@@ -255,6 +260,7 @@ export const styles = StyleSheet.create({
     paddingVertical: 36,
     paddingHorizontal: 32,
   },
+
   //comment pages
   commentPageTitle: {
     fontSize: 25,
@@ -308,4 +314,57 @@ export const styles = StyleSheet.create({
   commentText: {
     fontSize: 15,
   },
+
+
+  //Current Read
+  bookImage: {
+    height: 135,
+    width: 90,
+    borderRadius: 10,
+  },
+  currentBookContainer: {
+    flex: 1,
+    paddingBottom: 60,
+    margin: 20,
+    flexDirection: "column",
+  },
+  currentBookText: {
+    fontSize: 25,
+    fontWeight: "bold",
+    color: "black",
+    textAlign: "center",
+    paddingBottom: 20,
+  },
+  bookNameText: {
+    paddingTop: 15,
+    padding: 5,
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+  bookAuthorText: {
+    paddingTop: 5,
+    paddingLeft: 5,
+    fontSize: 15,
+    fontWeight: "bold",
+  },
+  bookDescriptionText: {
+    paddingTop: 15,
+    padding: 5,
+    fontSize: 15,
+    marginLeft: 15,
+    marginRight: 15,
+  },
+  nextBookHeader: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    margin: 8,
+  },
+  nextBookByHeader: {
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "space-around",
+    margin: 8,
+  },
+
 });

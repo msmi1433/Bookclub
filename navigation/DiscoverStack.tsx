@@ -14,11 +14,13 @@ const DiscoverStack = () => {
     <UserProvider>
       <Stack.Navigator
         screenOptions={{
+          headerBackTitleVisible: false,
           headerTitle:  () => <Header></Header> ,
           headerStyle: {
             backgroundColor: "#424B54"
           },
           headerTitleAlign:"center",
+          headerTintColor: "white",
         }}
       >
         <Stack.Screen name="Discover Home" component={Discover} />
