@@ -1,6 +1,5 @@
 import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
-  
   // Home page
   bookContainer: {
     marginTop: 20,
@@ -54,7 +53,7 @@ export const styles = StyleSheet.create({
     paddingLeft: 16,
   },
   commentInput: {
-    height: 200,
+    height: 100,
     borderRadius: 5,
     width: 300,
     overflow: "hidden",
@@ -69,12 +68,12 @@ export const styles = StyleSheet.create({
     height: 400,
     width: 400,
   },
-  memberImage:{
+  memberImage: {
     height: 200,
     width: 200,
-    borderRadius:50,
+    borderRadius: 50,
   },
-  memberContainer:{
+  memberContainer: {
     flex: 1,
     padding: 50,
   },
@@ -185,27 +184,26 @@ export const styles = StyleSheet.create({
   searchAddBookButton: {
     flex: 1,
   },
-  profilePage:{
+  profilePage: {
     flexDirection: "column",
     padding: 10,
     flex: 1,
-    backgroundColor:"#FFEBCD",
+    backgroundColor: "#FFEBCD",
   },
   username: {
-  flex: 1,
-  alignItems: 'center', 
-  justifyContent: "space-evenly",
-  marginBottom:25,
-},
-profileBio: {
-  marginLeft:20,
-  marginRight:20,
-  marginBottom:20,
-  alignItems:"center",
-  borderWidth:2,
-  borderStyle:"dotted",
-  
-},
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    marginBottom: 25,
+  },
+  profileBio: {
+    marginLeft: 20,
+    marginRight: 20,
+    marginBottom: 20,
+    alignItems: "center",
+    borderWidth: 2,
+    borderStyle: "dotted",
+  },
   scrollContainer: {
     flexGrow: 1,
     justifyContent: "center",
@@ -216,7 +214,7 @@ profileBio: {
     justifyContent: "space-between",
     alignItems: "center",
     margin: 4,
-    padding:2,
+    padding: 2,
   },
   favouriteBookImages: {
     flexDirection: "column",
@@ -227,7 +225,7 @@ profileBio: {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "space-around",
-    margin:8
+    margin: 8,
   },
   button: {
     flex: 1,
@@ -246,15 +244,68 @@ profileBio: {
     fontWeight: "bold",
   },
 
-  headerImage:{
-    height:40, 
-    width:200,
+  headerImage: {
+    height: 40,
+    width: 200,
   },
 
   header: {
-   textAlign: "center",
+    textAlign: "center",
     fontSize: 36,
     paddingVertical: 36,
     paddingHorizontal: 32,
-  }
+  },
+  //comment pages
+  commentPageTitle: {
+    fontSize: 25,
+    fontWeight: "bold",
+    textAlign: "center",
+    margin: 10,
+  },
+  postCommentBox: {
+    flex: 1,
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  commentTitleInput: {
+    height: 35,
+    borderRadius: 5,
+    width: 300,
+    overflow: "hidden",
+    backgroundColor: "#fff",
+    marginTop: 10,
+    marginBottom: 5,
+    marginLeft: 30,
+    marginRight: 30,
+    paddingLeft: 16,
+  },
+  commentTitle: {
+    fontWeight: "bold",
+    fontSize: 18,
+  },
+  commentContainer: {
+    flex: 1,
+    flexDirection: "column",
+    gap: 10,
+    borderColor: "#544d4d",
+    borderWidth: 1.5,
+    borderRadius: 5,
+    margin: 8,
+    padding: 5,
+  },
+  commentMetadata: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    fontWeight: "bold",
+    marginTop: 15,
+  },
+  commentMetadataText: {
+    fontWeight: "bold",
+    color: "#544d4d",
+    fontSize: 13,
+  },
+  commentText: {
+    fontSize: 15,
+  },
 });
