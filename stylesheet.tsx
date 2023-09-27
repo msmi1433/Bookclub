@@ -120,7 +120,6 @@ export const styles = StyleSheet.create({
     padding: 10,
     marginBottom: 20,
     backgroundColor: "#fff",
-
   },
   updateFavButton: {
     marginTop: 10,
@@ -157,7 +156,7 @@ export const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginTop: 20,
-    marginBottom:20
+    marginBottom: 20,
   },
 
   searchResultsContainer: {
@@ -199,7 +198,6 @@ export const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     marginBottom: 25,
     margin: 20,
-
   },
   profileBio: {
     marginLeft: 20,
@@ -315,7 +313,6 @@ export const styles = StyleSheet.create({
     fontSize: 15,
   },
 
-
   //Current Read
   bookImage: {
     height: 135,
@@ -367,4 +364,45 @@ export const styles = StyleSheet.create({
     margin: 8,
   },
 
+  //modal
+  modal: {
+    backgroundColor: "#FFEBCD",
+    flex: 1,
+    paddingTop: 50,
+    alignItems: "center",
+  },
+  modalText: {
+    color: "#424B54",
+    fontWeight: "bold",
+    fontSize: 30,
+  },
+  modalHeaderText: {
+    color: "black",
+    fontWeight: "bold",
+    textAlign: "center",
+    fontSize: 21,
+    paddingTop: 20,
+    paddingBottom: 25,
+  },
+  modalImage: {
+    height: 100,
+    width: 100,
+    borderRadius: 100,
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: "flex-start",
+  },
+  modalProfileInfo: {
+    flex: 1,
+    alignItems: "center",
+    gap: 15,
+  },
+  modalCloseButton: {
+    marginRight: 370,
+  },
+  modalCloseButtonText: {
+    fontWeight: "bold",
+    fontSize: 18,
+  },
 });

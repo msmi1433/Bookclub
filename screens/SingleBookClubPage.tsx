@@ -126,31 +126,36 @@ export const SingleBookClubPage: React.FC<{
               setModalVisible(!modalVisible);
             }}
           >
-            <View style={styles.memberContainer}>
+            <View style={styles.modal}>
+              <Pressable
+                style={styles.modalCloseButton}
+                onPress={() => setModalVisible(false)}
+              >
+                <Text style={styles.modalCloseButtonText}>X</Text>
+              </Pressable>
+              <Text style={styles.modalHeaderText}>
+                Click on a member to view their profile
+              </Text>
               {membersNestedArray.map((member) => {
                 return (
-                  <View style={styles.memberContainer} key={member[0]}>
+                  <View key={member[0]} style={styles.modalContainer}>
                     <Pressable
                       onPress={() => {
                         handleClick(member[0]);
                       }}
                     >
-                      <Text>{member[0]}</Text>
+                      <View style={styles.modalProfileInfo}>
+                        <Text style={styles.modalText}>{member[0]}</Text>
+                        <Image
+                          style={styles.modalImage}
+                          source={{ uri: member[1] }}
+                        />
+                      </View>
                     </Pressable>
-                    <Image
-                      style={styles.memberImage}
-                      source={{ uri: member[1] }}
-                    />
                   </View>
                 );
               })}
             </View>
-            <Pressable
-              style={styles.button}
-              onPress={() => setModalVisible(false)}
-            >
-              <Text style={styles.button}>HIDE MEMBERS</Text>
-            </Pressable>
           </Modal>
         </GestureRecognizer>
         <Pressable style={styles.button} onPress={() => setModalVisible(true)}>
