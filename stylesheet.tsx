@@ -2,24 +2,25 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   // Home page
   bookContainer: {
-    marginTop: 20,
+    flex: 1,
+    marginTop: 10,
     alignItems: "center",
     justifyContent: "center",
   },
   userInfoContainer: {
+    marginTop: 20,
+    marginBottom: 16,
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 16,
   },
   userImage: {
+    marginRight: 10,
     width: 60,
-    height: 80,
-    aspectRatio: 1,
-    borderRadius: 30,
-    marginRight: 16,
+    height: 60,
+    borderRadius: 100,
   },
   username: {
-    fontSize: 22,
+    fontSize: 18,
     fontWeight: "bold",
   },
   userBio: {
@@ -27,10 +28,9 @@ export const styles = StyleSheet.create({
     maxWidth: 300,
   },
   bookclubContainer: {
-    justifyContent: "center",
     marginTop: 10,
     marginBottom: 10,
-    width: "90%",
+    width: "100%",
     height: 200,
     backgroundColor: "#FFEBCD",
     borderRadius: 10,
@@ -115,7 +115,6 @@ export const styles = StyleSheet.create({
   },
   // Discover page
   findaBookClub: {
-    marginTop: 6,
     marginBottom: 12,
     color: "#000",
     textAlign: "center",
@@ -124,10 +123,8 @@ export const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   findaBookClubContainer: {
-    marginLeft: 40,
-    marginRight: 10,
-    marginTop: 10,
-    marginBottom: 10,
+    flex: 1,
+    padding: 20,
   },
 
   // Update profile

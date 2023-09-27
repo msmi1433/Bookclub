@@ -1,4 +1,4 @@
-import { View, Text, Button, Image } from "react-native";
+import { View, Text, ScrollView, Image } from "react-native";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import BookclubCard from "../components/BookclubCard";
@@ -37,23 +37,24 @@ const Home: React.FC<NavProps> = ({ navigation }) => {
 
   return (
     <View style={styles.bookContainer}>
-      <View style={styles.userInfoContainer}>
-        <Image
-          source={{ uri: user.user_avatar_img }}
-          style={styles.userImage}
-        />
-        <Text style={styles.username}>{user.user_username}'s BookClubs</Text>
-      </View>
-
-      {bookClubs.map((bookclub) => {
-        return (
-          <BookclubCard
-            key={bookclub}
-            bookclub_id={bookclub}
-            navigation={navigation}
+      <ScrollView>
+        <View style={styles.userInfoContainer}>
+          <Image
+            source={{ uri: user.user_avatar_img }}
+            style={styles.userImage}
           />
-        );
-      })}
+          <Text style={styles.username}>{user.user_username}'s BookClubs</Text>
+        </View>
+        {bookClubs.map((bookclub) => {
+          return (
+            <BookclubCard
+              key={bookclub}
+              bookclub_id={bookclub}
+              navigation={navigation}
+            />
+          );
+        })}
+      </ScrollView>
     </View>
   );
 };

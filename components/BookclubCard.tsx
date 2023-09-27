@@ -1,4 +1,4 @@
-import { View, Text, Pressable, ScrollView, Image } from "react-native";
+import { View, Text, Pressable,  Image } from "react-native";
 import React, { useState, useEffect } from "react";
 import { getSingleDoc } from "../gettingData";
 import { styles } from "../stylesheet";
@@ -44,20 +44,16 @@ const BookclubCard: React.FC<{ bookclub_id: string; navigation: any }> = ({
   };
   return (
     <View style={styles.bookclubContainer}>
-      <ScrollView>
-        <Pressable onPress={handlePress}>
+      <Pressable onPress={handlePress}>
         <Text style={styles.bookclubName}>{currentBookClub.name}</Text>
-        
-          <View style={styles.bookclubImageContainer}>
-            <Image
-              source={{ uri: currentBookClub.img_url }}
-              style={styles.bookclubImage}
-            />
-          </View>
 
-         
-        </Pressable>
-      </ScrollView>
+        <View style={styles.bookclubImageContainer}>
+          <Image
+            source={{ uri: currentBookClub.img_url }}
+            style={styles.bookclubImage}
+          />
+        </View>
+      </Pressable>
     </View>
   );
 };
