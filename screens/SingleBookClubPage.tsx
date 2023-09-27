@@ -201,7 +201,7 @@ export const SingleBookClubPage: React.FC<{
         <Button
           onPress={handleJoinLeave}
           title={isUserMember ? "Leave club" : "Join club"}
-          color={"#c5BAAf"}
+          color={"#544d4d"}
         ></Button>
       )}
     </ScrollView>

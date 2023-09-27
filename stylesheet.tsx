@@ -325,7 +325,7 @@ export const styles = StyleSheet.create({
   },
   currentBookContainer: {
     flex: 1,
-    paddingBottom: 60,
+    paddingBottom: 20,
     margin: 20,
     flexDirection: "column",
   },
