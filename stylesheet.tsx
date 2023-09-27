@@ -1,6 +1,5 @@
 import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
-  
   // Home page
   bookContainer: {
     marginTop: 20,
@@ -69,12 +68,12 @@ export const styles = StyleSheet.create({
     height: 400,
     width: 400,
   },
-  memberImage:{
+  memberImage: {
     height: 200,
     width: 200,
-    borderRadius:50,
+    borderRadius: 50,
   },
-  memberContainer:{
+  memberContainer: {
     flex: 1,
     padding: 50,
   },
@@ -185,27 +184,26 @@ export const styles = StyleSheet.create({
   searchAddBookButton: {
     flex: 1,
   },
-  profilePage:{
+  profilePage: {
     flexDirection: "column",
     padding: 10,
     flex: 1,
-    backgroundColor:"#FFEBCD",
+    backgroundColor: "#FFEBCD",
   },
   username: {
-  flex: 1,
-  alignItems: 'center', 
-  justifyContent: "space-evenly",
-  marginBottom:25,
-},
-profileBio: {
-  marginLeft:20,
-  marginRight:20,
-  marginBottom:20,
-  alignItems:"center",
-  borderWidth:2,
-  borderStyle:"dotted",
-  
-},
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    marginBottom: 25,
+  },
+  profileBio: {
+    marginLeft: 20,
+    marginRight: 20,
+    marginBottom: 20,
+    alignItems: "center",
+    borderWidth: 2,
+    borderStyle: "dotted",
+  },
   scrollContainer: {
     flexGrow: 1,
     justifyContent: "center",
@@ -216,7 +214,7 @@ profileBio: {
     justifyContent: "space-between",
     alignItems: "center",
     margin: 4,
-    padding:2,
+    padding: 2,
   },
   favouriteBookImages: {
     flexDirection: "column",
@@ -227,7 +225,7 @@ profileBio: {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "space-around",
-    margin:8
+    margin: 8,
   },
   button: {
     flex: 1,
@@ -246,15 +244,48 @@ profileBio: {
     fontWeight: "bold",
   },
 
-  headerImage:{
-    height:40, 
-    width:200,
+  headerImage: {
+    height: 40,
+    width: 200,
   },
 
   header: {
-   textAlign: "center",
+    textAlign: "center",
     fontSize: 36,
     paddingVertical: 36,
     paddingHorizontal: 32,
-  }
+  },
+  //modal
+  modal: {
+    backgroundColor: "#F7C17A",
+    flex: 1,
+    paddingTop: 50,
+    paddingLeft: 30,
+    justifyContent: "space-evenly",
+  },
+  modalText: {
+    color: "#424B54",
+    fontWeight: "bold",
+    fontSize: 30,
+    paddingBottom: 15,
+    alignSelf: "flex-start",
+  },
+  modalHeaderText: {
+    color: "#424B54",
+    fontWeight: "bold",
+    textAlign: "center",
+    fontSize: 14,
+    paddingTop: 20,
+    paddingBottom: 25,
+  },
+  modalImage: {
+    height: 100,
+    width: 100,
+    borderRadius: 100,
+    padding: 0,
+  },
+  modalContainer: {
+    flex: 1,
+    flexDirection: "row",
+  },
 });

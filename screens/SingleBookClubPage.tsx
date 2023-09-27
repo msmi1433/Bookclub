@@ -49,11 +49,13 @@ export const SingleBookClubPage: React.FC<{
       author: "",
       description: "",
       book_name: "",
-      img_url: "http://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pulsecarshalton.co.uk%2Fhome-v1%2Fimage-placeholder%2F&psig=AOvVaw37Hc93eITWyLv4fP6vV9LA&ust=1695824059215000&source=images&cd=vfe&opi=89978449&ved=0CA8QjRxqFwoTCOjPrYe7yIEDFQAAAAAdAAAAABAE",
+      img_url:
+        "http://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pulsecarshalton.co.uk%2Fhome-v1%2Fimage-placeholder%2F&psig=AOvVaw37Hc93eITWyLv4fP6vV9LA&ust=1695824059215000&source=images&cd=vfe&opi=89978449&ved=0CA8QjRxqFwoTCOjPrYe7yIEDFQAAAAAdAAAAABAE",
     },
     members: {},
     description: "",
-    img_url: "http://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pulsecarshalton.co.uk%2Fhome-v1%2Fimage-placeholder%2F&psig=AOvVaw37Hc93eITWyLv4fP6vV9LA&ust=1695824059215000&source=images&cd=vfe&opi=89978449&ved=0CA8QjRxqFwoTCOjPrYe7yIEDFQAAAAAdAAAAABAE",
+    img_url:
+      "http://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pulsecarshalton.co.uk%2Fhome-v1%2Fimage-placeholder%2F&psig=AOvVaw37Hc93eITWyLv4fP6vV9LA&ust=1695824059215000&source=images&cd=vfe&opi=89978449&ved=0CA8QjRxqFwoTCOjPrYe7yIEDFQAAAAAdAAAAABAE",
   });
 
   const { bookclub_id } = route.params;
@@ -64,15 +66,16 @@ export const SingleBookClubPage: React.FC<{
 
   useFocusEffect(
     React.useCallback(() => {
-      Promise.all([getSingleDoc("bookclubs", bookclub_id, setCurrentBookClub), checkIfMember(uid, bookclub_id)])
-      .then((values) => {
-        setIsUserMember(values[1])
-      })
+      Promise.all([
+        getSingleDoc("bookclubs", bookclub_id, setCurrentBookClub),
+        checkIfMember(uid, bookclub_id),
+      ]).then((values) => {
+        setIsUserMember(values[1]);
+      });
     }, [])
   );
 
   const membersNestedArray = Object.entries(currentBookClub.members);
-
 
   const handleClick = (memberName: string) => {
     getCollection("users", setMembers);
@@ -94,7 +97,6 @@ export const SingleBookClubPage: React.FC<{
       });
     });
   };
-
 
   return (
     <ScrollView nestedScrollEnabled={true}>
@@ -126,31 +128,31 @@ export const SingleBookClubPage: React.FC<{
               setModalVisible(!modalVisible);
             }}
           >
-            <View style={styles.memberContainer}>
+            <View style={styles.modal}>
+              <Pressable onPress={() => setModalVisible(false)}>
+                <Text>X</Text>
+              </Pressable>
+              <Text style={styles.modalHeaderText}>
+                Click on a member to view their profile
+              </Text>
               {membersNestedArray.map((member) => {
                 return (
-                  <View style={styles.memberContainer} key={member[0]}>
+                  <View style={styles.modalContainer} key={member[0]}>
                     <Pressable
                       onPress={() => {
                         handleClick(member[0]);
                       }}
                     >
-                      <Text>{member[0]}</Text>
+                      <Text style={styles.modalText}>{member[0]}</Text>
+                      <Image
+                        style={styles.modalImage}
+                        source={{ uri: member[1] }}
+                      />
                     </Pressable>
-                    <Image
-                      style={styles.memberImage}
-                      source={{ uri: member[1] }}
-                    />
                   </View>
                 );
               })}
             </View>
-            <Pressable
-              style={styles.button}
-              onPress={() => setModalVisible(false)}
-            >
-              <Text style={styles.button}>HIDE MEMBERS</Text>
-            </Pressable>
           </Modal>
         </GestureRecognizer>
         <Pressable style={styles.button} onPress={() => setModalVisible(true)}>
@@ -180,26 +182,23 @@ export const SingleBookClubPage: React.FC<{
         </Pressable>
       </View>
 
-      
       <Pressable
-      style={styles.button}
-      onPress={() =>
-        navigation.navigate("Next Book", {
-          bookclub: currentBookClub,
-          bookclub_id: bookclub_id,
-        })
-      }
+        style={styles.button}
+        onPress={() =>
+          navigation.navigate("Next Book", {
+            bookclub: currentBookClub,
+            bookclub_id: bookclub_id,
+          })
+        }
       >
-<Text style={styles.buttonText}>Take a peek at next week's read</Text>
-
+        <Text style={styles.buttonText}>Take a peek at next week's read</Text>
       </Pressable>
-      
-   
+
       {isUserMember === null ? null : (
         <Button
           onPress={handleJoinLeave}
           title={isUserMember ? "Leave club" : "Join club"}
-          color={'#c5BAAf'}
+          color={"#c5BAAf"}
         ></Button>
       )}
     </ScrollView>
