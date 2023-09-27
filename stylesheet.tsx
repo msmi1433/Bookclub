@@ -53,7 +53,7 @@ export const styles = StyleSheet.create({
     paddingLeft: 16,
   },
   commentInput: {
-    height: 200,
+    height: 100,
     borderRadius: 5,
     width: 300,
     overflow: "hidden",
@@ -119,6 +119,7 @@ export const styles = StyleSheet.create({
     borderRadius: 5,
     padding: 10,
     marginBottom: 20,
+    backgroundColor: "#fff",
   },
   updateFavButton: {
     marginTop: 10,
@@ -155,6 +156,7 @@ export const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginTop: 20,
+    marginBottom: 20,
   },
 
   searchResultsContainer: {
@@ -195,6 +197,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-evenly",
     marginBottom: 25,
+    margin: 20,
   },
   profileBio: {
     marginLeft: 20,
@@ -255,6 +258,112 @@ export const styles = StyleSheet.create({
     paddingVertical: 36,
     paddingHorizontal: 32,
   },
+
+  //comment pages
+  commentPageTitle: {
+    fontSize: 25,
+    fontWeight: "bold",
+    textAlign: "center",
+    margin: 10,
+  },
+  postCommentBox: {
+    flex: 1,
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  commentTitleInput: {
+    height: 35,
+    borderRadius: 5,
+    width: 300,
+    overflow: "hidden",
+    backgroundColor: "#fff",
+    marginTop: 10,
+    marginBottom: 5,
+    marginLeft: 30,
+    marginRight: 30,
+    paddingLeft: 16,
+  },
+  commentTitle: {
+    fontWeight: "bold",
+    fontSize: 18,
+  },
+  commentContainer: {
+    flex: 1,
+    flexDirection: "column",
+    gap: 10,
+    borderColor: "#544d4d",
+    borderWidth: 1.5,
+    borderRadius: 5,
+    margin: 8,
+    padding: 5,
+  },
+  commentMetadata: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    fontWeight: "bold",
+    marginTop: 15,
+  },
+  commentMetadataText: {
+    fontWeight: "bold",
+    color: "#544d4d",
+    fontSize: 13,
+  },
+  commentText: {
+    fontSize: 15,
+  },
+
+  //Current Read
+  bookImage: {
+    height: 135,
+    width: 90,
+    borderRadius: 10,
+  },
+  currentBookContainer: {
+    flex: 1,
+    paddingBottom: 60,
+    margin: 20,
+    flexDirection: "column",
+  },
+  currentBookText: {
+    fontSize: 25,
+    fontWeight: "bold",
+    color: "black",
+    textAlign: "center",
+    paddingBottom: 20,
+  },
+  bookNameText: {
+    paddingTop: 15,
+    padding: 5,
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+  bookAuthorText: {
+    paddingTop: 5,
+    paddingLeft: 5,
+    fontSize: 15,
+    fontWeight: "bold",
+  },
+  bookDescriptionText: {
+    paddingTop: 15,
+    padding: 5,
+    fontSize: 15,
+    marginLeft: 15,
+    marginRight: 15,
+  },
+  nextBookHeader: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    margin: 8,
+  },
+  nextBookByHeader: {
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "space-around",
+    margin: 8,
+  },
+
   //modal
   modal: {
     backgroundColor: "#FFEBCD",

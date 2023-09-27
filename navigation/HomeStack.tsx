@@ -17,6 +17,7 @@ const StackBookClubs = () => {
    <UserProvider>
     <Stack.Navigator
       screenOptions={{
+        headerBackTitleVisible: false,
         headerTitle:  () => <Header></Header> ,
         headerStyle: {
           backgroundColor: "#424B54"

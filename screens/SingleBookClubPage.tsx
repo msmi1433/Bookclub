@@ -15,6 +15,7 @@ import { useContext } from "react";
 import { UserContext } from "../usercontext";
 import { useFocusEffect } from "@react-navigation/native";
 import React from "react";
+
 import { getSingleDoc, checkIfMember, getCollection } from "../gettingData";
 import { leaveJoinClub } from "../addingData";
 
@@ -109,13 +110,10 @@ export const SingleBookClubPage: React.FC<{
         style={styles.basicImage}
         source={{ uri: currentBookClub.img_url }}
       />
-
-      <SingleBook singleBook={currentBookClub.current_read} />
-
       <Text style={styles.basicContainer}>
         BOOK CLUB DESCRIPTION: {currentBookClub.description}
       </Text>
-
+      <SingleBook singleBook={currentBookClub.current_read} />
       <View>
         <GestureRecognizer
           style={{ flex: 1 }}
