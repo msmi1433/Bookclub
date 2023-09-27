@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   View,
   StyleSheet,
-  ScrollView
+  ScrollView,
 } from "react-native";
 import { auth } from "../firebase-config";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -14,8 +14,7 @@ interface LoginScreenProps {
   navigation: any;
 }
 
-const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
-
+const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -34,53 +33,51 @@ const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        alert('Incorrect password, please try again')
       });
   };
 
-
-  
-
   return (
-    <ScrollView style={{flex: 1, height: 1000}} scrollEnabled={false} keyboardShouldPersistTaps="handled">
-    <View style={styles.container}>
-
-    <Image style={styles.loginPageImage} source={require('../assets/shelf-Indulgence.png')}/>
-      <TextInput
-        style={styles.input}
-        placeholder="Email"
-        placeholderTextColor="#aaaaaa"
-        onChangeText={(text) => setEmail(text)}
-        value={email}
-        autoCapitalize="none"
-      />
-      <TextInput
-        style={styles.input}
-        placeholderTextColor="#aaaaaa"
-        secureTextEntry
-        placeholder="Password"
-        onChangeText={(text) => setPassword(text)}
-        value={password}
-        underlineColorAndroid="transparent"
-        autoCapitalize="none"
-      />
-      <TouchableOpacity style={styles.button} onPress={handleLogin}>
-        <Text style={styles.buttonTitle}>Login</Text>
-      </TouchableOpacity>
-      <View style={styles.footerView}>
-        <Text style={styles.footerText}>
-          Don't have an account?
-          <Text onPress={goToSignup} style={styles.footerLink}>
-            Sign up
+    <ScrollView
+      style={{ flex: 1, height: 1000 }}
+      scrollEnabled={false}
+      keyboardShouldPersistTaps="handled"
+    >
+      <View style={styles.container}>
+        <Image
+          style={styles.loginPageImage}
+          source={require("../assets/shelf-Indulgence.png")}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Email"
+          placeholderTextColor="#aaaaaa"
+          onChangeText={(text) => setEmail(text)}
+          value={email}
+          autoCapitalize="none"
+        />
+        <TextInput
+          style={styles.input}
+          placeholderTextColor="#aaaaaa"
+          secureTextEntry
+          placeholder="Password"
+          onChangeText={(text) => setPassword(text)}
+          value={password}
+          underlineColorAndroid="transparent"
+          autoCapitalize="none"
+        />
+        <TouchableOpacity style={styles.button} onPress={handleLogin}>
+          <Text style={styles.buttonTitle}>Login</Text>
+        </TouchableOpacity>
+        <View style={styles.footerView}>
+          <Text style={styles.footerText}>
+            Don't have an account? {'\n'}
+            <Text onPress={goToSignup} style={styles.footerLink}>
+              Sign up
+            </Text>
           </Text>
-        </Text>
-        <Text style={styles.footerText}>
-          Can't be bothered to login?
-          <Text onPress={() => navigation.navigate('App')} style={styles.footerLink}>
-            Continue as abeatzzz
-          </Text>
-        </Text>
+        </View>
       </View>
-    </View>
     </ScrollView>
   );
 };
@@ -93,7 +90,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     padding: 100,
-    height: 1000
+    height: 1000,
   },
   title: {},
   logo: {
@@ -142,16 +139,18 @@ const styles = StyleSheet.create({
   footerText: {
     fontSize: 16,
     color: "#2e2e2d",
+    textAlign:'center'
   },
   footerLink: {
     color: "#788eec",
     fontWeight: "bold",
     fontSize: 16,
+    textAlign:'center'
   },
   loginPageImage: {
-    alignItems:"center",
-    height: 250, 
+    alignItems: "center",
+    height: 250,
     width: 250,
-    backgroundColor:"blanchedalmond"
-  }
+    backgroundColor: "blanchedalmond",
+  },
 });

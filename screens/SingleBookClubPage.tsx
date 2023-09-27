@@ -181,7 +181,7 @@ export const SingleBookClubPage: React.FC<{
         <Pressable
           style={styles.button}
           onPress={() =>
-            navigation.navigate("Book Chat", { bookclub_id: bookclub_id })
+            navigation.navigate("Book Chat", { bookclub_id: bookclub_id, currentRead: currentBookClub.current_read.book_name })
           }
         >
           <Text style={styles.buttonText}>
@@ -217,7 +217,7 @@ export const SingleBookClubPage: React.FC<{
         <Button
           onPress={handleJoinLeave}
           title={isUserMember ? "Leave club" : "Join club"}
-          color={"#544d4d"}
+          color={isUserMember ? 'red':"#004B23"}
         ></Button>
       )}
     </ScrollView>

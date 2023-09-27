@@ -3,6 +3,7 @@ import React from "react";
 import Username from "../components/profilePage/username-card";
 import ProfileContainer from "../components/profilePage/profileBio";
 import FavouriteBookContainer from "../components/profilePage/FavoriteBookContainer";
+import { styles } from "../stylesheet";
 
 const OtherProfile: React.FC<{ navigation: any; route: any }> = ({
   navigation,
@@ -12,20 +13,13 @@ const OtherProfile: React.FC<{ navigation: any; route: any }> = ({
   if (member) {
     return (
       <ScrollView>
-        <View
-          style={{
-            flexDirection: "column",
-            borderWidth: 5,
-            padding: 10,
-            flex: 1,
-          }}
+        <View style={styles.profilePage}
         >
-          <Text>{member.user_username}'s Profile</Text>
           <Username
             key="user"
             user={{
               user_username: member.user_username,
-              user_avatar_img: member.user_img,
+              user_avatar_img: member.user_avatar_img,
             }}
           />
           <ProfileContainer

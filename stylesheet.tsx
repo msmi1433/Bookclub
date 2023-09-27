@@ -50,7 +50,6 @@ export const styles = StyleSheet.create({
     width: 140,
     height: 120,
     borderRadius: 10,
-    resizeMode: "con",
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
     marginBottom: 10,

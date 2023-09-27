@@ -13,7 +13,7 @@ import { getUser } from "../gettingData";
 const Discussion = ({
   route,
 }: {
-  route: { params: { bookclub_id: string } };
+  route: { params: { bookclub_id: string, currentRead: string } };
 }) => {
   const [comments, setComments] = useState([]);
   const [newCommentText, setNewCommentText] = useState("");
@@ -24,7 +24,7 @@ const Discussion = ({
     user_username: "",
   });
 
-  const { bookclub_id } = route.params;
+  const { bookclub_id, currentRead } = route.params;
 
   useEffect(() => {
     getUser(uid, setUser);
@@ -56,7 +56,7 @@ const Discussion = ({
     <View style={styles.basicContainer}>
       <ScrollView>
         <Text style={styles.commentPageTitle}>
-          Chat about the current read!
+          Chat about {currentRead}!
         </Text>
         <View style={styles.postCommentBox}>
           <TextInput

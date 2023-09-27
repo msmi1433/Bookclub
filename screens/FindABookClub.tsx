@@ -14,7 +14,7 @@ const FindABookClub: React.FC<{ navigation: any }> = ({ navigation }) => {
   return (
     <View style={styles.findaBookClubContainer}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Text style={styles.findaBookClub}>FindABookClub</Text>
+        <Text style={styles.findaBookClub}>Find A Book Club</Text>
         {joinableClubs.map((club) => {
           return (
             <BookclubCard

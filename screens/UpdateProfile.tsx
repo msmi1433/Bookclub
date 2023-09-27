@@ -97,15 +97,9 @@ const UpdateProfile: React.FC<{ navigation: any }> = ({ navigation }) => {
       />
 
       <View style={styles.updateProfileBtnWrapper}>
-        <TouchableOpacity
-          onPress={() =>
-            navigation.navigate("ProfilePage", { userId: user.user_user_id })
-          }
-        >
-          <Text style={styles.button}>Back to Profile</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={handleSubmit}>
-          <Text style={styles.button}>Update Profile</Text>
+
+        <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+          <Text style={styles.buttonText}>Update Profile</Text>
         </TouchableOpacity>
       </View>
 

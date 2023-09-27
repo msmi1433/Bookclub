@@ -79,6 +79,10 @@ const SignupScreen: React.FC<SignupScreenProps> = ({ navigation }) => {
   return (
     <ScrollView style={{flex: 1, height: 1000}} scrollEnabled={false} keyboardShouldPersistTaps="handled">
       <View style={styles.container}>
+      <Image
+          style={styles.loginPageImage}
+          source={require("../assets/shelf-Indulgence.png")}
+        />
         <TextInput
           style={styles.input}
           placeholder="Username"
@@ -94,6 +98,7 @@ const SignupScreen: React.FC<SignupScreenProps> = ({ navigation }) => {
           onChangeText={(text) => setEmail(text)}
           value={email}
           autoCapitalize="none"
+          secureTextEntry={false}
         />
         <TextInput
           style={styles.input}
@@ -123,7 +128,7 @@ const SignupScreen: React.FC<SignupScreenProps> = ({ navigation }) => {
         </TouchableOpacity>
         <View style={styles.footerView}>
           <Text style={styles.footerText}>
-            Already have an account?
+            Already have an account? {'\n'}
             <Text onPress={goToLogin} style={styles.footerLink}>
               Login
             </Text>
@@ -190,10 +195,18 @@ const styles = StyleSheet.create({
   footerText: {
     fontSize: 16,
     color: "#2e2e2d",
+    textAlign:'center'
   },
   footerLink: {
     color: "#788eec",
     fontWeight: "bold",
     fontSize: 16,
+    textAlign:'center'
+  },
+  loginPageImage: {
+    alignItems: "center",
+    height: 250,
+    width: 250,
+    backgroundColor: "blanchedalmond",
   },
 });
