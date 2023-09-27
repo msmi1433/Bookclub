@@ -257,24 +257,21 @@ export const styles = StyleSheet.create({
   },
   //modal
   modal: {
-    backgroundColor: "#F7C17A",
+    backgroundColor: "#FFEBCD",
     flex: 1,
     paddingTop: 50,
-    paddingLeft: 30,
-    justifyContent: "space-evenly",
+    alignItems: "center",
   },
   modalText: {
     color: "#424B54",
     fontWeight: "bold",
     fontSize: 30,
-    paddingBottom: 15,
-    alignSelf: "flex-start",
   },
   modalHeaderText: {
-    color: "#424B54",
+    color: "black",
     fontWeight: "bold",
     textAlign: "center",
-    fontSize: 14,
+    fontSize: 21,
     paddingTop: 20,
     paddingBottom: 25,
   },
@@ -282,10 +279,21 @@ export const styles = StyleSheet.create({
     height: 100,
     width: 100,
     borderRadius: 100,
-    padding: 0,
   },
   modalContainer: {
     flex: 1,
-    flexDirection: "row",
+    justifyContent: "flex-start",
+  },
+  modalProfileInfo: {
+    flex: 1,
+    alignItems: "center",
+    gap: 15,
+  },
+  modalCloseButton: {
+    marginRight: 370,
+  },
+  modalCloseButtonText: {
+    fontWeight: "bold",
+    fontSize: 18,
   },
 });

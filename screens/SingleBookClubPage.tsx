@@ -129,25 +129,30 @@ export const SingleBookClubPage: React.FC<{
             }}
           >
             <View style={styles.modal}>
-              <Pressable onPress={() => setModalVisible(false)}>
-                <Text>X</Text>
+              <Pressable
+                style={styles.modalCloseButton}
+                onPress={() => setModalVisible(false)}
+              >
+                <Text style={styles.modalCloseButtonText}>X</Text>
               </Pressable>
               <Text style={styles.modalHeaderText}>
                 Click on a member to view their profile
               </Text>
               {membersNestedArray.map((member) => {
                 return (
-                  <View style={styles.modalContainer} key={member[0]}>
+                  <View key={member[0]} style={styles.modalContainer}>
                     <Pressable
                       onPress={() => {
                         handleClick(member[0]);
                       }}
                     >
-                      <Text style={styles.modalText}>{member[0]}</Text>
-                      <Image
-                        style={styles.modalImage}
-                        source={{ uri: member[1] }}
-                      />
+                      <View style={styles.modalProfileInfo}>
+                        <Text style={styles.modalText}>{member[0]}</Text>
+                        <Image
+                          style={styles.modalImage}
+                          source={{ uri: member[1] }}
+                        />
+                      </View>
                     </Pressable>
                   </View>
                 );
