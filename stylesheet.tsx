@@ -206,8 +206,9 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     borderWidth: 2,
     borderStyle: "dotted",
-    padding:10,
-    borderRadius:10
+    padding: 10,
+    borderRadius: 10,
+    textAlign: "center",
   },
   scrollContainer: {
     flexGrow: 1,
@@ -225,7 +226,7 @@ export const styles = StyleSheet.create({
     flexDirection: "column",
     width: 109,
     height: 156,
-    borderRadius:10
+    borderRadius: 10,
   },
   favebookcard: {
     flexDirection: "column",
@@ -407,5 +408,36 @@ export const styles = StyleSheet.create({
   modalCloseButtonText: {
     fontWeight: "bold",
     fontSize: 18,
+  },
+  //Single bookclub page
+  singleBookclubHeader: {
+    flex: 1,
+    alignItems: "center",
+    gap: 30,
+  },
+  singleBookclubTitle: {
+    marginTop: 30,
+    fontSize: 30,
+    fontWeight: "bold",
+  },
+  singleBookclubImage: {
+    width: 200,
+    height: 200,
+    borderRadius: 10,
+    alignItems: "center",
+  },
+  singleBookclubDescriptionBox: {
+    marginLeft: 20,
+    marginRight: 20,
+    marginBottom: 10,
+    alignItems: "center",
+    borderWidth: 2,
+    borderStyle: "dotted",
+    padding: 10,
+    borderRadius: 10,
+  },
+  singleBookclubDescriptionText: {
+    textAlign: "center",
+    fontSize: 17,
   },
 });
