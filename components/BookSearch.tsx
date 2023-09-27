@@ -44,7 +44,7 @@ const BookSearch: React.FC<SearchBarComponentProps> = ({
   };
 
   return (
-    <View>
+    <View >
       <SearchBar
         placeholder="Search by title or author..."
         onChangeText={updateSearch}
