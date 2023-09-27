@@ -8,7 +8,7 @@ const Username: React.FC<{
   return (
     <View style={styles.username}>
      
-      <Text style={{ fontSize:30, textAlign:"center", margin: 15, paddingBottom:3, borderRadius:8, fontWeight:"700"}}> {user.user_username}'s Profile</Text>
+      <Text style={{ fontSize:30, textAlign:"center", margin: 15, paddingBottom:3, borderRadius:8, fontWeight:"700", color:"#424b54"}}> {user.user_username}'s Profile</Text>
      
       <Image style={{ width: 150, height: 150, borderRadius:10}} source={{uri: user.user_avatar_img}}/> 
     </View>
