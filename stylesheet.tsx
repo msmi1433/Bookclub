@@ -260,9 +260,9 @@ export const styles = StyleSheet.create({
 
   //Current Read
   bookImage: {
-    height: 150,
-    width: 150,
-    borderRadius: 50,
+    height: 135,
+    width: 90,
+    borderRadius: 10,
   },
   currentBookContainer: {
     flex: 1,
@@ -293,8 +293,16 @@ export const styles = StyleSheet.create({
     paddingTop: 15,
     padding: 5,
     fontSize: 15,
+    marginLeft: 15,
+    marginRight: 15,
   },
   nextBookHeader: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    margin: 8,
+  },
+  nextBookByHeader: {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "space-around",
