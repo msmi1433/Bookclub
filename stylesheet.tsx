@@ -190,12 +190,13 @@ export const styles = StyleSheet.create({
     padding: 10,
     flex: 1,
     backgroundColor:"#FFEBCD",
+    marginBottom:70
   },
   username: {
   flex: 1,
   alignItems: 'center', 
   justifyContent: "space-evenly",
-  margin:20,
+  marginBottom:25,
 },
 profileBio: {
   marginLeft:20,
