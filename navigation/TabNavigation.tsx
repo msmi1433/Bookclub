@@ -1,5 +1,5 @@
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { View, Text, StyleSheet } from "react-native";
 import DiscoverStack from "./DiscoverStack";
@@ -11,10 +11,12 @@ import { Ionicons } from "@expo/vector-icons";
 
 
 const Tab = createBottomTabNavigator();
+const navTheme = DefaultTheme;
+navTheme.colors.background = "#ffebcd";
 
 const TabNavigation: React.FC = () => {
   return (
-    <NavigationContainer independent={true}>
+    <NavigationContainer theme={navTheme} independent={true}>
       <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarInactiveBackgroundColor: "#FFEBCD",
@@ -22,6 +24,8 @@ const TabNavigation: React.FC = () => {
           tabBarInactiveTintColor: "#424B54",
           tabBarActiveTintColor: "#F7C17A",
           headerShown: false,
+          tabBarStyle: { backgroundColor: "#ffebcd", position: "relative" },
+
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
 

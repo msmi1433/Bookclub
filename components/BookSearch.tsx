@@ -1,11 +1,4 @@
-import {
-  ScrollView,
-  View,
-  Text,
-  Button,
-  Image,
-  ImageSourcePropType,
-} from "react-native";
+import { ScrollView, View, Text, Button, Image, Alert } from "react-native";
 import React, { useEffect } from "react";
 import { SearchBar } from "@rneui/themed";
 import { useState } from "react";
@@ -22,14 +15,20 @@ type BookProps = {
 
 type SearchBarComponentProps = {
   callbackFn: Function;
-  stateSetter: Function;
-  bookclub_id: string;
+  stateSetter?: Function;
+  bookclub_id?: string;
+  userId?: string;
+  arrayId?: number;
+  faveBooks?: {}[];
 };
 
 const BookSearch: React.FC<SearchBarComponentProps> = ({
   callbackFn,
   stateSetter,
   bookclub_id,
+  userId,
+  arrayId,
+  faveBooks,
 }) => {
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
@@ -56,9 +55,9 @@ const BookSearch: React.FC<SearchBarComponentProps> = ({
       {search ? (
         <View style={styles.searchResultsContainer}>
           <ScrollView>
-            {searchResults.map((book: BookProps) => {
+            {searchResults.map((book: BookProps, index: number) => {
               return (
-                <View style={styles.searchResults}>
+                <View key={`search ${index}`} style={styles.searchResults}>
                   <Image
                     source={{ uri: book.coverImg }}
                     style={{ width: 66, height: 100 }}
@@ -71,7 +70,10 @@ const BookSearch: React.FC<SearchBarComponentProps> = ({
                     <Button
                       title="Add book"
                       onPress={() => {
-                        callbackFn(book, bookclub_id, stateSetter);
+                        bookclub_id
+                          ? callbackFn(book, bookclub_id, stateSetter)
+                          : (callbackFn(book, userId, arrayId, faveBooks),
+                            Alert.alert("Desert island book set!"));
                       }}
                     />
                   </View>

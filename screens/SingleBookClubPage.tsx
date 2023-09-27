@@ -13,14 +13,11 @@ import SingleBook from "../components/SingleBook";
 import GestureRecognizer from "react-native-swipe-gestures";
 import { useContext } from "react";
 import { UserContext } from "../usercontext";
-
 import { useFocusEffect } from "@react-navigation/native";
 import React from "react";
 
-
 import { getSingleDoc, checkIfMember, getCollection } from "../gettingData";
 import { leaveJoinClub } from "../addingData";
-
 
 type CurrentRead = {
   author: string;
@@ -53,11 +50,13 @@ export const SingleBookClubPage: React.FC<{
       author: "",
       description: "",
       book_name: "",
-      img_url: "http://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pulsecarshalton.co.uk%2Fhome-v1%2Fimage-placeholder%2F&psig=AOvVaw37Hc93eITWyLv4fP6vV9LA&ust=1695824059215000&source=images&cd=vfe&opi=89978449&ved=0CA8QjRxqFwoTCOjPrYe7yIEDFQAAAAAdAAAAABAE",
+      img_url:
+        "http://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pulsecarshalton.co.uk%2Fhome-v1%2Fimage-placeholder%2F&psig=AOvVaw37Hc93eITWyLv4fP6vV9LA&ust=1695824059215000&source=images&cd=vfe&opi=89978449&ved=0CA8QjRxqFwoTCOjPrYe7yIEDFQAAAAAdAAAAABAE",
     },
     members: {},
     description: "",
-    img_url: "http://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pulsecarshalton.co.uk%2Fhome-v1%2Fimage-placeholder%2F&psig=AOvVaw37Hc93eITWyLv4fP6vV9LA&ust=1695824059215000&source=images&cd=vfe&opi=89978449&ved=0CA8QjRxqFwoTCOjPrYe7yIEDFQAAAAAdAAAAABAE",
+    img_url:
+      "http://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pulsecarshalton.co.uk%2Fhome-v1%2Fimage-placeholder%2F&psig=AOvVaw37Hc93eITWyLv4fP6vV9LA&ust=1695824059215000&source=images&cd=vfe&opi=89978449&ved=0CA8QjRxqFwoTCOjPrYe7yIEDFQAAAAAdAAAAABAE",
   });
 
   const { bookclub_id } = route.params;
@@ -68,15 +67,16 @@ export const SingleBookClubPage: React.FC<{
 
   useFocusEffect(
     React.useCallback(() => {
-      Promise.all([getSingleDoc("bookclubs", bookclub_id, setCurrentBookClub), checkIfMember(uid, bookclub_id)])
-      .then((values) => {
-        setIsUserMember(values[1])
-      })
+      Promise.all([
+        getSingleDoc("bookclubs", bookclub_id, setCurrentBookClub),
+        checkIfMember(uid, bookclub_id),
+      ]).then((values) => {
+        setIsUserMember(values[1]);
+      });
     }, [])
   );
 
   const membersNestedArray = Object.entries(currentBookClub.members);
-
 
   const handleClick = (memberName: string) => {
     getCollection("users", setMembers);
@@ -99,7 +99,6 @@ export const SingleBookClubPage: React.FC<{
     });
   };
 
-
   return (
     <ScrollView nestedScrollEnabled={true}>
       <Text style={styles.basicContainer}>
@@ -111,13 +110,10 @@ export const SingleBookClubPage: React.FC<{
         style={styles.basicImage}
         source={{ uri: currentBookClub.img_url }}
       />
-
-      <SingleBook singleBook={currentBookClub.current_read} />
-
       <Text style={styles.basicContainer}>
         BOOK CLUB DESCRIPTION: {currentBookClub.description}
       </Text>
-
+      <SingleBook singleBook={currentBookClub.current_read} />
       <View>
         <GestureRecognizer
           style={{ flex: 1 }}
@@ -184,26 +180,23 @@ export const SingleBookClubPage: React.FC<{
         </Pressable>
       </View>
 
-      
       <Pressable
-      style={styles.button}
-      onPress={() =>
-        navigation.navigate("Next Book", {
-          bookclub: currentBookClub,
-          bookclub_id: bookclub_id,
-        })
-      }
+        style={styles.button}
+        onPress={() =>
+          navigation.navigate("Next Book", {
+            bookclub: currentBookClub,
+            bookclub_id: bookclub_id,
+          })
+        }
       >
-<Text style={styles.buttonText}>Take a peek at next week's read</Text>
-
+        <Text style={styles.buttonText}>Take a peek at next week's read</Text>
       </Pressable>
-      
-   
+
       {isUserMember === null ? null : (
         <Button
           onPress={handleJoinLeave}
           title={isUserMember ? "Leave club" : "Join club"}
-          color={'#c5BAAf'}
+          color={"#c5BAAf"}
         ></Button>
       )}
     </ScrollView>

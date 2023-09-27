@@ -3,9 +3,7 @@ import React, { useDebugValue, useEffect, useState } from "react";
 import BookSearch from "../components/BookSearch";
 import { setNextRead } from "../addingData";
 
-const NextBook = ({
-  route,
-}: {
+type RouteParams = {
   route: {
     params: {
       bookclub: {
@@ -19,7 +17,9 @@ const NextBook = ({
       bookclub_id: string;
     };
   };
-}) => {
+};
+
+const NextBook: React.FC<RouteParams> = ({ route }: RouteParams) => {
   const { bookclub, bookclub_id } = route.params;
   const { next_read } = bookclub;
 
