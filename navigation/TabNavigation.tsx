@@ -24,7 +24,7 @@ const TabNavigation: React.FC = () => {
           tabBarInactiveTintColor: "#424B54",
           tabBarActiveTintColor: "#F7C17A",
           headerShown: false,
-          tabBarStyle: { backgroundColor: "#ffebcd", position: "absolute" },
+          tabBarStyle: { backgroundColor: "#ffebcd", position: "relative" },
 
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
