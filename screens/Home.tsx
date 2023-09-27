@@ -1,4 +1,4 @@
-import { View, Text, Button, Image, StyleSheet } from "react-native";
+import { View, Text, Button, Image } from "react-native";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import BookclubCard from "../components/BookclubCard";
@@ -6,6 +6,7 @@ import { getUserBookclubs, getUser } from "../gettingData";
 import { useContext } from "react";
 import { UserContext } from "../usercontext";
 import { useFocusEffect } from "@react-navigation/native";
+import { styles } from "../stylesheet";
 
 interface NavProps {
   navigation: any;
@@ -29,15 +30,20 @@ const Home: React.FC<NavProps> = ({ navigation }) => {
 
   useFocusEffect(
     React.useCallback(() => {
-    getUserBookclubs(uid, setBookClubs);
-    getUser(uid, setUser);
-  }, [uid]));
+      getUserBookclubs(uid, setBookClubs);
+      getUser(uid, setUser);
+    }, [uid])
+  );
 
   return (
     <View style={styles.bookContainer}>
-      <Image source={{ uri: user.user_avatar_img }} style={styles.userImage} />
-      <Text style={styles.username}>{user.user_username}'s BookClubs</Text>
-      <Text style={styles.userBio}>{user.user_bio}</Text>
+      <View style={styles.userInfoContainer}>
+        <Image
+          source={{ uri: user.user_avatar_img }}
+          style={styles.userImage}
+        />
+        <Text style={styles.username}>{user.user_username}'s BookClubs</Text>
+      </View>
 
       {bookClubs.map((bookclub) => {
         return (
@@ -53,27 +59,3 @@ const Home: React.FC<NavProps> = ({ navigation }) => {
 };
 
 export default Home;
-
-const styles = StyleSheet.create({
-  bookContainer: {
-    marginTop: 20,
-    alignItems: "center",
-    justifyContent: "center",
-    paddingTop: 16,
-  },
-  userImage: {
-    width: 80,
-    height: 80,
-    borderRadius: 75,
-    marginBottom: 16,
-  },
-  username: {
-    fontSize: 18,
-    fontWeight: "bold",
-    marginBottom: 16,
-  },
-  userBio: {
-    fontSize: 18,
-    maxWidth: 300,
-  },
-});
