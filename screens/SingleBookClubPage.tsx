@@ -13,14 +13,10 @@ import SingleBook from "../components/SingleBook";
 import GestureRecognizer from "react-native-swipe-gestures";
 import { useContext } from "react";
 import { UserContext } from "../usercontext";
-
 import { useFocusEffect } from "@react-navigation/native";
 import React from "react";
-
-
 import { getSingleDoc, checkIfMember, getCollection } from "../gettingData";
 import { leaveJoinClub } from "../addingData";
-
 
 type CurrentRead = {
   author: string;
