@@ -199,10 +199,12 @@ export const styles = StyleSheet.create({
   profileBio: {
     marginLeft: 20,
     marginRight: 20,
-    marginBottom: 20,
+    marginBottom: 10,
     alignItems: "center",
     borderWidth: 2,
     borderStyle: "dotted",
+    padding:10,
+    borderRadius:10
   },
   scrollContainer: {
     flexGrow: 1,
@@ -220,6 +222,7 @@ export const styles = StyleSheet.create({
     flexDirection: "column",
     width: 109,
     height: 156,
+    borderRadius:10
   },
   favebookcard: {
     flexDirection: "column",
