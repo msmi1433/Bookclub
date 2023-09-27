@@ -1,6 +1,5 @@
 import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
-  
   // Home page
   bookContainer: {
     marginTop: 20,
@@ -69,12 +68,12 @@ export const styles = StyleSheet.create({
     height: 400,
     width: 400,
   },
-  memberImage:{
+  memberImage: {
     height: 200,
     width: 200,
-    borderRadius:50,
+    borderRadius: 50,
   },
-  memberContainer:{
+  memberContainer: {
     flex: 1,
     padding: 50,
   },
@@ -185,28 +184,27 @@ export const styles = StyleSheet.create({
   searchAddBookButton: {
     flex: 1,
   },
-  profilePage:{
+  profilePage: {
     flexDirection: "column",
     borderWidth: 5,
     padding: 10,
     flex: 1,
-    backgroundColor:"#FFEBCD",
+    backgroundColor: "#FFEBCD",
   },
   username: {
-  flex: 1,
-  alignItems: 'center', 
-  justifyContent: "space-evenly",
-  margin:20,
-},
-profileBio: {
-  marginLeft:20,
-  marginRight:20,
-  marginBottom:20,
-  alignItems:"center",
-  borderWidth:2,
-  borderStyle:"dotted",
-  
-},
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    margin: 20,
+  },
+  profileBio: {
+    marginLeft: 20,
+    marginRight: 20,
+    marginBottom: 20,
+    alignItems: "center",
+    borderWidth: 2,
+    borderStyle: "dotted",
+  },
   scrollContainer: {
     flexGrow: 1,
     justifyContent: "center",
@@ -217,7 +215,7 @@ profileBio: {
     justifyContent: "space-between",
     alignItems: "center",
     margin: 4,
-    padding:2,
+    padding: 2,
   },
   favouriteBookImages: {
     flexDirection: "column",
@@ -229,7 +227,7 @@ profileBio: {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "space-around",
-    margin:8
+    margin: 8,
   },
   button: {
     flex: 1,
@@ -248,15 +246,58 @@ profileBio: {
     fontWeight: "bold",
   },
 
-  headerImage:{
-    height:40, 
-    width:200,
+  headerImage: {
+    height: 40,
+    width: 200,
   },
 
   header: {
-   textAlign: "center",
+    textAlign: "center",
     fontSize: 36,
     paddingVertical: 36,
     paddingHorizontal: 32,
+  },
+
+  //Current Read
+  bookImage: {
+    height: 150,
+    width: 150,
+    borderRadius: 50,
+  },
+  currentBookContainer: {
+    flex: 1,
+    paddingBottom: 60,
+    margin: 20,
+    flexDirection: "column",
+  },
+  currentBookText: {
+    fontSize: 25,
+    fontWeight: "bold",
+    color: "black",
+    textAlign: "center",
+    paddingBottom: 20,
+  },
+  bookNameText: {
+    paddingTop: 15,
+    padding: 5,
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+  bookAuthorText: {
+    paddingTop: 5,
+    paddingLeft: 5,
+    fontSize: 15,
+    fontWeight: "bold",
+  },
+  bookDescriptionText: {
+    paddingTop: 15,
+    padding: 5,
+    fontSize: 15,
+  },
+  nextBookHeader: {
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "space-around",
+    margin: 8,
   }
 });
