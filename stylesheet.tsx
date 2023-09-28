@@ -513,48 +513,8 @@ export const styles = StyleSheet.create({
     alignSelf: "center",
   },
 
-  generalChatButton: {
-    flex: 1,
-    alignItems: "center",
-    marginLeft: 20,
-    marginRight: 20,
-    width: 350,
-    marginTop: 20,
-    marginBottom: 10,
-    paddingVertical: 12,
-    paddingHorizontal: 32,
-    backgroundColor: "#F7C17A",
-    borderRadius: 10,
-    shadowColor: "#000000",
-    shadowOpacity: 0.8,
-    shadowRadius: 2,
-    shadowOffset: {
-      height: 1,
-      width: 1
-    }
-  },
-  membersButton: {
-    flex: 1,
-    alignItems: "center",
-    marginLeft: 20,
-    marginRight: 20,
-    // marginBottom: 10,
-    width: 350,
-    marginTop: 10,
-    paddingVertical: 12,
-    paddingHorizontal: 32,
-    backgroundColor: "#F7C17A",
-    borderRadius: 10,
-    shadowColor: "#000000",
-    shadowOpacity: 0.8,
-    shadowRadius: 2,
-    shadowOffset: {
-      height: 1,
-      width: 1
-    }
-
   nextReadSearchText: {
     textAlign: "center",
 
-  },
+  }
 });
