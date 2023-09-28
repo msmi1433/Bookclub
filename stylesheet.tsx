@@ -34,12 +34,18 @@ export const styles = StyleSheet.create({
     height: 200,
     backgroundColor: "#EBCF9C",
     borderRadius: 10,
-    shadowColor: "#FFEBCD",
+    shadowColor: "#424B54",
     borderWidth: 2,
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
+    shadowOpacity: 0.8,
+    shadowRadius: 1.8,
+    shadowBorderRadius: 10,
     elevation: 5,
-    borderColor: "#424B54",
+    borderColor: "#C5BAAF",
+    shadowOffset: {
+      height: 0.5,
+      width: 1
+    }
+    
   },
   bookclubImageContainer: {
     justifyContent: "center",
@@ -295,6 +301,13 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 32,
     backgroundColor: "#F7C17A",
     borderRadius: 10,
+    shadowColor: "#000000",
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    shadowOffset: {
+      height: 1,
+      width: 1
+    }
   },
   buttonText: {
     color: "#424B54",
@@ -467,7 +480,7 @@ export const styles = StyleSheet.create({
   singleBookclubHeader: {
     flex: 1,
     alignItems: "center",
-    gap: 30,
+    gap:  30,
   },
   singleBookclubTitle: {
     marginTop: 30,
@@ -479,6 +492,7 @@ export const styles = StyleSheet.create({
     height: 200,
     borderRadius: 10,
     alignItems: "center",
+    
   },
   singleBookclubDescriptionBox: {
     marginLeft: 20,
@@ -498,7 +512,49 @@ export const styles = StyleSheet.create({
   openBook: {
     alignSelf: "center",
   },
+
+  generalChatButton: {
+    flex: 1,
+    alignItems: "center",
+    marginLeft: 20,
+    marginRight: 20,
+    width: 350,
+    marginTop: 20,
+    marginBottom: 10,
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    backgroundColor: "#F7C17A",
+    borderRadius: 10,
+    shadowColor: "#000000",
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    shadowOffset: {
+      height: 1,
+      width: 1
+    }
+  },
+  membersButton: {
+    flex: 1,
+    alignItems: "center",
+    marginLeft: 20,
+    marginRight: 20,
+    // marginBottom: 10,
+    width: 350,
+    marginTop: 10,
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    backgroundColor: "#F7C17A",
+    borderRadius: 10,
+    shadowColor: "#000000",
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    shadowOffset: {
+      height: 1,
+      width: 1
+    }
+
   nextReadSearchText: {
     textAlign: "center",
+
   },
 });

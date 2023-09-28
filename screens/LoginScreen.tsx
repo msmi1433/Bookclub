@@ -13,6 +13,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 interface LoginScreenProps {
   navigation: any;
 }
+import { KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
 
 const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -38,9 +39,9 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
   };
 
   return (
-    <ScrollView
+    <KeyboardAwareScrollView
       style={{ flex: 1, height: 1000 }}
-      scrollEnabled={false}
+     
       keyboardShouldPersistTaps="handled"
     >
       <View style={styles.container}>
@@ -78,7 +79,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
           </Text>
         </View>
       </View>
-    </ScrollView>
+    </KeyboardAwareScrollView>
   );
 };
 
@@ -109,7 +110,7 @@ const styles = StyleSheet.create({
     width: 300,
     overflow: "hidden",
     backgroundColor: "#fff",
-    marginTop: 50,
+    marginTop: 30,
     marginBottom: 10,
     marginLeft: 30,
     marginRight: 30,
@@ -119,12 +120,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#788eec",
     marginLeft: 30,
     marginRight: 30,
-    marginTop: 20,
+    marginTop: 40,
     height: 48,
     width: 300,
     borderRadius: 5,
     alignItems: "center",
     justifyContent: "center",
+  
   },
   buttonTitle: {
     color: "white",
