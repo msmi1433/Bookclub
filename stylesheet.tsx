@@ -74,12 +74,12 @@ export const styles = StyleSheet.create({
     textAlign: "center",
   },
   formContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
     alignItems: "center",
     padding: 10,
-    flex: 1
+    flex: 1,
   },
   input: {
     height: 48,
@@ -389,7 +389,9 @@ export const styles = StyleSheet.create({
   },
   currentBookContainer: {
     flex: 1,
+    paddingLeft: 30,
     paddingBottom: 20,
+    paddingRight: 30,
     margin: 20,
     flexDirection: "column",
     borderColor: "black",
@@ -409,19 +411,19 @@ export const styles = StyleSheet.create({
     padding: 5,
     fontSize: 20,
     fontWeight: "bold",
+    textAlign: "center",
   },
   bookAuthorText: {
     paddingTop: 5,
     paddingLeft: 5,
     fontSize: 15,
     fontWeight: "bold",
+    textAlign: "center",
   },
   bookDescriptionText: {
     paddingTop: 15,
-    padding: 5,
     fontSize: 15,
-    marginLeft: 15,
-    marginRight: 15,
+    textAlign: "left",
   },
   nextBookHeader: {
     flexDirection: "row",
@@ -430,10 +432,14 @@ export const styles = StyleSheet.create({
     margin: 8,
   },
   nextBookByHeader: {
-    flexDirection: "column",
+    maxWidth: 220,
+  },
+  bookInfoContainer: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-evenly",
     alignItems: "center",
-    justifyContent: "space-around",
-    margin: 8,
+    gap: 15,
   },
   //modal
   modal: {

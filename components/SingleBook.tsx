@@ -16,15 +16,17 @@ const SingleBook: React.FC<{ singleBook: SingleBook }> = ({ singleBook }) => {
     <View style={styles.currentBookContainer}>
       <Text style={styles.currentBookText}>Currently Reading:</Text>
       <View style={styles.nextBookHeader}>
-        <Image
-          style={styles.bookImage}
-          accessible
-          accessibilityLabel={book_name}
-          source={{ uri: img_url }}
-        />
-        <View style={styles.nextBookByHeader}>
-          <Text style={styles.bookNameText}>{book_name}</Text>
-          <Text style={styles.bookAuthorText}>by {author}</Text>
+        <View style={styles.bookInfoContainer}>
+          <Image
+            style={styles.bookImage}
+            accessible
+            accessibilityLabel={book_name}
+            source={{ uri: img_url }}
+          />
+          <View style={styles.nextBookByHeader}>
+            <Text style={styles.bookNameText}>{book_name}</Text>
+            <Text style={styles.bookAuthorText}>by {author}</Text>
+          </View>
         </View>
       </View>
       <Text style={styles.bookDescriptionText}>{description}</Text>

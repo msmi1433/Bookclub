@@ -4,10 +4,12 @@ import TabNavigation from "./navigation/TabNavigation";
 import { NavigationContainer } from "@react-navigation/native";
 import LoginScreen from "./screens/LoginScreen";
 import SignupScreen from "./screens/SignupScreen";
+import { LogBox } from "react-native";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  LogBox.ignoreAllLogs();
   return (
     <NavigationContainer independent={true}>
       <Stack.Navigator initialRouteName="LoginScreen">
@@ -15,8 +17,8 @@ export default function App() {
           name="Login"
           component={LoginScreen}
           options={{ headerShown: false }}
-        /> 
-         <Stack.Screen
+        />
+        <Stack.Screen
           name="Sign up"
           component={SignupScreen}
           options={{ headerShown: false }}
