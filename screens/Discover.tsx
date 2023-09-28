@@ -4,8 +4,8 @@ import { styles } from "../stylesheet";
 
 const Discover: React.FC<{ navigation: any }> = ({ navigation }) => {
   return (
-      <ScrollView showsVerticalScrollIndicator={false}>
-    <View>
+    <ScrollView showsVerticalScrollIndicator={false}>
+      <View>
         <Text style={styles.header}>Discover</Text>
 
         <Pressable
@@ -21,8 +21,8 @@ const Discover: React.FC<{ navigation: any }> = ({ navigation }) => {
         >
           <Text style={styles.buttonText}>Find a Book Club 🔍</Text>
         </Pressable>
-    </View>
-      </ScrollView>
+      </View>
+    </ScrollView>
   );
 };
 

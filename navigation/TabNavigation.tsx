@@ -18,15 +18,15 @@ const TabNavigation: React.FC = () => {
     <NavigationContainer theme={navTheme} independent={true}>
       <Tab.Navigator
         screenOptions={({ route }) => ({
-          tabBarInactiveBackgroundColor: "#FFEBCD",
-          tabBarActiveBackgroundColor: "#424B54",
+          // tabBarInactiveBackgroundColor: "#FFEBCD",
+          // tabBarActiveBackgroundColor: "#424B54",
           tabBarInactiveTintColor: "#424B54",
-          tabBarActiveTintColor: "#F7C17A",
+          tabBarActiveTintColor: "black",
           headerShown: false,
           tabBarStyle: {
-            backgroundColor: "#ffebcd",
-            borderTopColor: "#424B54",
-            borderTopWidth: 1,
+            backgroundColor: "#FFEBCD",
+            borderTopColor: "#FFEBCD",
+            borderTopWidth: 0.17,
             borderLeftWidth: 0.2,
           },
 

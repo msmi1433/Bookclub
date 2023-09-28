@@ -15,7 +15,7 @@ export const addUser = (uid: string, username: string) => {
     user_avatar_image: "",
     user_bio: "",
     user_bookclubs: [],
-    user_fave_books: [],
+    user_fave_books: [{book_author:'', book_img:"https://bookstoreromanceday.org/wp-content/uploads/2020/08/book-cover-placeholder.png", book_title:""},{book_author:'', book_img:"https://bookstoreromanceday.org/wp-content/uploads/2020/08/book-cover-placeholder.png", book_title:""},{book_author:'', book_img:"https://bookstoreromanceday.org/wp-content/uploads/2020/08/book-cover-placeholder.png", book_title:""}],
   }).catch((err) => alert(err));
 };
 
