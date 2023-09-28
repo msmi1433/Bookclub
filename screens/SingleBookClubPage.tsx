@@ -103,22 +103,23 @@ export const SingleBookClubPage: React.FC<{
   return (
     <ScrollView nestedScrollEnabled={true}>
       <View>
-
-      
-      <View style={styles.singleBookclubHeader}>
-        <Text style={styles.singleBookclubTitle}> {currentBookClub.name} </Text>
-        <Image
-          style={styles.singleBookclubImage}
-          source={{ uri: currentBookClub.img_url }}
-        />
-        <View style={styles.singleBookclubDescriptionBox}>
-          <Text style={styles.singleBookclubDescriptionText}>
-            {currentBookClub.description}
+        <View style={styles.singleBookclubHeader}>
+          <Text style={styles.singleBookclubTitle}>
+            {" "}
+            {currentBookClub.name}{" "}
           </Text>
-        </View>
+          <Image
+            style={styles.singleBookclubImage}
+            source={{ uri: currentBookClub.img_url }}
+          />
+          <View style={styles.singleBookclubDescriptionBox}>
+            <Text style={styles.singleBookclubDescriptionText}>
+              {currentBookClub.description}
+            </Text>
+          </View>
         </View>
         <Pressable
-          style={styles.generalChatButton}
+          style={styles.button}
           onPress={() =>
             navigation.navigate("General Chat", { bookclub_id: bookclub_id })
           }
@@ -139,7 +140,7 @@ export const SingleBookClubPage: React.FC<{
           >
             <View style={styles.modal}>
               <Pressable
-                style={styles.modalCloseButton}
+                style={styles.button}
                 onPress={() => setModalVisible(false)}
               >
                 <Text style={styles.modalCloseButtonText}>X</Text>
@@ -169,10 +170,7 @@ export const SingleBookClubPage: React.FC<{
             </View>
           </Modal>
         </GestureRecognizer>
-        <Pressable
-          style={styles.membersButton}
-          onPress={() => setModalVisible(true)}
-        >
+        <Pressable style={styles.button} onPress={() => setModalVisible(true)}>
           <Text style={styles.buttonText}>
             Members of {currentBookClub.name}
           </Text>

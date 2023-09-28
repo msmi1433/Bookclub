@@ -486,7 +486,7 @@ export const styles = StyleSheet.create({
   singleBookclubDescriptionBox: {
     marginLeft: 20,
     marginRight: 20,
-    // marginBottom: 10,
+    marginBottom: 10,
     alignItems: "center",
     borderWidth: 2,
     borderStyle: "dotted",
