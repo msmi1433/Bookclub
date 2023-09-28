@@ -69,10 +69,11 @@ export const SingleBookClubPage: React.FC<{
   useFocusEffect(
     React.useCallback(() => {
       Promise.all([
+        getCollection("users", setMembers),
         getSingleDoc("bookclubs", bookclub_id, setCurrentBookClub),
         checkIfMember(uid, bookclub_id),
       ]).then((values) => {
-        setIsUserMember(values[1]);
+        setIsUserMember(values[2]);
       });
     }, [])
   );
@@ -80,7 +81,6 @@ export const SingleBookClubPage: React.FC<{
   const membersNestedArray = Object.entries(currentBookClub.members);
 
   const handleClick = (memberName: string) => {
-    getCollection("users", setMembers);
     const membersArray = members.filter((singlemember: Member) => {
       return singlemember.user_username === memberName;
     });
