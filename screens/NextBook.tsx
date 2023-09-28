@@ -43,17 +43,19 @@ const NextBook: React.FC<RouteParams> = ({ route }: RouteParams) => {
           <View style={styles.currentBookContainer}>
             <Text style={styles.currentBookText}>Our next read is...</Text>
             <View style={styles.nextBookHeader}>
-              <Image
-                source={{ uri: nextReadState.img_url }}
-                style={styles.bookImage}
-              />
-              <View style={styles.nextBookByHeader}>
-                <Text style={styles.bookNameText}>
-                  {nextReadState.book_name}
-                </Text>
-                <Text style={styles.bookAuthorText}>
-                  by {nextReadState.author}
-                </Text>
+              <View style={styles.bookInfoContainer}>
+                <Image
+                  source={{ uri: nextReadState.img_url }}
+                  style={styles.bookImage}
+                />
+                <View style={styles.nextBookByHeader}>
+                  <Text style={styles.bookNameText}>
+                    {nextReadState.book_name}
+                  </Text>
+                  <Text style={styles.bookAuthorText}>
+                    by {nextReadState.author}
+                  </Text>
+                </View>
               </View>
             </View>
             <Text style={styles.bookDescriptionText}>
