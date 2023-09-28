@@ -102,6 +102,9 @@ export const SingleBookClubPage: React.FC<{
 
   return (
     <ScrollView nestedScrollEnabled={true}>
+      <View>
+
+      
       <View style={styles.singleBookclubHeader}>
         <Text style={styles.singleBookclubTitle}> {currentBookClub.name} </Text>
         <Image
@@ -113,21 +116,16 @@ export const SingleBookClubPage: React.FC<{
             {currentBookClub.description}
           </Text>
         </View>
+        </View>
         <Pressable
-          style={styles.button}
+          style={styles.generalChatButton}
           onPress={() =>
             navigation.navigate("General Chat", { bookclub_id: bookclub_id })
           }
         >
           <Text style={styles.buttonText}>General Club Discussion</Text>
         </Pressable>
-      </View>
-      {currentBookClub.current_read.book_name ? (
-        <SingleBook singleBook={currentBookClub.current_read} />
-      ) : (
-        <BookclubEmptyState />
-      )}
-      <View>
+
         <GestureRecognizer
           style={{ flex: 1 }}
           onSwipeDown={() => setModalVisible(false)}
@@ -171,18 +169,28 @@ export const SingleBookClubPage: React.FC<{
             </View>
           </Modal>
         </GestureRecognizer>
-        <Pressable style={styles.button} onPress={() => setModalVisible(true)}>
+        <Pressable
+          style={styles.membersButton}
+          onPress={() => setModalVisible(true)}
+        >
           <Text style={styles.buttonText}>
             Members of {currentBookClub.name}
           </Text>
         </Pressable>
-
-   
-
+      </View>
+      {currentBookClub.current_read.book_name ? (
+        <SingleBook singleBook={currentBookClub.current_read} />
+      ) : (
+        <BookclubEmptyState />
+      )}
+      <View>
         <Pressable
           style={styles.button}
           onPress={() =>
-            navigation.navigate("Book Chat", { bookclub_id: bookclub_id, currentRead: currentBookClub.current_read.book_name })
+            navigation.navigate("Book Chat", {
+              bookclub_id: bookclub_id,
+              currentRead: currentBookClub.current_read.book_name,
+            })
           }
         >
           <Text style={styles.buttonText}>
@@ -218,7 +226,7 @@ export const SingleBookClubPage: React.FC<{
         <Button
           onPress={handleJoinLeave}
           title={isUserMember ? "Leave club" : "Join club"}
-          color={isUserMember ? 'red':"#004B23"}
+          color={isUserMember ? "red" : "#004B23"}
         ></Button>
       )}
     </ScrollView>

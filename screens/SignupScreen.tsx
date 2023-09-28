@@ -13,6 +13,7 @@ import { auth } from "../firebase-config";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { addUser } from "../addingData";
 import { getUsers } from "../gettingData";
+import { KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
 
 interface SignupScreenProps {
   navigation: any;
@@ -77,7 +78,12 @@ const SignupScreen: React.FC<SignupScreenProps> = ({ navigation }) => {
   };
 
   return (
-    <ScrollView style={{flex: 1, height: 1000}} scrollEnabled={false} keyboardShouldPersistTaps="handled">
+    <KeyboardAwareScrollView 
+    style={{flex: 1, height: 1000}} 
+    scrollEnabled={false} 
+    keyboardShouldPersistTaps="handled"
+    resetScrollToCoords={{x:0, y: 0}}
+    >
       <View style={styles.container}>
       <Image
           style={styles.loginPageImage}
@@ -112,7 +118,6 @@ const SignupScreen: React.FC<SignupScreenProps> = ({ navigation }) => {
         <TextInput
           style={styles.input}
           placeholderTextColor="#aaaaaa"
-          onSubmitEditing={Keyboard.dismiss}
           secureTextEntry
           placeholder="Confirm Password"
           onChangeText={(text) => {
@@ -135,7 +140,7 @@ const SignupScreen: React.FC<SignupScreenProps> = ({ navigation }) => {
           </Text>
         </View>
       </View>
-    </ScrollView>
+    </KeyboardAwareScrollView>
   );
 };
 
