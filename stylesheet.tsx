@@ -288,6 +288,13 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 32,
     backgroundColor: "#F7C17A",
     borderRadius: 10,
+    shadowColor: "#000000",
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    shadowOffset: {
+      height: 1,
+      width: 1
+    }
   },
   buttonText: {
     color: "#424B54",
@@ -468,6 +475,7 @@ export const styles = StyleSheet.create({
     height: 200,
     borderRadius: 10,
     alignItems: "center",
+    
   },
   singleBookclubDescriptionBox: {
     marginLeft: 20,

@@ -113,6 +113,14 @@ export const SingleBookClubPage: React.FC<{
             {currentBookClub.description}
           </Text>
         </View>
+        <Pressable
+          style={styles.button}
+          onPress={() =>
+            navigation.navigate("General Chat", { bookclub_id: bookclub_id })
+          }
+        >
+          <Text style={styles.buttonText}>General Club Discussion</Text>
+        </Pressable>
       </View>
       {currentBookClub.current_read.book_name ? (
         <SingleBook singleBook={currentBookClub.current_read} />
@@ -169,14 +177,7 @@ export const SingleBookClubPage: React.FC<{
           </Text>
         </Pressable>
 
-        <Pressable
-          style={styles.button}
-          onPress={() =>
-            navigation.navigate("General Chat", { bookclub_id: bookclub_id })
-          }
-        >
-          <Text style={styles.buttonText}>General Club Discussion</Text>
-        </Pressable>
+   
 
         <Pressable
           style={styles.button}
