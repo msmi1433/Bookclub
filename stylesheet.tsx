@@ -67,7 +67,14 @@ export const styles = StyleSheet.create({
     color: "#fff",
     textAlign: "center",
   },
-
+  formContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: "center",
+    padding: 10,
+    flex: 1
+  },
   input: {
     height: 48,
     borderRadius: 5,
