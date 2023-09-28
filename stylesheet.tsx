@@ -409,10 +409,7 @@ export const styles = StyleSheet.create({
   },
   bookDescriptionText: {
     paddingTop: 15,
-    // padding: 5,
     fontSize: 15,
-    // marginLeft: 15,
-    // marginRight: 15,
     textAlign: "left",
   },
   nextBookHeader: {
@@ -422,9 +419,6 @@ export const styles = StyleSheet.create({
     margin: 8,
   },
   nextBookByHeader: {
-    // flexDirection: "column",
-    // alignItems: "center",
-    // justifyContent: "space-around",
     maxWidth: 220,
   },
   bookInfoContainer: {
