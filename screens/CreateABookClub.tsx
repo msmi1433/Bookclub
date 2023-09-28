@@ -4,6 +4,7 @@ import { useState } from "react";
 import { createBookClub } from "../addingData";
 import React from "react";
 import Icon from 'react-native-vector-icons/Feather'
+import { KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
 
 
 const CreateABookClub: React.FC<{navigation: any}> = ({navigation}) => {
@@ -47,7 +48,7 @@ const CreateABookClub: React.FC<{navigation: any}> = ({navigation}) => {
   };
   if (isCreated) {
     return (
-      <ScrollView>
+      <KeyboardAwareScrollView>
       <View style={styles.formContainer}>
       <Text style={styles.singleBookclubTitle}>
         Success!
@@ -57,11 +58,11 @@ const CreateABookClub: React.FC<{navigation: any}> = ({navigation}) => {
         <Text style={styles.buttonText}>Go back</Text>
       </Pressable>
       </View>
-      </ScrollView>
+      </KeyboardAwareScrollView>
     );
   } else
     return (
-      <ScrollView>
+      <KeyboardAwareScrollView>
       <View style={styles.formContainer}>
         <Text style={styles.singleBookclubTitle}>Create your club!</Text>
         <TextInput
@@ -100,7 +101,7 @@ const CreateABookClub: React.FC<{navigation: any}> = ({navigation}) => {
           <Text style={styles.buttonText}>Create club</Text>
         </Pressable>
       </View>
-      </ScrollView>
+      </KeyboardAwareScrollView>
     );
 };
 
