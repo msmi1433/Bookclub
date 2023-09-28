@@ -12,7 +12,7 @@ import {
 export const addUser = (uid: string, username: string) => {
   return setDoc(doc(db, "users", uid), {
     user_username: username,
-    user_avatar_image: "",
+    user_avatar_img: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
     user_bio: "",
     user_bookclubs: [],
     user_fave_books: [{book_author:'', book_img:"https://bookstoreromanceday.org/wp-content/uploads/2020/08/book-cover-placeholder.png", book_title:""},{book_author:'', book_img:"https://bookstoreromanceday.org/wp-content/uploads/2020/08/book-cover-placeholder.png", book_title:""},{book_author:'', book_img:"https://bookstoreromanceday.org/wp-content/uploads/2020/08/book-cover-placeholder.png", book_title:""}],

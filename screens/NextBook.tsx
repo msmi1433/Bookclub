@@ -27,36 +27,45 @@ const NextBook: React.FC<RouteParams> = ({ route }: RouteParams) => {
   const [nextReadState, setNextReadState] = useState(next_read);
 
   return (
-   <ScrollView>
+    <ScrollView>
+      <View>
+        <BookSearch
+          callbackFn={setNextRead}
+          stateSetter={setNextReadState}
+          bookclub_id={bookclub_id}
+        />
 
-   
-   <View>
-      
-      <BookSearch
-        callbackFn={setNextRead}
-        stateSetter={setNextReadState}
-        bookclub_id={bookclub_id}
-      />
-      <Text>To change the next read, please use the search bar above.</Text>
-      <Text style={styles.header}> Upcoming Book</Text>
-
-      <View style={styles.currentBookContainer}>
-        <Text style={styles.currentBookText}>Our next read is...</Text>
-        <View style={styles.nextBookHeader}>
-          <Image
-            source={{ uri: nextReadState.img_url }}
-            style={styles.bookImage}
-          />
-          <View style={styles.nextBookByHeader}>
-            <Text style={styles.bookNameText}>{nextReadState.book_name}</Text>
-            <Text style={styles.bookAuthorText}>by {nextReadState.author}</Text>
+        <Text style={styles.header}> Upcoming Book</Text>
+        <Text style={styles.nextReadSearchText}>
+          To change the next read, please use the search bar above.
+        </Text>
+        {nextReadState.book_name !== "" ? (
+          <View style={styles.currentBookContainer}>
+            <Text style={styles.currentBookText}>Our next read is...</Text>
+            <View style={styles.nextBookHeader}>
+              <Image
+                source={{ uri: nextReadState.img_url }}
+                style={styles.bookImage}
+              />
+              <View style={styles.nextBookByHeader}>
+                <Text style={styles.bookNameText}>
+                  {nextReadState.book_name}
+                </Text>
+                <Text style={styles.bookAuthorText}>
+                  by {nextReadState.author}
+                </Text>
+              </View>
+            </View>
+            <Text style={styles.bookDescriptionText}>
+              {nextReadState.description}
+            </Text>
           </View>
-        </View>
-      <Text style={styles.bookDescriptionText}>
-        {nextReadState.description}
-      </Text>
+        ) : (
+          <Text style={styles.currentBookText}>
+            No next read currently set...
+          </Text>
+        )}
       </View>
-    </View>
     </ScrollView>
   );
 };

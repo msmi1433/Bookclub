@@ -73,7 +73,14 @@ export const styles = StyleSheet.create({
     color: "#fff",
     textAlign: "center",
   },
-
+  formContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: "center",
+    padding: 10,
+    flex: 1
+  },
   input: {
     height: 48,
     borderRadius: 5,
@@ -385,6 +392,9 @@ export const styles = StyleSheet.create({
     paddingBottom: 20,
     margin: 20,
     flexDirection: "column",
+    borderColor: "black",
+    borderWidth: 1.5,
+    borderRadius: 5,
   },
   currentBookText: {
     fontSize: 25,
@@ -392,6 +402,7 @@ export const styles = StyleSheet.create({
     color: "black",
     textAlign: "center",
     paddingBottom: 20,
+    paddingTop: 20,
   },
   bookNameText: {
     paddingTop: 15,
@@ -501,6 +512,7 @@ export const styles = StyleSheet.create({
   openBook: {
     alignSelf: "center",
   },
+
   generalChatButton: {
     flex: 1,
     alignItems: "center",
@@ -540,5 +552,9 @@ export const styles = StyleSheet.create({
       height: 1,
       width: 1
     }
+
+  nextReadSearchText: {
+    textAlign: "center",
+
   },
 });
