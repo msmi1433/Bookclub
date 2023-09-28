@@ -140,7 +140,7 @@ export const SingleBookClubPage: React.FC<{
           >
             <View style={styles.modal}>
               <Pressable
-                style={styles.button}
+              style={styles.modalCloseButton}
                 onPress={() => setModalVisible(false)}
               >
                 <Text style={styles.modalCloseButtonText}>X</Text>
