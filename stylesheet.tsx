@@ -372,6 +372,9 @@ export const styles = StyleSheet.create({
     paddingBottom: 20,
     margin: 20,
     flexDirection: "column",
+    borderColor: "black",
+    borderWidth: 1.5,
+    borderRadius: 5,
   },
   currentBookText: {
     fontSize: 25,
@@ -379,6 +382,7 @@ export const styles = StyleSheet.create({
     color: "black",
     textAlign: "center",
     paddingBottom: 20,
+    paddingTop: 20,
   },
   bookNameText: {
     paddingTop: 15,
@@ -486,5 +490,8 @@ export const styles = StyleSheet.create({
 
   openBook: {
     alignSelf: "center",
+  },
+  nextReadSearchText: {
+    textAlign: "center",
   },
 });
