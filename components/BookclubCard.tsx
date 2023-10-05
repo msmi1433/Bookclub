@@ -1,4 +1,4 @@
-import { View, Text, Pressable,  Image } from "react-native";
+import { View, Text, Pressable, Image } from "react-native";
 import React, { useState, useEffect } from "react";
 import { getSingleDoc } from "../gettingData";
 import { styles } from "../stylesheet";
