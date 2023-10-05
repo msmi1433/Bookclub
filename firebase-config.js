@@ -5,12 +5,12 @@ var app_1 = require("firebase/app");
 var firestore_1 = require("firebase/firestore");
 var auth_1 = require("firebase/auth");
 var firebaseConfig = {
-    apiKey: "AIzaSyCNk8WaDgbrpLaHewgmn7mDNzR10zUuvPk",
-    authDomain: "bookclub-899af.firebaseapp.com",
-    projectId: "bookclub-899af",
-    storageBucket: "bookclub-899af.appspot.com",
-    messagingSenderId: "761146729032",
-    appId: "1:761146729032:web:bcc7778bf6433642e5ae7d"
+    apiKey: "AIzaSyCMQ7QkWssKe2nkt3wH3VX1O1K8ayzPc9I",
+    authDomain: "bookclub-personal-copy.firebaseapp.com",
+    projectId: "bookclub-personal-copy",
+    storageBucket: "bookclub-personal-copy.appspot.com",
+    messagingSenderId: "123945536970",
+    appId: "1:123945536970:web:9084b07750826ce5add333",
 };
 var app = (0, app_1.initializeApp)(firebaseConfig);
 exports.auth = (0, auth_1.getAuth)(app);

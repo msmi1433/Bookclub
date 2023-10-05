@@ -5,7 +5,6 @@ import {
   TextInput,
   TouchableOpacity,
   View,
-  ScrollView,
   StyleSheet,
   Keyboard,
 } from "react-native";
@@ -13,7 +12,7 @@ import { auth } from "../firebase-config";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { addUser } from "../addingData";
 import { getUsers } from "../gettingData";
-import { KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 interface SignupScreenProps {
   navigation: any;
@@ -45,18 +44,18 @@ const SignupScreen: React.FC<SignupScreenProps> = ({ navigation }) => {
       return;
     }
     getUsers(username)
-    .then((users) => {
-      if (users.length) {
-        setUsername('')
-        return Promise.reject({
-          code: 400,
-          message: 'This username is already in use' 
-        })
-      }
-    })
-    .then(() => {
-      return createUserWithEmailAndPassword(auth, email, password)
-    })
+      .then((users) => {
+        if (users.length) {
+          setUsername("");
+          return Promise.reject({
+            code: 400,
+            message: "This username is already in use",
+          });
+        }
+      })
+      .then(() => {
+        return createUserWithEmailAndPassword(auth, email, password);
+      })
       .then((userCredential) => {
         const user = userCredential.user;
         addUser(userCredential.user.uid, username);
@@ -71,21 +70,21 @@ const SignupScreen: React.FC<SignupScreenProps> = ({ navigation }) => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        alert(errorMessage)
+        alert(errorMessage);
         setPassword("");
         setConfirmPassword("");
       });
   };
 
   return (
-    <KeyboardAwareScrollView 
-    style={{flex: 1, height: 1000}} 
-    scrollEnabled={false} 
-    keyboardShouldPersistTaps="handled"
-    resetScrollToCoords={{x:0, y: 0}}
+    <KeyboardAwareScrollView
+      style={{ flex: 1, height: 1000 }}
+      scrollEnabled={false}
+      keyboardShouldPersistTaps="handled"
+      resetScrollToCoords={{ x: 0, y: 0 }}
     >
       <View style={styles.container}>
-      <Image
+        <Image
           style={styles.loginPageImage}
           source={require("../assets/shelf-Indulgence.png")}
         />
@@ -133,7 +132,7 @@ const SignupScreen: React.FC<SignupScreenProps> = ({ navigation }) => {
         </TouchableOpacity>
         <View style={styles.footerView}>
           <Text style={styles.footerText}>
-            Already have an account? {'\n'}
+            Already have an account? {"\n"}
             <Text onPress={goToLogin} style={styles.footerLink}>
               Login
             </Text>
@@ -152,7 +151,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     padding: 100,
-    height: 1000
+    height: 1000,
   },
   title: {},
   logo: {
@@ -200,13 +199,13 @@ const styles = StyleSheet.create({
   footerText: {
     fontSize: 16,
     color: "#2e2e2d",
-    textAlign:'center'
+    textAlign: "center",
   },
   footerLink: {
     color: "#788eec",
     fontWeight: "bold",
     fontSize: 16,
-    textAlign:'center'
+    textAlign: "center",
   },
   loginPageImage: {
     alignItems: "center",

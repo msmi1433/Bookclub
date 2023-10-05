@@ -35,6 +35,8 @@ const Home: React.FC<NavProps> = ({ navigation }) => {
     }, [uid])
   );
 
+  console.log(bookClubs);
+
   return (
     <View style={styles.bookContainer}>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -45,15 +47,21 @@ const Home: React.FC<NavProps> = ({ navigation }) => {
           />
           <Text style={styles.username}>{user.user_username}'s BookClubs</Text>
         </View>
-        {bookClubs.map((bookclub) => {
-          return (
-            <BookclubCard
-              key={bookclub}
-              bookclub_id={bookclub}
-              navigation={navigation}
-            />
-          );
-        })}
+        {bookClubs.length > 0 ? (
+          bookClubs.map((bookclub) => {
+            return (
+              <BookclubCard
+                key={bookclub}
+                bookclub_id={bookclub}
+                navigation={navigation}
+              />
+            );
+          })
+        ) : (
+          <View>
+            <Text>You haven't joined any bookclubs yet!</Text>
+          </View>
+        )}
       </ScrollView>
     </View>
   );
