@@ -30,7 +30,7 @@ Please [click here](https://youtu.be/U90IccAHrEU?si=S1dTSiioNfWnb_ir) to see a d
 
 To run the app locally on a computer, you will need to use an emulator.
 
-If you are on macOS, I recommend installing [Xcode from the App Store](https://apps.apple.com/gb/app/xcode/id497799835?mt=12). If you are not using macOS, I would recommend downloading the ExpoGo app for [iPhone](https://apps.apple.com/us/app/expo-go/id982107779) or [Android](https://play.google.com/store/apps/details?id=host.exp.exponent&referrer=www) and running the app on your phone via the app.
+If you are on macOS, I recommend installing [Xcode from the App Store](https://apps.apple.com/gb/app/xcode/id497799835?mt=12). If you are not using macOS, I would recommend downloading the ExpoGo app for [iPhone](https://apps.apple.com/us/app/expo-go/id982107779) or [Android](https://play.google.com/store/apps/details?id=host.exp.exponent&referrer=www) and running the app on your phone via the Expo Go app.
 
 Once you have installed an emulator, please execute the following commands in your terminal:
 
