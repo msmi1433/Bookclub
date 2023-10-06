@@ -20,7 +20,7 @@ This app was created for the Northocders Software Development bootcamp final gro
 
 ## Demo
 
-Please click here to see a demo of the app (approx 5 mins).
+Please [click here](https://youtu.be/U90IccAHrEU?si=S1dTSiioNfWnb_ir) to see a demo of the app (approx 5 mins).
 
 ## Minimum requirements
 
@@ -43,8 +43,7 @@ Once you have installed an emulator, please execute the following commands in yo
 
 ## Stack
 
-- Node
-- Expo
 - Firebase (Firestore DB and Firebase Auth)
+- Expo
 - React Native
-- Typescript
+- TypeScript
