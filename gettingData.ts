@@ -93,7 +93,11 @@ export const getUserBookclubs = (docId: string, setStateFn: Function) => {
       return returnedDoc.data();
     })
     .then((returnedData) => {
-      setStateFn(returnedData?.user_bookclubs);
+      if (returnedData) {
+        setStateFn(returnedData?.user_bookclubs);
+      } else {
+        setStateFn([]);
+      }
     });
 };
 

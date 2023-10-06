@@ -12,6 +12,7 @@ export const styles = StyleSheet.create({
     marginBottom: 16,
     flexDirection: "row",
     alignItems: "center",
+    alignSelf: "center",
   },
   userImage: {
     marginRight: 15,
@@ -43,9 +44,19 @@ export const styles = StyleSheet.create({
     borderColor: "#C5BAAF",
     shadowOffset: {
       height: 0.5,
-      width: 1
-    }
-    
+      width: 1,
+    },
+  },
+  joinClubContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginLeft: 20,
+    marginRight: 20,
+    gap: 5,
+  },
+  joinClubText: {
+    fontWeight: "bold",
   },
   bookclubImageContainer: {
     justifyContent: "center",
@@ -306,8 +317,8 @@ export const styles = StyleSheet.create({
     shadowRadius: 2,
     shadowOffset: {
       height: 1,
-      width: 1
-    }
+      width: 1,
+    },
   },
   buttonText: {
     color: "#424B54",
@@ -486,7 +497,7 @@ export const styles = StyleSheet.create({
   singleBookclubHeader: {
     flex: 1,
     alignItems: "center",
-    gap:  30,
+    gap: 30,
   },
   singleBookclubTitle: {
     marginTop: 30,
@@ -498,7 +509,6 @@ export const styles = StyleSheet.create({
     height: 200,
     borderRadius: 10,
     alignItems: "center",
-    
   },
   singleBookclubDescriptionBox: {
     marginLeft: 20,
@@ -521,6 +531,5 @@ export const styles = StyleSheet.create({
 
   nextReadSearchText: {
     textAlign: "center",
-
-  }
+  },
 });

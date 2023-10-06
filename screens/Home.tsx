@@ -1,5 +1,5 @@
 import { View, Text, ScrollView, Image } from "react-native";
-import React, { useEffect } from "react";
+import React from "react";
 import { useState } from "react";
 import BookclubCard from "../components/BookclubCard";
 import { getUserBookclubs, getUser } from "../gettingData";
@@ -30,12 +30,10 @@ const Home: React.FC<NavProps> = ({ navigation }) => {
 
   useFocusEffect(
     React.useCallback(() => {
-      getUserBookclubs(uid, setBookClubs);
       getUser(uid, setUser);
+      getUserBookclubs(uid, setBookClubs);
     }, [uid])
   );
-
-  console.log(bookClubs);
 
   return (
     <View style={styles.bookContainer}>
@@ -45,9 +43,9 @@ const Home: React.FC<NavProps> = ({ navigation }) => {
             source={{ uri: user.user_avatar_img }}
             style={styles.userImage}
           />
-          <Text style={styles.username}>{user.user_username}'s BookClubs</Text>
+          <Text style={styles.username}>{user.user_username}'s Bookclubs</Text>
         </View>
-        {bookClubs.length > 0 ? (
+        {bookClubs.length ? (
           bookClubs.map((bookclub) => {
             return (
               <BookclubCard
@@ -58,8 +56,13 @@ const Home: React.FC<NavProps> = ({ navigation }) => {
             );
           })
         ) : (
-          <View>
-            <Text>You haven't joined any bookclubs yet!</Text>
+          <View style={styles.joinClubContainer}>
+            <Text style={styles.joinClubText}>
+              You haven't joined any bookclubs yet!
+            </Text>
+            <Text style={styles.joinClubText}>
+              Visit the discover tab to find or create a club...
+            </Text>
           </View>
         )}
       </ScrollView>
