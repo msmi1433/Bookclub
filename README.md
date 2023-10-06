@@ -1,10 +1,10 @@
 # Shelf Indulgence
 
-Shelf Indulgence is an app-based solution to bookclubs, providing users with a digital space to connect with like-minded readers and share their love of literature.
+Shelf Indulgence is an app-based solution to book clubs, providing users with a digital space to connect with like-minded readers and share their love of literature.
 
-The app allows users to create and join bookclubs which house a number of features, aiming to replicate the 'real-world' bookclub experience. For example, users can:
+The app allows users to create and join book clubs which house a number of features, aiming to replicate the 'real-world' book club experience. For example, users can:
 
-- Set a 'current read' and 'next read' for the bookclub, to ensure that members are aware of the reading schedule. The search funtionality for this feature is provided via integration with the Google Books API.
+- Set a 'current read' and 'next read' for the book club, to ensure that members are aware of the reading schedule. The search funtionality for this feature is provided via integration with the Google Books API.
 - Participate in discussion via message boards.
 - Personalise their profile to show off their reading tastes and favourite books.
 
@@ -12,8 +12,8 @@ The app allows users to create and join bookclubs which house a number of featur
 
 This app was created for the Northocders Software Development bootcamp final group project. The app in its current state represents the MVP that we strived to create in the limited time that we had to complete the project, but in the future I will be planning to add:
 
-- Admin controls for bookclubs
-- Voting functionality so members can have their say on a bookclub's next read
+- Admin controls for book clubs
+- Voting functionality so members can have their say on a book club's next read
 - More interaction within message boards (reply threads, comment voting, comment sorting)
 - Weekly wiping/reset of the current read message board so discussion about previous books does not clutter this forum
 - Weekly club meeting functionality via video calls
